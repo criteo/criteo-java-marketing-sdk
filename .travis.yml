@@ -1,10 +1,18 @@
 language: java
-jdk:
-  - oraclejdk8
-  - oraclejdk7
+dist: xenial
+
 before_install:
   # ensure gradlew has proper permission
   - chmod a+x ./gradlew
+
 script:
   # test using gradle
-  - gradle test
+  - ./gradlew test
+
+branches:
+  only:
+    - master
+
+notifications:
+  slack:
+    secure: kQaTYS7GluRh+oQY5gK1wl7V0j/Sn4NSlC31fSm8A/Qz2bBdP+3L7+757K2kXzqUaKl2muyUpMKvsvzZ+tU3Zjx5w2qnyvBU2vsEysae8h2VmIgp1Q+N+cORWCfLtEmv64VTf3/rMs8DyA04zREfVPtqIUMHh0Ul0yYEyPMWRstY2U8aMZglHYnv1/eHdCDnLHzPuUBOvzN3EeZY80PO/r0lq7+2NY5f3afoCiEPXUzzuOy28Dd2oyEfGGf65TRe+BNU9vSAn49WwJLH/U22c3M60fbiwuA4E3JLMbyeP0JUnGGZ8lpFqm8e9xvR4/x9J7f974ri1pGlJsLD1Vo55ar7UtNhrqyJeQoxwncfpHEpo+VS4COc+PFU8PzZkVZAmZNlO73HToq1xLMZqQ+S2Kk39u6FAjNopIeGEb6BCy46lSme0vnQ5WRxteEIeW9T8oOEJhqO7ztmyKdO++zBcQw+XoozTiPXxsecJTCi28O+7OBoohGeVgdro/QebX5HZrNJ388FDO3slzTudR6QsJrcfM8QhhGadpUKUVm1P6BNwqGlpb3KvRySpbuGz7xlbL3jF6zSBgsaqH7oEurZBBOluHobTUksD/5W4ibl+KKu8APeENcwWjdmPVa5i7rOCFvzmoEKcFMqz+tuP+WKD3REuVit040xlTAjURXN0Lc=
