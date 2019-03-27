@@ -1,0 +1,83 @@
+
+# GoogleProduct
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **String** |  |  [optional]
+**additionalImageLink** | **String** |  |  [optional]
+**adult** | **Boolean** |  |  [optional]
+**adwordRedirect** | **String** |  |  [optional]
+**ageGroup** | **String** |  |  [optional]
+**availability** | [**AvailabilityEnum**](#AvailabilityEnum) |  |  [optional]
+**availabilityDate** | **String** |  |  [optional]
+**brand** | **String** |  |  [optional]
+**color** | **String** |  |  [optional]
+**customLabel0** | **String** |  |  [optional]
+**customLabel1** | **String** |  |  [optional]
+**customLabel2** | **String** |  |  [optional]
+**customLabel3** | **String** |  |  [optional]
+**customLabel4** | **String** |  |  [optional]
+**description** | **String** |  |  [optional]
+**displayAdsId** | **String** |  |  [optional]
+**displayAdsLink** | **String** |  |  [optional]
+**displayAdsSimilarIds** | **List&lt;String&gt;** |  |  [optional]
+**displayAdsTitle** | **String** |  |  [optional]
+**displayAdsValue** | **String** |  |  [optional]
+**energyEfficiencyClass** | **String** |  |  [optional]
+**excludedDestination** | **String** |  |  [optional]
+**expirationDate** | **String** |  |  [optional]
+**filters** | **String** |  |  [optional]
+**gender** | **String** |  |  [optional]
+**googleProductCategory** | **String** |  |  [optional]
+**gtin** | **String** |  |  [optional]
+**identifierExists** | **Boolean** |  |  [optional]
+**imageLink** | **String** |  |  [optional]
+**installment** | [**Installment**](Installment.md) |  |  [optional]
+**isBundle** | **Boolean** |  |  [optional]
+**itemGroupId** | **String** |  |  [optional]
+**link** | **String** |  |  [optional]
+**loyatyPoints** | [**LoyatyPoints**](LoyatyPoints.md) |  |  [optional]
+**material** | **String** |  |  [optional]
+**maxHandlingTime** | **Long** |  |  [optional]
+**minAdvertiserPrice** | **Boolean** |  |  [optional]
+**minHandlingTime** | **Long** |  |  [optional]
+**mobileLing** | **String** |  |  [optional]
+**modelNumber** | **String** |  |  [optional]
+**mpn** | **String** |  |  [optional]
+**multipack** | **Integer** |  |  [optional]
+**numberOfReviews** | **Integer** |  |  [optional]
+**pattern** | **String** |  |  [optional]
+**price** | [**Price**](Price.md) |  |  [optional]
+**productRating** | **String** |  |  [optional]
+**productType** | **String** |  |  [optional]
+**productTypeKey** | **String** |  |  [optional]
+**promoText** | **String** |  |  [optional]
+**promotionId** | **String** |  |  [optional]
+**salePrice** | [**Price**](Price.md) |  |  [optional]
+**salePriceEffectiveDate** | **String** |  |  [optional]
+**shipping** | [**List&lt;Shipping&gt;**](Shipping.md) |  |  [optional]
+**shippingHeight** | [**ShippingSize**](ShippingSize.md) |  |  [optional]
+**shippingLabel** | **String** |  |  [optional]
+**shippingLength** | [**ShippingSize**](ShippingSize.md) |  |  [optional]
+**shippingWeight** | [**UnitMeasure**](UnitMeasure.md) |  |  [optional]
+**shippingWidth** | [**ShippingSize**](ShippingSize.md) |  |  [optional]
+**size** | **String** |  |  [optional]
+**sizeSystem** | **String** |  |  [optional]
+**sizeType** | **String** |  |  [optional]
+**tax** | [**List&lt;Tax&gt;**](Tax.md) |  |  [optional]
+**title** | **String** |  |  [optional]
+**unitPricingBaseMeasure** | [**UnitMeasure**](UnitMeasure.md) |  |  [optional]
+**unitPricingMeasure** | [**UnitMeasure**](UnitMeasure.md) |  |  [optional]
+
+
+<a name="AvailabilityEnum"></a>
+## Enum: AvailabilityEnum
+Name | Value
+---- | -----
+PREORDER | &quot;Preorder&quot;
+INSTOCK | &quot;InStock&quot;
+OUTOFSTOCK | &quot;OutOfStock&quot;
+
+
+
