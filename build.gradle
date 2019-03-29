@@ -1,6 +1,8 @@
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 group = 'com.criteo'
 version = '1.0.0'
@@ -41,4 +43,33 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mock-server:mockserver-netty:5.5.1'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            customizePom(pom)
+            groupId 'com.criteo'
+            artifactId 'marketing.java-client'
+            version '1.0.0'
+
+            from components.java
+
+            artifact(sourceJar) {
+                classifier = 'sources'
+            }
+            artifact(javadocJar) {
+                classifier = 'javadoc'
+            }
+        }
+    }
+    repositories {
+        maven {
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            credentials {
+                username = "criteo-oss"
+                password = System.getenv("SONATYPE_PASSWORD")
+            }
+        }
+    }
 }
