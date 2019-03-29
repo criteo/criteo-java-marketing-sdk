@@ -1,0 +1,44 @@
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+group = 'com.criteo'
+version = '1.0.0'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+repositories {
+    jcenter()
+}
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
+}
+
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+install {
+    repositories.mavenInstaller {
+        pom.artifactId = 'marketing.java-client'
+    }
+}
+
+dependencies {
+    compile 'io.swagger:swagger-annotations:1.5.21'
+    compile 'com.squareup.okhttp3:okhttp:3.13.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.13.1'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile 'io.gsonfire:gson-fire:1.8.3'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mock-server:mockserver-netty:5.5.1'
+}
