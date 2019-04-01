@@ -13,6 +13,8 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'io.codearte.nexus-staging'  version '0.20.0'
+    id "de.marcphilipp.nexus-publish" version "0.2.0"
 }
 
 group = 'com.criteo'
@@ -67,6 +69,7 @@ publishing {
             artifactId 'marketing.java-client'
             version '1.0.2'
             from components.java
+            artifact jar
             artifact sourcesJar
             artifact javadocJar
         }

@@ -22,7 +22,7 @@ branches:
 deploy:
   skip_cleanup: true # needed so that no "git stash" is executed, which would then remove the pgp keys extracted in before_deploy
   provider: script
-  script: ./gradlew publish
+  script: ./gradlew publishToNexus closeAndReleaseRepository
   on:
     branch: master
 
