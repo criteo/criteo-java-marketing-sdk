@@ -16,7 +16,7 @@ branches:
 
 deploy:
   provider: script
-  script: ./gradlew publishing
+  script: ./gradlew publish
   on:
     branch: master
 
