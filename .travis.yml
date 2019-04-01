@@ -24,7 +24,7 @@ deploy:
   provider: script
   script: ./gradlew publishToNexus closeAndReleaseRepository
   on:
-    branch: master
+    all_branches: true
 
 notifications:
   slack:
