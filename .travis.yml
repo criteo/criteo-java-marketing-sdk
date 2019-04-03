@@ -19,12 +19,12 @@ branches:
   only:
     - master
 
-deploy:
-  skip_cleanup: true # needed so that no "git stash" is executed, which would then remove the pgp keys extracted in before_deploy
-  provider: script
-  script: ./gradlew publishToNexus closeAndReleaseRepository --info
-  on:
-    branch: master
+#deploy:
+  #skip_cleanup: true # needed so that no "git stash" is executed, which would then remove the pgp keys extracted in before_deploy
+  #provider: script
+  #script: ./gradlew publish closeAndReleaseRepository --info --stacktrace
+  #on:
+    #branch: master
 
 notifications:
   slack:
