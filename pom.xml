@@ -5,19 +5,19 @@
     <artifactId>marketing.java-client</artifactId>
     <packaging>jar</packaging>
     <name>marketing.java-client</name>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <url>https://github.com/criteo/criteo-java-marketing-sdk</url>
-    <description>Criteo Java Marketing SDK</description>
+    <description>Criteo Marketing SDK for Java</description>
     <scm>
-        <connection>scm:git:git@github.com:criteo/criteo-java-marketing-sdk.git</connection>
-        <developerConnection>scm:git:git@github.com:criteo/criteo-java-marketing-sdk.git</developerConnection>
+        <connection>scm:git:git://github.com/criteo/criteo-java-marketing-sdk.git</connection>
+        <developerConnection>scm:git:ssh://github.com:criteo/criteo-java-marketing-sdk.git</developerConnection>
         <url>https://github.com/criteo/criteo-java-marketing-sdk</url>
     </scm>
 
     <licenses>
         <license>
             <name>Apache License, version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -25,7 +25,7 @@
     <developers>
         <developer>
             <name>Criteo</name>
-            <email></email>
+            <email>open-source@criteo.com</email>
             <organization>Criteo</organization>
             <organizationUrl>https://www.criteo.com/</organizationUrl>
         </developer>

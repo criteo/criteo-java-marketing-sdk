@@ -18,7 +18,7 @@ plugins {
 }
 
 group = 'com.criteo'
-version = '1.0.3'
+version = '1.0.4'
 
 repositories {
     jcenter()
@@ -67,11 +67,37 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.criteo'
             artifactId 'marketing.java-client'
-            version '1.0.3'
+            version '1.0.4'
             from components.java
-            artifact jar
             artifact sourcesJar
             artifact javadocJar
+
+            pom {
+                packaging = 'jar'
+                name = 'com.criteo:marketing.java-client'
+                description = 'Criteo Marketing SDK for Java'
+                url = 'https://github.com/criteo/criteo-java-marketing-sdk'
+                licenses {
+                    license {
+                        name = 'Apache License, version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Criteo'
+                        email = 'open-source@criteo.com'
+                        url = 'https://www.criteo.com/'
+                        organization = 'Criteo'
+                        organizationUrl = 'https://www.criteo.com/'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/criteo/criteo-java-marketing-sdk.git'
+                    developerConnection = 'scm:git:ssh://github.com:criteo/criteo-java-marketing-sdk.git'
+                    url = 'https://github.com/criteo/criteo-java-marketing-sdk'
+                }
+            }
         }
     }
     repositories {
@@ -94,6 +120,8 @@ nexusStaging {
     packageGroup = 'com.criteo'
     username = "criteo-oss"
     password = System.getenv("SONATYPE_PASSWORD")
+    numberOfRetries = 50
+    delayBetweenRetriesInMillis = 3000
 }
 
 ext."signing.keyId" = '85532E9E'
