@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.4"
+compile "com.criteo:marketing.java-client:1.0.5"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/marketing.java-client-1.0.4.jar`
+- `target/marketing.java-client-1.0.5.jar`
 - `target/lib/*.jar`
 
 ## Example
@@ -136,6 +136,8 @@ Class | Method | HTTP request | Description
  - [CheckResult](docs/CheckResult.md)
  - [ClientRegistrationRequestMessage](docs/ClientRegistrationRequestMessage.md)
  - [ClientRegistrationResponseMessage](docs/ClientRegistrationResponseMessage.md)
+ - [CreateSellerBudgetMapiMessage](docs/CreateSellerBudgetMapiMessage.md)
+ - [ErrorResponse](docs/ErrorResponse.md)
  - [GoogleProduct](docs/GoogleProduct.md)
  - [IThrottlingConfiguration](docs/IThrottlingConfiguration.md)
  - [InlineResponse200](docs/InlineResponse200.md)
@@ -146,6 +148,7 @@ Class | Method | HTTP request | Description
  - [MarketplaceCampaignMessage](docs/MarketplaceCampaignMessage.md)
  - [MessageWithDetailsCampaignBidChangeResponse](docs/MessageWithDetailsCampaignBidChangeResponse.md)
  - [MessageWithDetailsCategoryUpdatesPerCatalogError](docs/MessageWithDetailsCategoryUpdatesPerCatalogError.md)
+ - [MessageWithDetailsErrorResponse](docs/MessageWithDetailsErrorResponse.md)
  - [PolicyRouteInfo](docs/PolicyRouteInfo.md)
  - [PortfolioMessage](docs/PortfolioMessage.md)
  - [Price](docs/Price.md)
@@ -178,6 +181,7 @@ Class | Method | HTTP request | Description
  - [ThrottlePolicy](docs/ThrottlePolicy.md)
  - [ThrottlePolicyRates](docs/ThrottlePolicyRates.md)
  - [UnitMeasure](docs/UnitMeasure.md)
+ - [UpdateSellerBudgetMessage](docs/UpdateSellerBudgetMessage.md)
 
 
 ## Recommendation

@@ -28,25 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SellerBudgetMessage
+ * UpdateSellerBudgetMessage
  */
 
-public class SellerBudgetMessage {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
-  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
-  @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private Long sellerId;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<Integer> campaignIds = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_BUDGET_TYPE = "budgetType";
-  @SerializedName(SERIALIZED_NAME_BUDGET_TYPE)
-  private String budgetType;
+public class UpdateSellerBudgetMessage {
+  public static final String SERIALIZED_NAME_BUDGET_ID = "budgetId";
+  @SerializedName(SERIALIZED_NAME_BUDGET_ID)
+  private Long budgetId;
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -60,9 +48,9 @@ public class SellerBudgetMessage {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
-  public static final String SERIALIZED_NAME_SPEND = "spend";
-  @SerializedName(SERIALIZED_NAME_SPEND)
-  private Double spend;
+  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  private List<Integer> campaignIds = new ArrayList<>();
 
   /**
    * Gets or Sets status
@@ -115,48 +103,84 @@ public class SellerBudgetMessage {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public SellerBudgetMessage id(String id) {
-    this.id = id;
+  public UpdateSellerBudgetMessage budgetId(Long budgetId) {
+    this.budgetId = budgetId;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get budgetId
+   * @return budgetId
   **/
   @ApiModelProperty(value = "")
-  public String getId() {
-    return id;
+  public Long getBudgetId() {
+    return budgetId;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setBudgetId(Long budgetId) {
+    this.budgetId = budgetId;
   }
 
-  public SellerBudgetMessage sellerId(Long sellerId) {
-    this.sellerId = sellerId;
+  public UpdateSellerBudgetMessage amount(Double amount) {
+    this.amount = amount;
     return this;
   }
 
    /**
-   * Get sellerId
-   * @return sellerId
+   * Get amount
+   * @return amount
   **/
   @ApiModelProperty(value = "")
-  public Long getSellerId() {
-    return sellerId;
+  public Double getAmount() {
+    return amount;
   }
 
-  public void setSellerId(Long sellerId) {
-    this.sellerId = sellerId;
+  public void setAmount(Double amount) {
+    this.amount = amount;
   }
 
-  public SellerBudgetMessage campaignIds(List<Integer> campaignIds) {
+  public UpdateSellerBudgetMessage startDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Get startDate
+   * @return startDate
+  **/
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+  public UpdateSellerBudgetMessage endDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Get endDate
+   * @return endDate
+  **/
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+  public UpdateSellerBudgetMessage campaignIds(List<Integer> campaignIds) {
     this.campaignIds = campaignIds;
     return this;
   }
 
-  public SellerBudgetMessage addCampaignIdsItem(Integer campaignIdsItem) {
+  public UpdateSellerBudgetMessage addCampaignIdsItem(Integer campaignIdsItem) {
     if (this.campaignIds == null) {
       this.campaignIds = new ArrayList<>();
     }
@@ -177,97 +201,7 @@ public class SellerBudgetMessage {
     this.campaignIds = campaignIds;
   }
 
-  public SellerBudgetMessage budgetType(String budgetType) {
-    this.budgetType = budgetType;
-    return this;
-  }
-
-   /**
-   * Get budgetType
-   * @return budgetType
-  **/
-  @ApiModelProperty(value = "")
-  public String getBudgetType() {
-    return budgetType;
-  }
-
-  public void setBudgetType(String budgetType) {
-    this.budgetType = budgetType;
-  }
-
-  public SellerBudgetMessage amount(Double amount) {
-    this.amount = amount;
-    return this;
-  }
-
-   /**
-   * Get amount
-   * @return amount
-  **/
-  @ApiModelProperty(value = "")
-  public Double getAmount() {
-    return amount;
-  }
-
-  public void setAmount(Double amount) {
-    this.amount = amount;
-  }
-
-  public SellerBudgetMessage startDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Get startDate
-   * @return startDate
-  **/
-  @ApiModelProperty(value = "")
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
-  }
-
-  public SellerBudgetMessage endDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Get endDate
-   * @return endDate
-  **/
-  @ApiModelProperty(value = "")
-  public OffsetDateTime getEndDate() {
-    return endDate;
-  }
-
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
-  }
-
-  public SellerBudgetMessage spend(Double spend) {
-    this.spend = spend;
-    return this;
-  }
-
-   /**
-   * Get spend
-   * @return spend
-  **/
-  @ApiModelProperty(value = "")
-  public Double getSpend() {
-    return spend;
-  }
-
-  public void setSpend(Double spend) {
-    this.spend = spend;
-  }
-
-  public SellerBudgetMessage status(StatusEnum status) {
+  public UpdateSellerBudgetMessage status(StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -294,36 +228,30 @@ public class SellerBudgetMessage {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SellerBudgetMessage sellerBudgetMessage = (SellerBudgetMessage) o;
-    return Objects.equals(this.id, sellerBudgetMessage.id) &&
-        Objects.equals(this.sellerId, sellerBudgetMessage.sellerId) &&
-        Objects.equals(this.campaignIds, sellerBudgetMessage.campaignIds) &&
-        Objects.equals(this.budgetType, sellerBudgetMessage.budgetType) &&
-        Objects.equals(this.amount, sellerBudgetMessage.amount) &&
-        Objects.equals(this.startDate, sellerBudgetMessage.startDate) &&
-        Objects.equals(this.endDate, sellerBudgetMessage.endDate) &&
-        Objects.equals(this.spend, sellerBudgetMessage.spend) &&
-        Objects.equals(this.status, sellerBudgetMessage.status);
+    UpdateSellerBudgetMessage updateSellerBudgetMessage = (UpdateSellerBudgetMessage) o;
+    return Objects.equals(this.budgetId, updateSellerBudgetMessage.budgetId) &&
+        Objects.equals(this.amount, updateSellerBudgetMessage.amount) &&
+        Objects.equals(this.startDate, updateSellerBudgetMessage.startDate) &&
+        Objects.equals(this.endDate, updateSellerBudgetMessage.endDate) &&
+        Objects.equals(this.campaignIds, updateSellerBudgetMessage.campaignIds) &&
+        Objects.equals(this.status, updateSellerBudgetMessage.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, sellerId, campaignIds, budgetType, amount, startDate, endDate, spend, status);
+    return Objects.hash(budgetId, amount, startDate, endDate, campaignIds, status);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SellerBudgetMessage {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
-    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
+    sb.append("class UpdateSellerBudgetMessage {\n");
+    sb.append("    budgetId: ").append(toIndentedString(budgetId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    spend: ").append(toIndentedString(spend)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
