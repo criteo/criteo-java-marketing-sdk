@@ -38,7 +38,7 @@ public class UpdateSellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Double amount;
+  private String amount;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -46,7 +46,7 @@ public class UpdateSellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+  private String endDate;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
@@ -121,7 +121,7 @@ public class UpdateSellerBudgetMessage {
     this.budgetId = budgetId;
   }
 
-  public UpdateSellerBudgetMessage amount(Double amount) {
+  public UpdateSellerBudgetMessage amount(String amount) {
     this.amount = amount;
     return this;
   }
@@ -131,11 +131,11 @@ public class UpdateSellerBudgetMessage {
    * @return amount
   **/
   @ApiModelProperty(value = "")
-  public Double getAmount() {
+  public String getAmount() {
     return amount;
   }
 
-  public void setAmount(Double amount) {
+  public void setAmount(String amount) {
     this.amount = amount;
   }
 
@@ -157,7 +157,7 @@ public class UpdateSellerBudgetMessage {
     this.startDate = startDate;
   }
 
-  public UpdateSellerBudgetMessage endDate(OffsetDateTime endDate) {
+  public UpdateSellerBudgetMessage endDate(String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -167,11 +167,11 @@ public class UpdateSellerBudgetMessage {
    * @return endDate
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 

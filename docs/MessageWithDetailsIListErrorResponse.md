@@ -1,11 +1,11 @@
 
-# MessageWithDetailsErrorResponse
+# MessageWithDetailsIListErrorResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **String** |  |  [optional]
-**details** | [**ErrorResponse**](ErrorResponse.md) |  |  [optional]
+**details** | [**List&lt;ErrorResponse&gt;**](ErrorResponse.md) |  |  [optional]
 
 
 

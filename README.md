@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.5"
+compile "com.criteo:marketing.java-client:1.0.6"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/marketing.java-client-1.0.5.jar`
+- `target/marketing.java-client-1.0.6.jar`
 - `target/lib/*.jar`
 
 ## Example
@@ -107,6 +107,20 @@ Class | Method | HTTP request | Description
 *SellersApi* | [**getStats**](docs/SellersApi.md#getStats) | **POST** /v1/sellers/stats | Generates a statistics report
 *SellersApi* | [**updateBids**](docs/SellersApi.md#updateBids) | **PUT** /v1/sellers/bids | Set or update a bid for a seller/list of sellers.
 *SellersApi* | [**updateBudgets**](docs/SellersApi.md#updateBudgets) | **PUT** /v1/sellers/budgets | Updates a budget for a seller/list of sellers.
+*SellersV2Api* | [**createSellerBudgets**](docs/SellersV2Api.md#createSellerBudgets) | **POST** /v2/crp/budgets | 
+*SellersV2Api* | [**getBudgetsBySeller**](docs/SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | 
+*SellersV2Api* | [**getBudgetsBySellerCampaignId**](docs/SellersV2Api.md#getBudgetsBySellerCampaignId) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | 
+*SellersV2Api* | [**getSeller**](docs/SellersV2Api.md#getSeller) | **GET** /v2/crp/sellers/{sellerId} | 
+*SellersV2Api* | [**getSellerBudget**](docs/SellersV2Api.md#getSellerBudget) | **GET** /v2/crp/budgets/{budgetId} | 
+*SellersV2Api* | [**getSellerBudgets**](docs/SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | 
+*SellersV2Api* | [**getSellerCampaign**](docs/SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | 
+*SellersV2Api* | [**getSellerCampaigns**](docs/SellersV2Api.md#getSellerCampaigns) | **GET** /v2/crp/seller-campaigns | 
+*SellersV2Api* | [**getSellerCampaignsBySeller**](docs/SellersV2Api.md#getSellerCampaignsBySeller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | 
+*SellersV2Api* | [**getSellers**](docs/SellersV2Api.md#getSellers) | **GET** /v2/crp/sellers | 
+*SellersV2Api* | [**updateSellerBudget**](docs/SellersV2Api.md#updateSellerBudget) | **PATCH** /v2/crp/budgets/{budgetId} | 
+*SellersV2Api* | [**updateSellerBudgets**](docs/SellersV2Api.md#updateSellerBudgets) | **PATCH** /v2/crp/budgets | 
+*SellersV2Api* | [**updateSellerCampaign**](docs/SellersV2Api.md#updateSellerCampaign) | **PATCH** /v2/crp/seller-campaigns/{sellerCampaignId} | 
+*SellersV2Api* | [**updateSellerCampaigns**](docs/SellersV2Api.md#updateSellerCampaigns) | **PATCH** /v2/crp/seller-campaigns | 
 *StatisticsApi* | [**getStats**](docs/StatisticsApi.md#getStats) | **POST** /v1/statistics | Generates a statistics report
 
 
@@ -148,7 +162,7 @@ Class | Method | HTTP request | Description
  - [MarketplaceCampaignMessage](docs/MarketplaceCampaignMessage.md)
  - [MessageWithDetailsCampaignBidChangeResponse](docs/MessageWithDetailsCampaignBidChangeResponse.md)
  - [MessageWithDetailsCategoryUpdatesPerCatalogError](docs/MessageWithDetailsCategoryUpdatesPerCatalogError.md)
- - [MessageWithDetailsErrorResponse](docs/MessageWithDetailsErrorResponse.md)
+ - [MessageWithDetailsIListErrorResponse](docs/MessageWithDetailsIListErrorResponse.md)
  - [PolicyRouteInfo](docs/PolicyRouteInfo.md)
  - [PortfolioMessage](docs/PortfolioMessage.md)
  - [Price](docs/Price.md)

@@ -24,21 +24,23 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * MessageWithDetailsErrorResponse
+ * MessageWithDetailsIListErrorResponse
  */
 
-public class MessageWithDetailsErrorResponse {
+public class MessageWithDetailsIListErrorResponse {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   private String message;
 
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
-  private ErrorResponse details = null;
+  private List<ErrorResponse> details = new ArrayList<>();
 
-  public MessageWithDetailsErrorResponse message(String message) {
+  public MessageWithDetailsIListErrorResponse message(String message) {
     this.message = message;
     return this;
   }
@@ -56,8 +58,16 @@ public class MessageWithDetailsErrorResponse {
     this.message = message;
   }
 
-  public MessageWithDetailsErrorResponse details(ErrorResponse details) {
+  public MessageWithDetailsIListErrorResponse details(List<ErrorResponse> details) {
     this.details = details;
+    return this;
+  }
+
+  public MessageWithDetailsIListErrorResponse addDetailsItem(ErrorResponse detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<>();
+    }
+    this.details.add(detailsItem);
     return this;
   }
 
@@ -66,11 +76,11 @@ public class MessageWithDetailsErrorResponse {
    * @return details
   **/
   @ApiModelProperty(value = "")
-  public ErrorResponse getDetails() {
+  public List<ErrorResponse> getDetails() {
     return details;
   }
 
-  public void setDetails(ErrorResponse details) {
+  public void setDetails(List<ErrorResponse> details) {
     this.details = details;
   }
 
@@ -83,9 +93,9 @@ public class MessageWithDetailsErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageWithDetailsErrorResponse messageWithDetailsErrorResponse = (MessageWithDetailsErrorResponse) o;
-    return Objects.equals(this.message, messageWithDetailsErrorResponse.message) &&
-        Objects.equals(this.details, messageWithDetailsErrorResponse.details);
+    MessageWithDetailsIListErrorResponse messageWithDetailsIListErrorResponse = (MessageWithDetailsIListErrorResponse) o;
+    return Objects.equals(this.message, messageWithDetailsIListErrorResponse.message) &&
+        Objects.equals(this.details, messageWithDetailsIListErrorResponse.details);
   }
 
   @Override
@@ -97,7 +107,7 @@ public class MessageWithDetailsErrorResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageWithDetailsErrorResponse {\n");
+    sb.append("class MessageWithDetailsIListErrorResponse {\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");

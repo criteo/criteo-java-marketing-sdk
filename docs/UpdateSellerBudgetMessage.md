@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **budgetId** | **Long** |  |  [optional]
-**amount** | **Double** |  |  [optional]
+**amount** | **String** |  |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**endDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**endDate** | **String** |  |  [optional]
 **campaignIds** | **List&lt;Integer&gt;** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
 
