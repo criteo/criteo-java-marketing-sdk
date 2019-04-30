@@ -22,6 +22,7 @@ deploy:
   skip_cleanup: true # needed so that no "git stash" is executed, which would then remove the pgp keys extracted in before_deploy
   provider: script
   script: ./gradlew publishToNexus closeAndReleaseRepository --info --stacktrace
+  #deploy tags
   on:
     tags: true
 
