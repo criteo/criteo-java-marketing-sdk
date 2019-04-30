@@ -50,7 +50,7 @@ public class SellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Double amount;
+  private String amount;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -58,7 +58,7 @@ public class SellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+  private String endDate;
 
   public static final String SERIALIZED_NAME_SPEND = "spend";
   @SerializedName(SERIALIZED_NAME_SPEND)
@@ -69,9 +69,11 @@ public class SellerBudgetMessage {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    INACTIVE("Inactive"),
+    ARCHIVED("Archived"),
     
-    ACTIVE("Active");
+    CURRENT("Current"),
+    
+    SCHEDULED("Scheduled");
 
     private String value;
 
@@ -195,7 +197,7 @@ public class SellerBudgetMessage {
     this.budgetType = budgetType;
   }
 
-  public SellerBudgetMessage amount(Double amount) {
+  public SellerBudgetMessage amount(String amount) {
     this.amount = amount;
     return this;
   }
@@ -205,11 +207,11 @@ public class SellerBudgetMessage {
    * @return amount
   **/
   @ApiModelProperty(value = "")
-  public Double getAmount() {
+  public String getAmount() {
     return amount;
   }
 
-  public void setAmount(Double amount) {
+  public void setAmount(String amount) {
     this.amount = amount;
   }
 
@@ -231,7 +233,7 @@ public class SellerBudgetMessage {
     this.startDate = startDate;
   }
 
-  public SellerBudgetMessage endDate(OffsetDateTime endDate) {
+  public SellerBudgetMessage endDate(String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -241,11 +243,11 @@ public class SellerBudgetMessage {
    * @return endDate
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 

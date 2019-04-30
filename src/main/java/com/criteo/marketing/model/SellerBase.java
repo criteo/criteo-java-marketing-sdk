@@ -29,30 +29,30 @@ import java.io.IOException;
  */
 
 public class SellerBase {
-  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
-  @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private Long sellerId;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Long id;
 
   public static final String SERIALIZED_NAME_SELLER_NAME = "sellerName";
   @SerializedName(SERIALIZED_NAME_SELLER_NAME)
   private String sellerName;
 
-  public SellerBase sellerId(Long sellerId) {
-    this.sellerId = sellerId;
+  public SellerBase id(Long id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get sellerId
-   * @return sellerId
+   * Get id
+   * @return id
   **/
   @ApiModelProperty(value = "")
-  public Long getSellerId() {
-    return sellerId;
+  public Long getId() {
+    return id;
   }
 
-  public void setSellerId(Long sellerId) {
-    this.sellerId = sellerId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public SellerBase sellerName(String sellerName) {
@@ -83,13 +83,13 @@ public class SellerBase {
       return false;
     }
     SellerBase sellerBase = (SellerBase) o;
-    return Objects.equals(this.sellerId, sellerBase.sellerId) &&
+    return Objects.equals(this.id, sellerBase.id) &&
         Objects.equals(this.sellerName, sellerBase.sellerName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellerId, sellerName);
+    return Objects.hash(id, sellerName);
   }
 
 
@@ -97,7 +97,7 @@ public class SellerBase {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SellerBase {\n");
-    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
     sb.append("}");
     return sb.toString();

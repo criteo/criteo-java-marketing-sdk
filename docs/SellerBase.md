@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sellerId** | **Long** |  |  [optional]
+**id** | **Long** |  |  [optional]
 **sellerName** | **String** |  |  [optional]
 
 

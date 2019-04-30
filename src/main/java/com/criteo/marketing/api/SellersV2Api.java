@@ -134,8 +134,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Create a collection of budgets.
+     * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param authorization JWT Bearer Token (required)
      * @param createSellerBudgets  (required)
      * @return List&lt;SellerBudgetMessage&gt;
@@ -147,8 +147,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Create a collection of budgets.
+     * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param authorization JWT Bearer Token (required)
      * @param createSellerBudgets  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
@@ -161,8 +161,8 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Create a collection of budgets. (asynchronously)
+     * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param authorization JWT Bearer Token (required)
      * @param createSellerBudgets  (required)
      * @param callback The callback to be executed when the API call finishes
@@ -197,14 +197,14 @@ public class SellersV2Api {
     }
     /**
      * Build call for getBudgetsBySeller
-     * @param sellerId  (required)
+     * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -299,16 +299,16 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerId  (required)
+     * Get a collection of budgets for this seller.
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -318,16 +318,16 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerId  (required)
+     * Get a collection of budgets for this seller.
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -338,16 +338,16 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sellerId  (required)
+     * Get a collection of budgets for this seller. (asynchronously)
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -380,13 +380,13 @@ public class SellersV2Api {
     }
     /**
      * Build call for getBudgetsBySellerCampaignId
-     * @param sellerCampaignId  (required)
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -477,15 +477,15 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerCampaignId  (required)
+     * Get a collection of budgets for this seller campaign.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -495,15 +495,15 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerCampaignId  (required)
+     * Get a collection of budgets for this seller campaign.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -514,15 +514,15 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sellerCampaignId  (required)
+     * Get a collection of budgets for this seller campaign. (asynchronously)
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -555,7 +555,7 @@ public class SellersV2Api {
     }
     /**
      * Build call for getSeller
-     * @param sellerId  (required)
+     * @param sellerId Id of the seller. (required)
      * @param authorization JWT Bearer Token (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -627,9 +627,9 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerId  (required)
+     * Get details for a seller.
+     * Returns details for the selected seller.  For example                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
+     * @param sellerId Id of the seller. (required)
      * @param authorization JWT Bearer Token (required)
      * @return SellerBase
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -640,9 +640,9 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerId  (required)
+     * Get details for a seller.
+     * Returns details for the selected seller.  For example                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
+     * @param sellerId Id of the seller. (required)
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -654,9 +654,9 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sellerId  (required)
+     * Get details for a seller. (asynchronously)
+     * Returns details for the selected seller.  For example                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
+     * @param sellerId Id of the seller. (required)
      * @param authorization JWT Bearer Token (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -762,8 +762,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get details for a budget.
+     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: 321392,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @return SellerBudgetMessage
@@ -775,8 +775,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get details for a budget.
+     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: 321392,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;SellerBudgetMessage&gt;
@@ -789,8 +789,8 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Get details for a budget. (asynchronously)
+     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: 321392,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param callback The callback to be executed when the API call finishes
@@ -826,13 +826,13 @@ public class SellersV2Api {
     /**
      * Build call for getSellerBudgets
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
-     * @param sellerId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -925,16 +925,16 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get a collection of budgets.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
-     * @param sellerId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -944,16 +944,16 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get a collection of budgets.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
-     * @param sellerId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -964,16 +964,16 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Get a collection of budgets. (asynchronously)
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
-     * @param status  (optional)
-     * @param withBalance  (optional)
-     * @param withSpend  (optional)
-     * @param endAfterDate  (optional)
-     * @param startBeforeDate  (optional)
-     * @param campaignId  (optional)
-     * @param sellerId  (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1006,7 +1006,7 @@ public class SellersV2Api {
     }
     /**
      * Build call for getSellerCampaign
-     * @param sellerCampaignId  (required)
+     * @param sellerCampaignId Id of the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1078,9 +1078,9 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerCampaignId  (required)
+     * Get details for a seller campaign.
+     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: 543210,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+     * @param sellerCampaignId Id of the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @return SellerCampaignMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1091,9 +1091,9 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerCampaignId  (required)
+     * Get details for a seller campaign.
+     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: 543210,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+     * @param sellerCampaignId Id of the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1105,9 +1105,9 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sellerCampaignId  (required)
+     * Get details for a seller campaign. (asynchronously)
+     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: 543210,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+     * @param sellerCampaignId Id of the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1142,10 +1142,10 @@ public class SellersV2Api {
     /**
      * Build call for getSellerCampaigns
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param sellerId  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1226,13 +1226,13 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get a collection of seller campaigns.
+     * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param sellerId  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1242,13 +1242,13 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get a collection of seller campaigns.
+     * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param sellerId  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1259,13 +1259,13 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Get a collection of seller campaigns. (asynchronously)
+     * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param sellerId  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1298,11 +1298,11 @@ public class SellersV2Api {
     }
     /**
      * Build call for getSellerCampaignsBySeller
-     * @param sellerId  (required)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1385,13 +1385,13 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerId  (required)
+     * Get a collection of seller campaigns for this seller.
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1401,13 +1401,13 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerId  (required)
+     * Get a collection of seller campaigns for this seller.
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1418,13 +1418,13 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sellerId  (required)
+     * Get a collection of seller campaigns for this seller. (asynchronously)
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param campaignId  (optional)
-     * @param budgetStatus  (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1458,9 +1458,9 @@ public class SellersV2Api {
     /**
      * Build call for getSellers
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param withProducts  (optional)
-     * @param withBudgetStatus  (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1537,12 +1537,12 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get a collection of sellers.
+     * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param withProducts  (optional)
-     * @param withBudgetStatus  (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @return List&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1552,12 +1552,12 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Get a collection of sellers.
+     * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param withProducts  (optional)
-     * @param withBudgetStatus  (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @return ApiResponse&lt;List&lt;SellerBase&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1568,12 +1568,12 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Get a collection of sellers. (asynchronously)
+     * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus  (optional)
-     * @param withProducts  (optional)
-     * @param withBudgetStatus  (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1606,13 +1606,13 @@ public class SellersV2Api {
     }
     /**
      * Build call for updateSellerBudget
-     * @param budgetId  (required)
-     * @param startDate  (required)
-     * @param status  (required)
-     * @param amount  (required)
-     * @param endDate  (required)
+     * @param budgetId Id of the budget being modified. (required)
+     * @param startDate Future start date for this budget. (required)
+     * @param status Status of this budget. (required)
+     * @param amount Limit for this budget (type must not be Uncapped). (required)
+     * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds  (required)
+     * @param campaignIds Campaigns funded by this budget. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1724,15 +1724,15 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param budgetId  (required)
-     * @param startDate  (required)
-     * @param status  (required)
-     * @param amount  (required)
-     * @param endDate  (required)
+     * Modify a single budget.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * @param budgetId Id of the budget being modified. (required)
+     * @param startDate Future start date for this budget. (required)
+     * @param status Status of this budget. (required)
+     * @param amount Limit for this budget (type must not be Uncapped). (required)
+     * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds  (required)
+     * @param campaignIds Campaigns funded by this budget. (required)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1742,15 +1742,15 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param budgetId  (required)
-     * @param startDate  (required)
-     * @param status  (required)
-     * @param amount  (required)
-     * @param endDate  (required)
+     * Modify a single budget.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * @param budgetId Id of the budget being modified. (required)
+     * @param startDate Future start date for this budget. (required)
+     * @param status Status of this budget. (required)
+     * @param amount Limit for this budget (type must not be Uncapped). (required)
+     * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds  (required)
+     * @param campaignIds Campaigns funded by this budget. (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1761,15 +1761,15 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param budgetId  (required)
-     * @param startDate  (required)
-     * @param status  (required)
-     * @param amount  (required)
-     * @param endDate  (required)
+     * Modify a single budget. (asynchronously)
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * @param budgetId Id of the budget being modified. (required)
+     * @param startDate Future start date for this budget. (required)
+     * @param status Status of this budget. (required)
+     * @param amount Limit for this budget (type must not be Uncapped). (required)
+     * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds  (required)
+     * @param campaignIds Campaigns funded by this budget. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1873,8 +1873,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Modify a collection of budgets.
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param authorization JWT Bearer Token (required)
      * @param updateSellerBudgets  (required)
      * @return List&lt;SellerBudgetMessage&gt;
@@ -1886,8 +1886,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Modify a collection of budgets.
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param authorization JWT Bearer Token (required)
      * @param updateSellerBudgets  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
@@ -1900,8 +1900,8 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Modify a collection of budgets. (asynchronously)
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param authorization JWT Bearer Token (required)
      * @param updateSellerBudgets  (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1936,8 +1936,8 @@ public class SellersV2Api {
     }
     /**
      * Build call for updateSellerCampaign
-     * @param sellerCampaignId  (required)
-     * @param bid  (required)
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -2018,10 +2018,10 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerCampaignId  (required)
-     * @param bid  (required)
+     * Update an existing seller campaign.
+     * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @return SellerCampaignMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2032,10 +2032,10 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
-     * @param sellerCampaignId  (required)
-     * @param bid  (required)
+     * Update an existing seller campaign.
+     * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2047,10 +2047,10 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sellerCampaignId  (required)
-     * @param bid  (required)
+     * Update an existing seller campaign. (asynchronously)
+     * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2155,8 +2155,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Update a collection of seller campaigns.
+     * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
      * @param authorization JWT Bearer Token (required)
      * @param campaignMessages  (required)
      * @return List&lt;SellerCampaignMessage&gt;
@@ -2168,8 +2168,8 @@ public class SellersV2Api {
     }
 
     /**
-     * 
-     * 
+     * Update a collection of seller campaigns.
+     * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
      * @param authorization JWT Bearer Token (required)
      * @param campaignMessages  (required)
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
@@ -2182,8 +2182,8 @@ public class SellersV2Api {
     }
 
     /**
-     *  (asynchronously)
-     * 
+     * Update a collection of seller campaigns. (asynchronously)
+     * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
      * @param authorization JWT Bearer Token (required)
      * @param campaignMessages  (required)
      * @param callback The callback to be executed when the API call finishes
