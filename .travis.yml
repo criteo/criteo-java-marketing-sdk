@@ -24,7 +24,6 @@ deploy:
   script: ./gradlew publishToNexus closeAndReleaseRepository --info --stacktrace
   on:
     tags: true
-    condition: "$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$"
 
 notifications:
   slack:
