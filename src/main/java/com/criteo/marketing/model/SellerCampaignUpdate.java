@@ -25,59 +25,37 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * SellerCampaignBase
+ * SellerCampaignUpdate
  */
 
-public class SellerCampaignBase {
-  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
-  @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private Long sellerId;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+public class SellerCampaignUpdate {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
   private Double bid;
 
-  public SellerCampaignBase sellerId(Long sellerId) {
-    this.sellerId = sellerId;
+  public SellerCampaignUpdate id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get sellerId
-   * @return sellerId
+   * Get id
+   * @return id
   **/
   @ApiModelProperty(value = "")
-  public Long getSellerId() {
-    return sellerId;
+  public String getId() {
+    return id;
   }
 
-  public void setSellerId(Long sellerId) {
-    this.sellerId = sellerId;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public SellerCampaignBase campaignId(Integer campaignId) {
-    this.campaignId = campaignId;
-    return this;
-  }
-
-   /**
-   * Get campaignId
-   * @return campaignId
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getCampaignId() {
-    return campaignId;
-  }
-
-  public void setCampaignId(Integer campaignId) {
-    this.campaignId = campaignId;
-  }
-
-  public SellerCampaignBase bid(Double bid) {
+  public SellerCampaignUpdate bid(Double bid) {
     this.bid = bid;
     return this;
   }
@@ -104,24 +82,22 @@ public class SellerCampaignBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SellerCampaignBase sellerCampaignBase = (SellerCampaignBase) o;
-    return Objects.equals(this.sellerId, sellerCampaignBase.sellerId) &&
-        Objects.equals(this.campaignId, sellerCampaignBase.campaignId) &&
-        Objects.equals(this.bid, sellerCampaignBase.bid);
+    SellerCampaignUpdate sellerCampaignUpdate = (SellerCampaignUpdate) o;
+    return Objects.equals(this.id, sellerCampaignUpdate.id) &&
+        Objects.equals(this.bid, sellerCampaignUpdate.bid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellerId, campaignId, bid);
+    return Objects.hash(id, bid);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SellerCampaignBase {\n");
-    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("class SellerCampaignUpdate {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
     sb.append("}");
     return sb.toString();

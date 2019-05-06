@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 <a name="getBudgetsBySeller"></a>
 # **getBudgetsBySeller**
-> List&lt;SellerBudgetMessage&gt; getBudgetsBySeller(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId)
+> List&lt;SellerBudgetMessage&gt; getBudgetsBySeller(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type)
 
 Get a collection of budgets for this seller.
 
@@ -111,8 +111,9 @@ Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
 OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.
 OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
 Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
+String type = "type_example"; // String | Return only budgets with the given budget type.
 try {
-    List<SellerBudgetMessage> result = apiInstance.getBudgetsBySeller(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId);
+    List<SellerBudgetMessage> result = apiInstance.getBudgetsBySeller(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SellersV2Api#getBudgetsBySeller");
@@ -132,6 +133,7 @@ Name | Type | Description  | Notes
  **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date. | [optional]
  **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
+ **type** | **String**| Return only budgets with the given budget type. | [optional]
 
 ### Return type
 
@@ -148,11 +150,11 @@ Name | Type | Description  | Notes
 
 <a name="getBudgetsBySellerCampaignId"></a>
 # **getBudgetsBySellerCampaignId**
-> List&lt;SellerBudgetMessage&gt; getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate)
+> List&lt;SellerBudgetMessage&gt; getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type)
 
 Get a collection of budgets for this seller campaign.
 
-Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    See the budgets endpoint for additional details.
 
 ### Example
 ```java
@@ -179,8 +181,9 @@ Boolean withBalance = true; // Boolean | Return only budgets with a positive bal
 Boolean withSpend = true; // Boolean | Return budgets with a positive spend.
 OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.
 OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
+String type = "type_example"; // String | Return only budgets with the given budget type.
 try {
-    List<SellerBudgetMessage> result = apiInstance.getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate);
+    List<SellerBudgetMessage> result = apiInstance.getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SellersV2Api#getBudgetsBySellerCampaignId");
@@ -199,6 +202,7 @@ Name | Type | Description  | Notes
  **withSpend** | **Boolean**| Return budgets with a positive spend. | [optional]
  **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date. | [optional]
  **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
+ **type** | **String**| Return only budgets with the given budget type. | [optional]
 
 ### Return type
 
@@ -329,11 +333,11 @@ Name | Type | Description  | Notes
 
 <a name="getSellerBudgets"></a>
 # **getSellerBudgets**
-> List&lt;SellerBudgetMessage&gt; getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId)
+> List&lt;SellerBudgetMessage&gt; getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type)
 
 Get a collection of budgets.
 
-Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.    &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.    See the budgets endpoint for additional details.
 
 ### Example
 ```java
@@ -361,8 +365,9 @@ OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return b
 OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
 Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
 Long sellerId = 56L; // Long | Return only budgets belonging to the given seller.
+String type = "type_example"; // String | Return only budgets with the given budget type.
 try {
-    List<SellerBudgetMessage> result = apiInstance.getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId);
+    List<SellerBudgetMessage> result = apiInstance.getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SellersV2Api#getSellerBudgets");
@@ -382,6 +387,7 @@ Name | Type | Description  | Notes
  **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
  **sellerId** | **Long**| Return only budgets belonging to the given seller. | [optional]
+ **type** | **String**| Return only budgets with the given budget type. | [optional]
 
 ### Return type
 
@@ -642,7 +648,7 @@ Name | Type | Description  | Notes
 
 <a name="updateSellerBudget"></a>
 # **updateSellerBudget**
-> List&lt;SellerBudgetMessage&gt; updateSellerBudget(budgetId, startDate, status, amount, endDate, authorization, campaignIds)
+> List&lt;SellerBudgetMessage&gt; updateSellerBudget(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds)
 
 Modify a single budget.
 
@@ -668,13 +674,13 @@ Authorization.setApiKey("YOUR API KEY");
 SellersV2Api apiInstance = new SellersV2Api();
 Long budgetId = 56L; // Long | Id of the budget being modified.
 OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Future start date for this budget.
-String status = "status_example"; // String | Status of this budget.
+Boolean suspended = true; // Boolean | Indicates if a budget should be suspended or not.
 String amount = "amount_example"; // String | Limit for this budget (type must not be Uncapped).
 String endDate = "endDate_example"; // String | Future end date for this budget.
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
 List<Integer> campaignIds = Arrays.asList(); // List<Integer> | Campaigns funded by this budget.
 try {
-    List<SellerBudgetMessage> result = apiInstance.updateSellerBudget(budgetId, startDate, status, amount, endDate, authorization, campaignIds);
+    List<SellerBudgetMessage> result = apiInstance.updateSellerBudget(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SellersV2Api#updateSellerBudget");
@@ -688,7 +694,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **budgetId** | **Long**| Id of the budget being modified. |
  **startDate** | **OffsetDateTime**| Future start date for this budget. |
- **status** | **String**| Status of this budget. | [enum: Inactive, Active]
+ **suspended** | **Boolean**| Indicates if a budget should be suspended or not. |
  **amount** | **String**| Limit for this budget (type must not be Uncapped). |
  **endDate** | **String**| Future end date for this budget. |
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
@@ -850,7 +856,7 @@ Authorization.setApiKey("YOUR API KEY");
 
 SellersV2Api apiInstance = new SellersV2Api();
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-List<SellerCampaignBase> campaignMessages = Arrays.asList(null); // List<SellerCampaignBase> | 
+List<SellerCampaignUpdate> campaignMessages = Arrays.asList(null); // List<SellerCampaignUpdate> | 
 try {
     List<SellerCampaignMessage> result = apiInstance.updateSellerCampaigns(authorization, campaignMessages);
     System.out.println(result);
@@ -865,7 +871,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
- **campaignMessages** | [**List&lt;SellerCampaignBase&gt;**](List.md)|  |
+ **campaignMessages** | [**List&lt;SellerCampaignUpdate&gt;**](List.md)|  |
 
 ### Return type
 

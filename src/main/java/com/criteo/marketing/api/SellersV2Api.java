@@ -32,8 +32,8 @@ import com.criteo.marketing.model.MessageWithDetailsIListErrorResponse;
 import java.time.OffsetDateTime;
 import com.criteo.marketing.model.SellerBase;
 import com.criteo.marketing.model.SellerBudgetMessage;
-import com.criteo.marketing.model.SellerCampaignBase;
 import com.criteo.marketing.model.SellerCampaignMessage;
+import com.criteo.marketing.model.SellerCampaignUpdate;
 import com.criteo.marketing.model.UpdateSellerBudgetMessage;
 
 import java.lang.reflect.Type;
@@ -205,12 +205,13 @@ public class SellersV2Api {
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getBudgetsBySellerCall(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getBudgetsBySellerCall(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -243,6 +244,10 @@ public class SellersV2Api {
             localVarQueryParams.addAll(apiClient.parameterToPair("campaignId", campaignId));
         }
 
+        if (type != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (authorization != null) {
             localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
@@ -280,7 +285,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBudgetsBySellerValidateBeforeCall(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getBudgetsBySellerValidateBeforeCall(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'sellerId' is set
         if (sellerId == null) {
@@ -293,7 +298,7 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call call = getBudgetsBySellerCall(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, progressListener, progressRequestListener);
+        okhttp3.Call call = getBudgetsBySellerCall(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type, progressListener, progressRequestListener);
         return call;
 
     }
@@ -309,11 +314,12 @@ public class SellersV2Api {
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> getBudgetsBySeller(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> resp = getBudgetsBySellerWithHttpInfo(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId);
+    public List<SellerBudgetMessage> getBudgetsBySeller(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> resp = getBudgetsBySellerWithHttpInfo(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type);
         return resp.getData();
     }
 
@@ -328,11 +334,12 @@ public class SellersV2Api {
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerWithHttpInfo(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId) throws ApiException {
-        okhttp3.Call call = getBudgetsBySellerValidateBeforeCall(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, null, null);
+    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerWithHttpInfo(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type) throws ApiException {
+        okhttp3.Call call = getBudgetsBySellerValidateBeforeCall(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -348,11 +355,12 @@ public class SellersV2Api {
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getBudgetsBySellerAsync(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call getBudgetsBySellerAsync(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -373,7 +381,7 @@ public class SellersV2Api {
             };
         }
 
-        okhttp3.Call call = getBudgetsBySellerValidateBeforeCall(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, progressListener, progressRequestListener);
+        okhttp3.Call call = getBudgetsBySellerValidateBeforeCall(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -387,12 +395,13 @@ public class SellersV2Api {
      * @param withSpend Return budgets with a positive spend. (optional)
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getBudgetsBySellerCampaignIdCall(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getBudgetsBySellerCampaignIdCall(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -421,6 +430,10 @@ public class SellersV2Api {
             localVarQueryParams.addAll(apiClient.parameterToPair("startBeforeDate", startBeforeDate));
         }
 
+        if (type != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (authorization != null) {
             localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
@@ -458,7 +471,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBudgetsBySellerCampaignIdValidateBeforeCall(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getBudgetsBySellerCampaignIdValidateBeforeCall(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'sellerCampaignId' is set
         if (sellerCampaignId == null) {
@@ -471,14 +484,14 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call call = getBudgetsBySellerCampaignIdCall(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, progressListener, progressRequestListener);
+        okhttp3.Call call = getBudgetsBySellerCampaignIdCall(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Get a collection of budgets for this seller campaign.
-     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    See the budgets endpoint for additional details.
      * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
@@ -486,17 +499,18 @@ public class SellersV2Api {
      * @param withSpend Return budgets with a positive spend. (optional)
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> getBudgetsBySellerCampaignId(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> resp = getBudgetsBySellerCampaignIdWithHttpInfo(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate);
+    public List<SellerBudgetMessage> getBudgetsBySellerCampaignId(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String type) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> resp = getBudgetsBySellerCampaignIdWithHttpInfo(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type);
         return resp.getData();
     }
 
     /**
      * Get a collection of budgets for this seller campaign.
-     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    See the budgets endpoint for additional details.
      * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
@@ -504,18 +518,19 @@ public class SellersV2Api {
      * @param withSpend Return budgets with a positive spend. (optional)
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerCampaignIdWithHttpInfo(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate) throws ApiException {
-        okhttp3.Call call = getBudgetsBySellerCampaignIdValidateBeforeCall(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, null, null);
+    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerCampaignIdWithHttpInfo(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String type) throws ApiException {
+        okhttp3.Call call = getBudgetsBySellerCampaignIdValidateBeforeCall(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get a collection of budgets for this seller campaign. (asynchronously)
-     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    See the budgets endpoint for additional details.
      * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
@@ -523,11 +538,12 @@ public class SellersV2Api {
      * @param withSpend Return budgets with a positive spend. (optional)
      * @param endAfterDate Return budgets that end after the given date. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getBudgetsBySellerCampaignIdAsync(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call getBudgetsBySellerCampaignIdAsync(String sellerCampaignId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String type, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -548,7 +564,7 @@ public class SellersV2Api {
             };
         }
 
-        okhttp3.Call call = getBudgetsBySellerCampaignIdValidateBeforeCall(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, progressListener, progressRequestListener);
+        okhttp3.Call call = getBudgetsBySellerCampaignIdValidateBeforeCall(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -833,12 +849,13 @@ public class SellersV2Api {
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getSellerBudgetsCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getSellerBudgetsCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -872,6 +889,10 @@ public class SellersV2Api {
 
         if (sellerId != null) {
             localVarQueryParams.addAll(apiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -911,7 +932,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerBudgetsValidateBeforeCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getSellerBudgetsValidateBeforeCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -919,14 +940,14 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call call = getSellerBudgetsCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, progressListener, progressRequestListener);
+        okhttp3.Call call = getSellerBudgetsCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Get a collection of budgets.
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.    &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.    See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
@@ -935,17 +956,18 @@ public class SellersV2Api {
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> getSellerBudgets(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> resp = getSellerBudgetsWithHttpInfo(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId);
+    public List<SellerBudgetMessage> getSellerBudgets(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> resp = getSellerBudgetsWithHttpInfo(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
         return resp.getData();
     }
 
     /**
      * Get a collection of budgets.
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.    &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.    See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
@@ -954,18 +976,19 @@ public class SellersV2Api {
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> getSellerBudgetsWithHttpInfo(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId) throws ApiException {
-        okhttp3.Call call = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, null, null);
+    public ApiResponse<List<SellerBudgetMessage>> getSellerBudgetsWithHttpInfo(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type) throws ApiException {
+        okhttp3.Call call = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get a collection of budgets. (asynchronously)
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.    &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.    See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
@@ -974,11 +997,12 @@ public class SellersV2Api {
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getSellerBudgetsAsync(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call getSellerBudgetsAsync(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -999,7 +1023,7 @@ public class SellersV2Api {
             };
         }
 
-        okhttp3.Call call = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, progressListener, progressRequestListener);
+        okhttp3.Call call = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1608,7 +1632,7 @@ public class SellersV2Api {
      * Build call for updateSellerBudget
      * @param budgetId Id of the budget being modified. (required)
      * @param startDate Future start date for this budget. (required)
-     * @param status Status of this budget. (required)
+     * @param suspended Indicates if a budget should be suspended or not. (required)
      * @param amount Limit for this budget (type must not be Uncapped). (required)
      * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
@@ -1618,7 +1642,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call updateSellerBudgetCall(Long budgetId, OffsetDateTime startDate, String status, String amount, String endDate, String authorization, List<Integer> campaignIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call updateSellerBudgetCall(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = campaignIds;
 
         // create path and map variables
@@ -1631,8 +1655,8 @@ public class SellersV2Api {
             localVarQueryParams.addAll(apiClient.parameterToPair("startDate", startDate));
         }
 
-        if (status != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("status", status));
+        if (suspended != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("suspended", suspended));
         }
 
         if (amount != null) {
@@ -1680,7 +1704,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSellerBudgetValidateBeforeCall(Long budgetId, OffsetDateTime startDate, String status, String amount, String endDate, String authorization, List<Integer> campaignIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call updateSellerBudgetValidateBeforeCall(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'budgetId' is set
         if (budgetId == null) {
@@ -1692,9 +1716,9 @@ public class SellersV2Api {
             throw new ApiException("Missing the required parameter 'startDate' when calling updateSellerBudget(Async)");
         }
         
-        // verify the required parameter 'status' is set
-        if (status == null) {
-            throw new ApiException("Missing the required parameter 'status' when calling updateSellerBudget(Async)");
+        // verify the required parameter 'suspended' is set
+        if (suspended == null) {
+            throw new ApiException("Missing the required parameter 'suspended' when calling updateSellerBudget(Async)");
         }
         
         // verify the required parameter 'amount' is set
@@ -1718,7 +1742,7 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call call = updateSellerBudgetCall(budgetId, startDate, status, amount, endDate, authorization, campaignIds, progressListener, progressRequestListener);
+        okhttp3.Call call = updateSellerBudgetCall(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1728,7 +1752,7 @@ public class SellersV2Api {
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget being modified. (required)
      * @param startDate Future start date for this budget. (required)
-     * @param status Status of this budget. (required)
+     * @param suspended Indicates if a budget should be suspended or not. (required)
      * @param amount Limit for this budget (type must not be Uncapped). (required)
      * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
@@ -1736,8 +1760,8 @@ public class SellersV2Api {
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> updateSellerBudget(Long budgetId, OffsetDateTime startDate, String status, String amount, String endDate, String authorization, List<Integer> campaignIds) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> resp = updateSellerBudgetWithHttpInfo(budgetId, startDate, status, amount, endDate, authorization, campaignIds);
+    public List<SellerBudgetMessage> updateSellerBudget(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> resp = updateSellerBudgetWithHttpInfo(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds);
         return resp.getData();
     }
 
@@ -1746,7 +1770,7 @@ public class SellersV2Api {
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget being modified. (required)
      * @param startDate Future start date for this budget. (required)
-     * @param status Status of this budget. (required)
+     * @param suspended Indicates if a budget should be suspended or not. (required)
      * @param amount Limit for this budget (type must not be Uncapped). (required)
      * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
@@ -1754,8 +1778,8 @@ public class SellersV2Api {
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> updateSellerBudgetWithHttpInfo(Long budgetId, OffsetDateTime startDate, String status, String amount, String endDate, String authorization, List<Integer> campaignIds) throws ApiException {
-        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, startDate, status, amount, endDate, authorization, campaignIds, null, null);
+    public ApiResponse<List<SellerBudgetMessage>> updateSellerBudgetWithHttpInfo(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds) throws ApiException {
+        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1765,7 +1789,7 @@ public class SellersV2Api {
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget being modified. (required)
      * @param startDate Future start date for this budget. (required)
-     * @param status Status of this budget. (required)
+     * @param suspended Indicates if a budget should be suspended or not. (required)
      * @param amount Limit for this budget (type must not be Uncapped). (required)
      * @param endDate Future end date for this budget. (required)
      * @param authorization JWT Bearer Token (required)
@@ -1774,7 +1798,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call updateSellerBudgetAsync(Long budgetId, OffsetDateTime startDate, String status, String amount, String endDate, String authorization, List<Integer> campaignIds, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call updateSellerBudgetAsync(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1795,7 +1819,7 @@ public class SellersV2Api {
             };
         }
 
-        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, startDate, status, amount, endDate, authorization, campaignIds, progressListener, progressRequestListener);
+        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2091,7 +2115,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call updateSellerCampaignsCall(String authorization, List<SellerCampaignBase> campaignMessages, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call updateSellerCampaignsCall(String authorization, List<SellerCampaignUpdate> campaignMessages, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = campaignMessages;
 
         // create path and map variables
@@ -2136,7 +2160,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSellerCampaignsValidateBeforeCall(String authorization, List<SellerCampaignBase> campaignMessages, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call updateSellerCampaignsValidateBeforeCall(String authorization, List<SellerCampaignUpdate> campaignMessages, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -2162,7 +2186,7 @@ public class SellersV2Api {
      * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerCampaignMessage> updateSellerCampaigns(String authorization, List<SellerCampaignBase> campaignMessages) throws ApiException {
+    public List<SellerCampaignMessage> updateSellerCampaigns(String authorization, List<SellerCampaignUpdate> campaignMessages) throws ApiException {
         ApiResponse<List<SellerCampaignMessage>> resp = updateSellerCampaignsWithHttpInfo(authorization, campaignMessages);
         return resp.getData();
     }
@@ -2175,7 +2199,7 @@ public class SellersV2Api {
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerCampaignMessage>> updateSellerCampaignsWithHttpInfo(String authorization, List<SellerCampaignBase> campaignMessages) throws ApiException {
+    public ApiResponse<List<SellerCampaignMessage>> updateSellerCampaignsWithHttpInfo(String authorization, List<SellerCampaignUpdate> campaignMessages) throws ApiException {
         okhttp3.Call call = updateSellerCampaignsValidateBeforeCall(authorization, campaignMessages, null, null);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2190,7 +2214,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call updateSellerCampaignsAsync(String authorization, List<SellerCampaignBase> campaignMessages, final ApiCallback<List<SellerCampaignMessage>> callback) throws ApiException {
+    public okhttp3.Call updateSellerCampaignsAsync(String authorization, List<SellerCampaignUpdate> campaignMessages, final ApiCallback<List<SellerCampaignMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

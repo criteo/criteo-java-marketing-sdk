@@ -52,56 +52,9 @@ public class UpdateSellerBudgetMessage {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
   private List<Integer> campaignIds = new ArrayList<>();
 
-  /**
-   * Gets or Sets status
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    INACTIVE("Inactive"),
-    
-    ACTIVE("Active");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return StatusEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  public static final String SERIALIZED_NAME_SUSPENDED = "suspended";
+  @SerializedName(SERIALIZED_NAME_SUSPENDED)
+  private Boolean suspended;
 
   public UpdateSellerBudgetMessage budgetId(Long budgetId) {
     this.budgetId = budgetId;
@@ -201,22 +154,22 @@ public class UpdateSellerBudgetMessage {
     this.campaignIds = campaignIds;
   }
 
-  public UpdateSellerBudgetMessage status(StatusEnum status) {
-    this.status = status;
+  public UpdateSellerBudgetMessage suspended(Boolean suspended) {
+    this.suspended = suspended;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get suspended
+   * @return suspended
   **/
   @ApiModelProperty(value = "")
-  public StatusEnum getStatus() {
-    return status;
+  public Boolean getSuspended() {
+    return suspended;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setSuspended(Boolean suspended) {
+    this.suspended = suspended;
   }
 
 
@@ -234,12 +187,12 @@ public class UpdateSellerBudgetMessage {
         Objects.equals(this.startDate, updateSellerBudgetMessage.startDate) &&
         Objects.equals(this.endDate, updateSellerBudgetMessage.endDate) &&
         Objects.equals(this.campaignIds, updateSellerBudgetMessage.campaignIds) &&
-        Objects.equals(this.status, updateSellerBudgetMessage.status);
+        Objects.equals(this.suspended, updateSellerBudgetMessage.suspended);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetId, amount, startDate, endDate, campaignIds, status);
+    return Objects.hash(budgetId, amount, startDate, endDate, campaignIds, suspended);
   }
 
 
@@ -252,7 +205,7 @@ public class UpdateSellerBudgetMessage {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    suspended: ").append(toIndentedString(suspended)).append("\n");
     sb.append("}");
     return sb.toString();
   }

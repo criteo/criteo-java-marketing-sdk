@@ -30,9 +30,9 @@ import java.time.OffsetDateTime;
  */
 
 public class SellerCampaignMessage {
-  public static final String SERIALIZED_NAME_SUSPENDED_SINCE = "suspendedSince";
-  @SerializedName(SERIALIZED_NAME_SUSPENDED_SINCE)
-  private OffsetDateTime suspendedSince;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
@@ -46,22 +46,17 @@ public class SellerCampaignMessage {
   @SerializedName(SERIALIZED_NAME_BID)
   private Double bid;
 
-  public SellerCampaignMessage suspendedSince(OffsetDateTime suspendedSince) {
-    this.suspendedSince = suspendedSince;
-    return this;
-  }
+  public static final String SERIALIZED_NAME_SUSPENDED_SINCE = "suspendedSince";
+  @SerializedName(SERIALIZED_NAME_SUSPENDED_SINCE)
+  private OffsetDateTime suspendedSince;
 
    /**
-   * Get suspendedSince
-   * @return suspendedSince
+   * Get id
+   * @return id
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getSuspendedSince() {
-    return suspendedSince;
-  }
-
-  public void setSuspendedSince(OffsetDateTime suspendedSince) {
-    this.suspendedSince = suspendedSince;
+  public String getId() {
+    return id;
   }
 
   public SellerCampaignMessage sellerId(Long sellerId) {
@@ -118,6 +113,24 @@ public class SellerCampaignMessage {
     this.bid = bid;
   }
 
+  public SellerCampaignMessage suspendedSince(OffsetDateTime suspendedSince) {
+    this.suspendedSince = suspendedSince;
+    return this;
+  }
+
+   /**
+   * Get suspendedSince
+   * @return suspendedSince
+  **/
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getSuspendedSince() {
+    return suspendedSince;
+  }
+
+  public void setSuspendedSince(OffsetDateTime suspendedSince) {
+    this.suspendedSince = suspendedSince;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -128,15 +141,16 @@ public class SellerCampaignMessage {
       return false;
     }
     SellerCampaignMessage sellerCampaignMessage = (SellerCampaignMessage) o;
-    return Objects.equals(this.suspendedSince, sellerCampaignMessage.suspendedSince) &&
+    return Objects.equals(this.id, sellerCampaignMessage.id) &&
         Objects.equals(this.sellerId, sellerCampaignMessage.sellerId) &&
         Objects.equals(this.campaignId, sellerCampaignMessage.campaignId) &&
-        Objects.equals(this.bid, sellerCampaignMessage.bid);
+        Objects.equals(this.bid, sellerCampaignMessage.bid) &&
+        Objects.equals(this.suspendedSince, sellerCampaignMessage.suspendedSince);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(suspendedSince, sellerId, campaignId, bid);
+    return Objects.hash(id, sellerId, campaignId, bid, suspendedSince);
   }
 
 
@@ -144,10 +158,11 @@ public class SellerCampaignMessage {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SellerCampaignMessage {\n");
-    sb.append("    suspendedSince: ").append(toIndentedString(suspendedSince)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    suspendedSince: ").append(toIndentedString(suspendedSince)).append("\n");
     sb.append("}");
     return sb.toString();
   }

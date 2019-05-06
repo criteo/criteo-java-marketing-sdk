@@ -1,11 +1,10 @@
 
-# SellerCampaignBase
+# SellerCampaignUpdate
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sellerId** | **Long** |  |  [optional]
-**campaignId** | **Integer** |  |  [optional]
+**id** | **String** |  |  [optional]
 **bid** | **Double** |  |  [optional]
 
 
