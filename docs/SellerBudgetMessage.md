@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
-**sellerId** | **Long** |  |  [optional]
+**sellerId** | **String** |  |  [optional]
 **campaignIds** | **List&lt;Integer&gt;** |  |  [optional]
 **budgetType** | **String** |  |  [optional]
 **amount** | **String** |  |  [optional]
@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **endDate** | **String** |  |  [optional]
 **spend** | **Double** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
+**isSuspended** | **Boolean** |  |  [optional]
 
 
 <a name="StatusEnum"></a>

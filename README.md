@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.8</version>
+  <version>1.0.9</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.8"
+compile "com.criteo:marketing.java-client:1.0.9"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/marketing.java-client-1.0.8.jar`
+- `target/marketing.java-client-1.0.9.jar`
 - `target/lib/*.jar`
 
 ## Example
@@ -151,7 +151,7 @@ Class | Method | HTTP request | Description
  - [ClientRegistrationRequestMessage](docs/ClientRegistrationRequestMessage.md)
  - [ClientRegistrationResponseMessage](docs/ClientRegistrationResponseMessage.md)
  - [CreateSellerBudgetMapiMessage](docs/CreateSellerBudgetMapiMessage.md)
- - [ErrorResponse](docs/ErrorResponse.md)
+ - [ErrorSource](docs/ErrorSource.md)
  - [GoogleProduct](docs/GoogleProduct.md)
  - [IThrottlingConfiguration](docs/IThrottlingConfiguration.md)
  - [InlineResponse200](docs/InlineResponse200.md)
@@ -162,7 +162,6 @@ Class | Method | HTTP request | Description
  - [MarketplaceCampaignMessage](docs/MarketplaceCampaignMessage.md)
  - [MessageWithDetailsCampaignBidChangeResponse](docs/MessageWithDetailsCampaignBidChangeResponse.md)
  - [MessageWithDetailsCategoryUpdatesPerCatalogError](docs/MessageWithDetailsCategoryUpdatesPerCatalogError.md)
- - [MessageWithDetailsIListErrorResponse](docs/MessageWithDetailsIListErrorResponse.md)
  - [PolicyRouteInfo](docs/PolicyRouteInfo.md)
  - [PortfolioMessage](docs/PortfolioMessage.md)
  - [Price](docs/Price.md)

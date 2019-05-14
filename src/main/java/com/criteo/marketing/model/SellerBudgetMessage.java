@@ -38,7 +38,7 @@ public class SellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private Long sellerId;
+  private String sellerId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
@@ -117,6 +117,10 @@ public class SellerBudgetMessage {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public static final String SERIALIZED_NAME_IS_SUSPENDED = "isSuspended";
+  @SerializedName(SERIALIZED_NAME_IS_SUSPENDED)
+  private Boolean isSuspended;
+
   public SellerBudgetMessage id(String id) {
     this.id = id;
     return this;
@@ -135,7 +139,7 @@ public class SellerBudgetMessage {
     this.id = id;
   }
 
-  public SellerBudgetMessage sellerId(Long sellerId) {
+  public SellerBudgetMessage sellerId(String sellerId) {
     this.sellerId = sellerId;
     return this;
   }
@@ -145,11 +149,11 @@ public class SellerBudgetMessage {
    * @return sellerId
   **/
   @ApiModelProperty(value = "")
-  public Long getSellerId() {
+  public String getSellerId() {
     return sellerId;
   }
 
-  public void setSellerId(Long sellerId) {
+  public void setSellerId(String sellerId) {
     this.sellerId = sellerId;
   }
 
@@ -287,6 +291,24 @@ public class SellerBudgetMessage {
     this.status = status;
   }
 
+  public SellerBudgetMessage isSuspended(Boolean isSuspended) {
+    this.isSuspended = isSuspended;
+    return this;
+  }
+
+   /**
+   * Get isSuspended
+   * @return isSuspended
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean getIsSuspended() {
+    return isSuspended;
+  }
+
+  public void setIsSuspended(Boolean isSuspended) {
+    this.isSuspended = isSuspended;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -305,12 +327,13 @@ public class SellerBudgetMessage {
         Objects.equals(this.startDate, sellerBudgetMessage.startDate) &&
         Objects.equals(this.endDate, sellerBudgetMessage.endDate) &&
         Objects.equals(this.spend, sellerBudgetMessage.spend) &&
-        Objects.equals(this.status, sellerBudgetMessage.status);
+        Objects.equals(this.status, sellerBudgetMessage.status) &&
+        Objects.equals(this.isSuspended, sellerBudgetMessage.isSuspended);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, sellerId, campaignIds, budgetType, amount, startDate, endDate, spend, status);
+    return Objects.hash(id, sellerId, campaignIds, budgetType, amount, startDate, endDate, spend, status, isSuspended);
   }
 
 
@@ -327,6 +350,7 @@ public class SellerBudgetMessage {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    spend: ").append(toIndentedString(spend)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    isSuspended: ").append(toIndentedString(isSuspended)).append("\n");
     sb.append("}");
     return sb.toString();
   }

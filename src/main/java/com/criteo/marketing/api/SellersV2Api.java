@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import com.criteo.marketing.model.CreateSellerBudgetMapiMessage;
-import com.criteo.marketing.model.MessageWithDetailsIListErrorResponse;
+import com.criteo.marketing.model.ErrorSource;
 import java.time.OffsetDateTime;
 import com.criteo.marketing.model.SellerBase;
 import com.criteo.marketing.model.SellerBudgetMessage;
@@ -211,7 +211,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getBudgetsBySellerCall(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getBudgetsBySellerCall(String sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -285,7 +285,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBudgetsBySellerValidateBeforeCall(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getBudgetsBySellerValidateBeforeCall(String sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'sellerId' is set
         if (sellerId == null) {
@@ -318,7 +318,7 @@ public class SellersV2Api {
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> getBudgetsBySeller(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type) throws ApiException {
+    public List<SellerBudgetMessage> getBudgetsBySeller(String sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type) throws ApiException {
         ApiResponse<List<SellerBudgetMessage>> resp = getBudgetsBySellerWithHttpInfo(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type);
         return resp.getData();
     }
@@ -338,7 +338,7 @@ public class SellersV2Api {
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerWithHttpInfo(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type) throws ApiException {
+    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerWithHttpInfo(String sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type) throws ApiException {
         okhttp3.Call call = getBudgetsBySellerValidateBeforeCall(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -360,7 +360,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getBudgetsBySellerAsync(Long sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call getBudgetsBySellerAsync(String sellerId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String type, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -578,7 +578,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getSellerCall(Long sellerId, String authorization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getSellerCall(String sellerId, String authorization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -624,7 +624,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerValidateBeforeCall(Long sellerId, String authorization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getSellerValidateBeforeCall(String sellerId, String authorization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'sellerId' is set
         if (sellerId == null) {
@@ -650,7 +650,7 @@ public class SellersV2Api {
      * @return SellerBase
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SellerBase getSeller(Long sellerId, String authorization) throws ApiException {
+    public SellerBase getSeller(String sellerId, String authorization) throws ApiException {
         ApiResponse<SellerBase> resp = getSellerWithHttpInfo(sellerId, authorization);
         return resp.getData();
     }
@@ -663,7 +663,7 @@ public class SellersV2Api {
      * @return ApiResponse&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SellerBase> getSellerWithHttpInfo(Long sellerId, String authorization) throws ApiException {
+    public ApiResponse<SellerBase> getSellerWithHttpInfo(String sellerId, String authorization) throws ApiException {
         okhttp3.Call call = getSellerValidateBeforeCall(sellerId, authorization, null, null);
         Type localVarReturnType = new TypeToken<SellerBase>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -678,7 +678,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getSellerAsync(Long sellerId, String authorization, final ApiCallback<SellerBase> callback) throws ApiException {
+    public okhttp3.Call getSellerAsync(String sellerId, String authorization, final ApiCallback<SellerBase> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -779,7 +779,7 @@ public class SellersV2Api {
 
     /**
      * Get details for a budget.
-     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: 321392,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
+     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @return SellerBudgetMessage
@@ -792,7 +792,7 @@ public class SellersV2Api {
 
     /**
      * Get details for a budget.
-     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: 321392,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
+     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;SellerBudgetMessage&gt;
@@ -806,7 +806,7 @@ public class SellersV2Api {
 
     /**
      * Get details for a budget. (asynchronously)
-     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: 321392,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
+     * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param callback The callback to be executed when the API call finishes
@@ -855,7 +855,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getSellerBudgetsCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getSellerBudgetsCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -932,7 +932,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerBudgetsValidateBeforeCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getSellerBudgetsValidateBeforeCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -960,7 +960,7 @@ public class SellersV2Api {
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> getSellerBudgets(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type) throws ApiException {
+    public List<SellerBudgetMessage> getSellerBudgets(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type) throws ApiException {
         ApiResponse<List<SellerBudgetMessage>> resp = getSellerBudgetsWithHttpInfo(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
         return resp.getData();
     }
@@ -980,7 +980,7 @@ public class SellersV2Api {
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> getSellerBudgetsWithHttpInfo(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type) throws ApiException {
+    public ApiResponse<List<SellerBudgetMessage>> getSellerBudgetsWithHttpInfo(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type) throws ApiException {
         okhttp3.Call call = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1002,7 +1002,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getSellerBudgetsAsync(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, Long sellerId, String type, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call getSellerBudgetsAsync(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1103,7 +1103,7 @@ public class SellersV2Api {
 
     /**
      * Get details for a seller campaign.
-     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: 543210,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
      * @param sellerCampaignId Id of the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @return SellerCampaignMessage
@@ -1116,7 +1116,7 @@ public class SellersV2Api {
 
     /**
      * Get details for a seller campaign.
-     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: 543210,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
      * @param sellerCampaignId Id of the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;SellerCampaignMessage&gt;
@@ -1130,7 +1130,7 @@ public class SellersV2Api {
 
     /**
      * Get details for a seller campaign. (asynchronously)
-     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: 543210,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+     * Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
      * @param sellerCampaignId Id of the seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1175,7 +1175,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getSellerCampaignsCall(String authorization, String sellerStatus, Long sellerId, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getSellerCampaignsCall(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1236,7 +1236,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerCampaignsValidateBeforeCall(String authorization, String sellerStatus, Long sellerId, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getSellerCampaignsValidateBeforeCall(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1260,7 +1260,7 @@ public class SellersV2Api {
      * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerCampaignMessage> getSellerCampaigns(String authorization, String sellerStatus, Long sellerId, Integer campaignId, String budgetStatus) throws ApiException {
+    public List<SellerCampaignMessage> getSellerCampaigns(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus) throws ApiException {
         ApiResponse<List<SellerCampaignMessage>> resp = getSellerCampaignsWithHttpInfo(authorization, sellerStatus, sellerId, campaignId, budgetStatus);
         return resp.getData();
     }
@@ -1276,7 +1276,7 @@ public class SellersV2Api {
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsWithHttpInfo(String authorization, String sellerStatus, Long sellerId, Integer campaignId, String budgetStatus) throws ApiException {
+    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsWithHttpInfo(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus) throws ApiException {
         okhttp3.Call call = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, null, null);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1294,7 +1294,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getSellerCampaignsAsync(String authorization, String sellerStatus, Long sellerId, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> callback) throws ApiException {
+    public okhttp3.Call getSellerCampaignsAsync(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1332,7 +1332,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getSellerCampaignsBySellerCall(Long sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getSellerCampaignsBySellerCall(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1390,7 +1390,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerCampaignsBySellerValidateBeforeCall(Long sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getSellerCampaignsBySellerValidateBeforeCall(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'sellerId' is set
         if (sellerId == null) {
@@ -1419,7 +1419,7 @@ public class SellersV2Api {
      * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerCampaignMessage> getSellerCampaignsBySeller(Long sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
+    public List<SellerCampaignMessage> getSellerCampaignsBySeller(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
         ApiResponse<List<SellerCampaignMessage>> resp = getSellerCampaignsBySellerWithHttpInfo(sellerId, authorization, sellerStatus, campaignId, budgetStatus);
         return resp.getData();
     }
@@ -1435,7 +1435,7 @@ public class SellersV2Api {
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsBySellerWithHttpInfo(Long sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
+    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsBySellerWithHttpInfo(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
         okhttp3.Call call = getSellerCampaignsBySellerValidateBeforeCall(sellerId, authorization, sellerStatus, campaignId, budgetStatus, null, null);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1453,7 +1453,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getSellerCampaignsBySellerAsync(Long sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> callback) throws ApiException {
+    public okhttp3.Call getSellerCampaignsBySellerAsync(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

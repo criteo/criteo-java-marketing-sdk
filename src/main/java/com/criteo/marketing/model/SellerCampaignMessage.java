@@ -36,7 +36,7 @@ public class SellerCampaignMessage {
 
   public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private Long sellerId;
+  private String sellerId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
@@ -59,7 +59,7 @@ public class SellerCampaignMessage {
     return id;
   }
 
-  public SellerCampaignMessage sellerId(Long sellerId) {
+  public SellerCampaignMessage sellerId(String sellerId) {
     this.sellerId = sellerId;
     return this;
   }
@@ -69,11 +69,11 @@ public class SellerCampaignMessage {
    * @return sellerId
   **/
   @ApiModelProperty(value = "")
-  public Long getSellerId() {
+  public String getSellerId() {
     return sellerId;
   }
 
-  public void setSellerId(Long sellerId) {
+  public void setSellerId(String sellerId) {
     this.sellerId = sellerId;
   }
 

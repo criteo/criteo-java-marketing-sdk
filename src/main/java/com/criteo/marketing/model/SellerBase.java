@@ -31,13 +31,13 @@ import java.io.IOException;
 public class SellerBase {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private String id;
 
   public static final String SERIALIZED_NAME_SELLER_NAME = "sellerName";
   @SerializedName(SERIALIZED_NAME_SELLER_NAME)
   private String sellerName;
 
-  public SellerBase id(Long id) {
+  public SellerBase id(String id) {
     this.id = id;
     return this;
   }
@@ -47,11 +47,11 @@ public class SellerBase {
    * @return id
   **/
   @ApiModelProperty(value = "")
-  public Long getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(String id) {
     this.id = id;
   }
 

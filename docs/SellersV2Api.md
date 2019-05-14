@@ -103,7 +103,7 @@ Authorization.setApiKey("YOUR API KEY");
 //Authorization.setApiKeyPrefix("Token");
 
 SellersV2Api apiInstance = new SellersV2Api();
-Long sellerId = 56L; // Long | Return only budgets belonging to the given seller.
+String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
 String status = "status_example"; // String | Return only budgets with the given status.
 Boolean withBalance = true; // Boolean | Return only budgets with the given status.
@@ -125,7 +125,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sellerId** | **Long**| Return only budgets belonging to the given seller. |
+ **sellerId** | **String**| Return only budgets belonging to the given seller. |
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
  **status** | **String**| Return only budgets with the given status. | [optional] [enum: Archived, Current, Scheduled]
  **withBalance** | **Boolean**| Return only budgets with the given status. | [optional]
@@ -243,7 +243,7 @@ Authorization.setApiKey("YOUR API KEY");
 //Authorization.setApiKeyPrefix("Token");
 
 SellersV2Api apiInstance = new SellersV2Api();
-Long sellerId = 56L; // Long | Id of the seller.
+String sellerId = "sellerId_example"; // String | Id of the seller.
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
 try {
     SellerBase result = apiInstance.getSeller(sellerId, authorization);
@@ -258,7 +258,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sellerId** | **Long**| Id of the seller. |
+ **sellerId** | **String**| Id of the seller. |
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
 
 ### Return type
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 Get details for a budget.
 
-Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: 321392,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
+Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
 
 ### Example
 ```java
@@ -364,7 +364,7 @@ Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
 OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.
 OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
 Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
-Long sellerId = 56L; // Long | Return only budgets belonging to the given seller.
+String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
 String type = "type_example"; // String | Return only budgets with the given budget type.
 try {
     List<SellerBudgetMessage> result = apiInstance.getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
  **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date. | [optional]
  **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
- **sellerId** | **Long**| Return only budgets belonging to the given seller. | [optional]
+ **sellerId** | **String**| Return only budgets belonging to the given seller. | [optional]
  **type** | **String**| Return only budgets with the given budget type. | [optional]
 
 ### Return type
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 
 Get details for a seller campaign.
 
-Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: 543210,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+Return details for a seller campaign.  For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
 
 ### Example
 ```java
@@ -487,7 +487,7 @@ Authorization.setApiKey("YOUR API KEY");
 SellersV2Api apiInstance = new SellersV2Api();
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
 String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
-Long sellerId = 56L; // Long | Return only seller campaigns belonging to the given seller.
+String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
 Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
 String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
 try {
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
  **sellerStatus** | **String**| Return only seller campaigns for sellers with the given status. | [optional] [enum: Inactive, Active]
- **sellerId** | **Long**| Return only seller campaigns belonging to the given seller. | [optional]
+ **sellerId** | **String**| Return only seller campaigns belonging to the given seller. | [optional]
  **campaignId** | **Integer**| Return only seller campaigns associated with the given campaign. | [optional]
  **budgetStatus** | **String**| Return only seller campaigns whose budget has the given status. | [optional] [enum: Archived, Current, Scheduled]
 
@@ -548,7 +548,7 @@ Authorization.setApiKey("YOUR API KEY");
 //Authorization.setApiKeyPrefix("Token");
 
 SellersV2Api apiInstance = new SellersV2Api();
-Long sellerId = 56L; // Long | Return only seller campaigns belonging to the given seller.
+String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
 String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
 Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
@@ -566,7 +566,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sellerId** | **Long**| Return only seller campaigns belonging to the given seller. |
+ **sellerId** | **String**| Return only seller campaigns belonging to the given seller. |
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
  **sellerStatus** | **String**| Return only seller campaigns for sellers with the given status. | [optional] [enum: Inactive, Active]
  **campaignId** | **Integer**| Return only seller campaigns associated with the given campaign. | [optional]

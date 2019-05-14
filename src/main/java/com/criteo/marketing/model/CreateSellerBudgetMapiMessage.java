@@ -44,10 +44,6 @@ public class CreateSellerBudgetMapiMessage {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private String endDate;
 
-  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
-  @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private Long sellerId;
-
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
   private List<Integer> campaignIds = new ArrayList<>();
@@ -55,6 +51,10 @@ public class CreateSellerBudgetMapiMessage {
   public static final String SERIALIZED_NAME_BUDGET_TYPE = "budgetType";
   @SerializedName(SERIALIZED_NAME_BUDGET_TYPE)
   private String budgetType;
+
+  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
+  @SerializedName(SERIALIZED_NAME_SELLER_ID)
+  private String sellerId;
 
   public CreateSellerBudgetMapiMessage amount(String amount) {
     this.amount = amount;
@@ -110,24 +110,6 @@ public class CreateSellerBudgetMapiMessage {
     this.endDate = endDate;
   }
 
-  public CreateSellerBudgetMapiMessage sellerId(Long sellerId) {
-    this.sellerId = sellerId;
-    return this;
-  }
-
-   /**
-   * Get sellerId
-   * @return sellerId
-  **/
-  @ApiModelProperty(value = "")
-  public Long getSellerId() {
-    return sellerId;
-  }
-
-  public void setSellerId(Long sellerId) {
-    this.sellerId = sellerId;
-  }
-
   public CreateSellerBudgetMapiMessage campaignIds(List<Integer> campaignIds) {
     this.campaignIds = campaignIds;
     return this;
@@ -172,6 +154,24 @@ public class CreateSellerBudgetMapiMessage {
     this.budgetType = budgetType;
   }
 
+  public CreateSellerBudgetMapiMessage sellerId(String sellerId) {
+    this.sellerId = sellerId;
+    return this;
+  }
+
+   /**
+   * Get sellerId
+   * @return sellerId
+  **/
+  @ApiModelProperty(value = "")
+  public String getSellerId() {
+    return sellerId;
+  }
+
+  public void setSellerId(String sellerId) {
+    this.sellerId = sellerId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -185,14 +185,14 @@ public class CreateSellerBudgetMapiMessage {
     return Objects.equals(this.amount, createSellerBudgetMapiMessage.amount) &&
         Objects.equals(this.startDate, createSellerBudgetMapiMessage.startDate) &&
         Objects.equals(this.endDate, createSellerBudgetMapiMessage.endDate) &&
-        Objects.equals(this.sellerId, createSellerBudgetMapiMessage.sellerId) &&
         Objects.equals(this.campaignIds, createSellerBudgetMapiMessage.campaignIds) &&
-        Objects.equals(this.budgetType, createSellerBudgetMapiMessage.budgetType);
+        Objects.equals(this.budgetType, createSellerBudgetMapiMessage.budgetType) &&
+        Objects.equals(this.sellerId, createSellerBudgetMapiMessage.sellerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, startDate, endDate, sellerId, campaignIds, budgetType);
+    return Objects.hash(amount, startDate, endDate, campaignIds, budgetType, sellerId);
   }
 
 
@@ -203,9 +203,9 @@ public class CreateSellerBudgetMapiMessage {
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
+    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
