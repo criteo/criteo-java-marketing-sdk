@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **sellerId** | **String** |  |  [optional]
 **campaignIds** | **List&lt;Integer&gt;** |  |  [optional]
 **budgetType** | **String** |  |  [optional]
-**amount** | **String** |  |  [optional]
+**amount** | **Double** |  |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **endDate** | **String** |  |  [optional]
 **spend** | **Double** |  |  [optional]

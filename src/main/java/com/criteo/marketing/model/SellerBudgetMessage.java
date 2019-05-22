@@ -50,7 +50,7 @@ public class SellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private String amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -201,7 +201,7 @@ public class SellerBudgetMessage {
     this.budgetType = budgetType;
   }
 
-  public SellerBudgetMessage amount(String amount) {
+  public SellerBudgetMessage amount(Double amount) {
     this.amount = amount;
     return this;
   }
@@ -211,11 +211,11 @@ public class SellerBudgetMessage {
    * @return amount
   **/
   @ApiModelProperty(value = "")
-  public String getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(String amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
