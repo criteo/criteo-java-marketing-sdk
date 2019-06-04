@@ -587,7 +587,7 @@ Name | Type | Description  | Notes
 
 <a name="getSellers"></a>
 # **getSellers**
-> List&lt;SellerBase&gt; getSellers(authorization, sellerStatus, withProducts, withBudgetStatus)
+> List&lt;SellerBase&gt; getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName)
 
 Get a collection of sellers.
 
@@ -615,8 +615,9 @@ String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bear
 String sellerStatus = "sellerStatus_example"; // String | Return only sellers with specific status.
 Boolean withProducts = true; // Boolean | Return only sellers with or without products in catalog.
 String withBudgetStatus = "withBudgetStatus_example"; // String | Return only sellers with specific budget status.
+String sellerName = "sellerName_example"; // String | Return only sellers with the matching name.
 try {
-    List<SellerBase> result = apiInstance.getSellers(authorization, sellerStatus, withProducts, withBudgetStatus);
+    List<SellerBase> result = apiInstance.getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SellersV2Api#getSellers");
@@ -632,6 +633,7 @@ Name | Type | Description  | Notes
  **sellerStatus** | **String**| Return only sellers with specific status. | [optional] [enum: Inactive, Active]
  **withProducts** | **Boolean**| Return only sellers with or without products in catalog. | [optional]
  **withBudgetStatus** | **String**| Return only sellers with specific budget status. | [optional] [enum: Archived, Current, Scheduled]
+ **sellerName** | **String**| Return only sellers with the matching name. | [optional]
 
 ### Return type
 

@@ -1485,12 +1485,13 @@ public class SellersV2Api {
      * @param sellerStatus Return only sellers with specific status. (optional)
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getSellersCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call getSellersCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1508,6 +1509,10 @@ public class SellersV2Api {
 
         if (withBudgetStatus != null) {
             localVarQueryParams.addAll(apiClient.parameterToPair("withBudgetStatus", withBudgetStatus));
+        }
+
+        if (sellerName != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("sellerName", sellerName));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -1547,7 +1552,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellersValidateBeforeCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call getSellersValidateBeforeCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1555,7 +1560,7 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call call = getSellersCall(authorization, sellerStatus, withProducts, withBudgetStatus, progressListener, progressRequestListener);
+        okhttp3.Call call = getSellersCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1567,11 +1572,12 @@ public class SellersV2Api {
      * @param sellerStatus Return only sellers with specific status. (optional)
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
      * @return List&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBase> getSellers(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus) throws ApiException {
-        ApiResponse<List<SellerBase>> resp = getSellersWithHttpInfo(authorization, sellerStatus, withProducts, withBudgetStatus);
+    public List<SellerBase> getSellers(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName) throws ApiException {
+        ApiResponse<List<SellerBase>> resp = getSellersWithHttpInfo(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName);
         return resp.getData();
     }
 
@@ -1582,11 +1588,12 @@ public class SellersV2Api {
      * @param sellerStatus Return only sellers with specific status. (optional)
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
      * @return ApiResponse&lt;List&lt;SellerBase&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBase>> getSellersWithHttpInfo(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus) throws ApiException {
-        okhttp3.Call call = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, null, null);
+    public ApiResponse<List<SellerBase>> getSellersWithHttpInfo(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName) throws ApiException {
+        okhttp3.Call call = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1598,11 +1605,12 @@ public class SellersV2Api {
      * @param sellerStatus Return only sellers with specific status. (optional)
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getSellersAsync(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, final ApiCallback<List<SellerBase>> callback) throws ApiException {
+    public okhttp3.Call getSellersAsync(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, final ApiCallback<List<SellerBase>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1623,7 +1631,7 @@ public class SellersV2Api {
             };
         }
 
-        okhttp3.Call call = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, progressListener, progressRequestListener);
+        okhttp3.Call call = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
