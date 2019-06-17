@@ -202,7 +202,7 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -305,13 +305,13 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets for this seller.
-     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
      * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -325,13 +325,13 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets for this seller.
-     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
      * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -346,13 +346,13 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets for this seller. (asynchronously)
-     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
      * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -393,7 +393,7 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @param progressListener Progress listener
@@ -491,13 +491,13 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets for this seller campaign.
-     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
      * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
@@ -510,13 +510,13 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets for this seller campaign.
-     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
      * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
@@ -530,13 +530,13 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets for this seller campaign. (asynchronously)
-     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
      * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -845,7 +845,7 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
@@ -947,12 +947,12 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets.
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
@@ -967,12 +967,12 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets.
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
@@ -988,12 +988,12 @@ public class SellersV2Api {
 
     /**
      * Get a collection of budgets. (asynchronously)
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
      * @param authorization JWT Bearer Token (required)
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
@@ -1638,20 +1638,16 @@ public class SellersV2Api {
     }
     /**
      * Build call for updateSellerBudget
-     * @param budgetId Id of the budget being modified. (required)
-     * @param startDate Future start date for this budget. (required)
-     * @param suspended Indicates if a budget should be suspended or not. (required)
-     * @param amount Limit for this budget (type must not be Uncapped). (required)
-     * @param endDate Future end date for this budget. (required)
+     * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds Campaigns funded by this budget. (required)
+     * @param message  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call updateSellerBudgetCall(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = campaignIds;
+    public okhttp3.Call updateSellerBudgetCall(String budgetId, String authorization, UpdateSellerBudgetMessage message, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = message;
 
         // create path and map variables
         String localVarPath = "/v2/crp/budgets/{budgetId}"
@@ -1659,22 +1655,6 @@ public class SellersV2Api {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (startDate != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("startDate", startDate));
-        }
-
-        if (suspended != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("suspended", suspended));
-        }
-
-        if (amount != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("amount", amount));
-        }
-
-        if (endDate != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("endDate", endDate));
-        }
-
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (authorization != null) {
             localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
@@ -1690,7 +1670,7 @@ public class SellersV2Api {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded", "text/html"
+            "application/json", "text/json", "application/x-www-form-urlencoded", "text/html"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1712,31 +1692,11 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSellerBudgetValidateBeforeCall(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call updateSellerBudgetValidateBeforeCall(String budgetId, String authorization, UpdateSellerBudgetMessage message, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'budgetId' is set
         if (budgetId == null) {
             throw new ApiException("Missing the required parameter 'budgetId' when calling updateSellerBudget(Async)");
-        }
-        
-        // verify the required parameter 'startDate' is set
-        if (startDate == null) {
-            throw new ApiException("Missing the required parameter 'startDate' when calling updateSellerBudget(Async)");
-        }
-        
-        // verify the required parameter 'suspended' is set
-        if (suspended == null) {
-            throw new ApiException("Missing the required parameter 'suspended' when calling updateSellerBudget(Async)");
-        }
-        
-        // verify the required parameter 'amount' is set
-        if (amount == null) {
-            throw new ApiException("Missing the required parameter 'amount' when calling updateSellerBudget(Async)");
-        }
-        
-        // verify the required parameter 'endDate' is set
-        if (endDate == null) {
-            throw new ApiException("Missing the required parameter 'endDate' when calling updateSellerBudget(Async)");
         }
         
         // verify the required parameter 'authorization' is set
@@ -1744,13 +1704,13 @@ public class SellersV2Api {
             throw new ApiException("Missing the required parameter 'authorization' when calling updateSellerBudget(Async)");
         }
         
-        // verify the required parameter 'campaignIds' is set
-        if (campaignIds == null) {
-            throw new ApiException("Missing the required parameter 'campaignIds' when calling updateSellerBudget(Async)");
+        // verify the required parameter 'message' is set
+        if (message == null) {
+            throw new ApiException("Missing the required parameter 'message' when calling updateSellerBudget(Async)");
         }
         
 
-        okhttp3.Call call = updateSellerBudgetCall(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds, progressListener, progressRequestListener);
+        okhttp3.Call call = updateSellerBudgetCall(budgetId, authorization, message, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1758,36 +1718,28 @@ public class SellersV2Api {
     /**
      * Modify a single budget.
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
-     * @param budgetId Id of the budget being modified. (required)
-     * @param startDate Future start date for this budget. (required)
-     * @param suspended Indicates if a budget should be suspended or not. (required)
-     * @param amount Limit for this budget (type must not be Uncapped). (required)
-     * @param endDate Future end date for this budget. (required)
+     * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds Campaigns funded by this budget. (required)
+     * @param message  (required)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> updateSellerBudget(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> resp = updateSellerBudgetWithHttpInfo(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds);
+    public List<SellerBudgetMessage> updateSellerBudget(String budgetId, String authorization, UpdateSellerBudgetMessage message) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> resp = updateSellerBudgetWithHttpInfo(budgetId, authorization, message);
         return resp.getData();
     }
 
     /**
      * Modify a single budget.
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
-     * @param budgetId Id of the budget being modified. (required)
-     * @param startDate Future start date for this budget. (required)
-     * @param suspended Indicates if a budget should be suspended or not. (required)
-     * @param amount Limit for this budget (type must not be Uncapped). (required)
-     * @param endDate Future end date for this budget. (required)
+     * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds Campaigns funded by this budget. (required)
+     * @param message  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> updateSellerBudgetWithHttpInfo(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds) throws ApiException {
-        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds, null, null);
+    public ApiResponse<List<SellerBudgetMessage>> updateSellerBudgetWithHttpInfo(String budgetId, String authorization, UpdateSellerBudgetMessage message) throws ApiException {
+        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, authorization, message, null, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1795,18 +1747,14 @@ public class SellersV2Api {
     /**
      * Modify a single budget. (asynchronously)
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
-     * @param budgetId Id of the budget being modified. (required)
-     * @param startDate Future start date for this budget. (required)
-     * @param suspended Indicates if a budget should be suspended or not. (required)
-     * @param amount Limit for this budget (type must not be Uncapped). (required)
-     * @param endDate Future end date for this budget. (required)
+     * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
-     * @param campaignIds Campaigns funded by this budget. (required)
+     * @param message  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call updateSellerBudgetAsync(Long budgetId, OffsetDateTime startDate, Boolean suspended, String amount, String endDate, String authorization, List<Integer> campaignIds, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call updateSellerBudgetAsync(String budgetId, String authorization, UpdateSellerBudgetMessage message, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1827,7 +1775,7 @@ public class SellersV2Api {
             };
         }
 
-        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds, progressListener, progressRequestListener);
+        okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, authorization, message, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1906,7 +1854,7 @@ public class SellersV2Api {
 
     /**
      * Modify a collection of budgets.
-     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param authorization JWT Bearer Token (required)
      * @param updateSellerBudgets  (required)
      * @return List&lt;SellerBudgetMessage&gt;
@@ -1919,7 +1867,7 @@ public class SellersV2Api {
 
     /**
      * Modify a collection of budgets.
-     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param authorization JWT Bearer Token (required)
      * @param updateSellerBudgets  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
@@ -1933,7 +1881,7 @@ public class SellersV2Api {
 
     /**
      * Modify a collection of budgets. (asynchronously)
-     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param authorization JWT Bearer Token (required)
      * @param updateSellerBudgets  (required)
      * @param callback The callback to be executed when the API call finishes

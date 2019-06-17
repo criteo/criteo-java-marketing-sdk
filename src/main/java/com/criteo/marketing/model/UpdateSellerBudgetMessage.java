@@ -52,9 +52,9 @@ public class UpdateSellerBudgetMessage {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
   private List<Integer> campaignIds = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_SUSPENDED = "suspended";
-  @SerializedName(SERIALIZED_NAME_SUSPENDED)
-  private Boolean suspended;
+  public static final String SERIALIZED_NAME_IS_SUSPENDED = "isSuspended";
+  @SerializedName(SERIALIZED_NAME_IS_SUSPENDED)
+  private Boolean isSuspended;
 
   public UpdateSellerBudgetMessage budgetId(Long budgetId) {
     this.budgetId = budgetId;
@@ -154,22 +154,22 @@ public class UpdateSellerBudgetMessage {
     this.campaignIds = campaignIds;
   }
 
-  public UpdateSellerBudgetMessage suspended(Boolean suspended) {
-    this.suspended = suspended;
+  public UpdateSellerBudgetMessage isSuspended(Boolean isSuspended) {
+    this.isSuspended = isSuspended;
     return this;
   }
 
    /**
-   * Get suspended
-   * @return suspended
+   * Get isSuspended
+   * @return isSuspended
   **/
   @ApiModelProperty(value = "")
-  public Boolean getSuspended() {
-    return suspended;
+  public Boolean getIsSuspended() {
+    return isSuspended;
   }
 
-  public void setSuspended(Boolean suspended) {
-    this.suspended = suspended;
+  public void setIsSuspended(Boolean isSuspended) {
+    this.isSuspended = isSuspended;
   }
 
 
@@ -187,12 +187,12 @@ public class UpdateSellerBudgetMessage {
         Objects.equals(this.startDate, updateSellerBudgetMessage.startDate) &&
         Objects.equals(this.endDate, updateSellerBudgetMessage.endDate) &&
         Objects.equals(this.campaignIds, updateSellerBudgetMessage.campaignIds) &&
-        Objects.equals(this.suspended, updateSellerBudgetMessage.suspended);
+        Objects.equals(this.isSuspended, updateSellerBudgetMessage.isSuspended);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetId, amount, startDate, endDate, campaignIds, suspended);
+    return Objects.hash(budgetId, amount, startDate, endDate, campaignIds, isSuspended);
   }
 
 
@@ -205,7 +205,7 @@ public class UpdateSellerBudgetMessage {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
-    sb.append("    suspended: ").append(toIndentedString(suspended)).append("\n");
+    sb.append("    isSuspended: ").append(toIndentedString(isSuspended)).append("\n");
     sb.append("}");
     return sb.toString();
   }

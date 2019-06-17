@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.11</version>
+  <version>1.0.12</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.11"
+compile "com.criteo:marketing.java-client:1.0.12"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/marketing.java-client-1.0.11.jar`
+- `target/marketing.java-client-1.0.12.jar`
 - `target/lib/*.jar`
 
 ## Example
@@ -121,6 +121,9 @@ Class | Method | HTTP request | Description
 *SellersV2Api* | [**updateSellerBudgets**](docs/SellersV2Api.md#updateSellerBudgets) | **PATCH** /v2/crp/budgets | Modify a collection of budgets.
 *SellersV2Api* | [**updateSellerCampaign**](docs/SellersV2Api.md#updateSellerCampaign) | **PATCH** /v2/crp/seller-campaigns/{sellerCampaignId} | Update an existing seller campaign.
 *SellersV2Api* | [**updateSellerCampaigns**](docs/SellersV2Api.md#updateSellerCampaigns) | **PATCH** /v2/crp/seller-campaigns | Update a collection of seller campaigns.
+*SellersV2StatsApi* | [**campaigns**](docs/SellersV2StatsApi.md#campaigns) | **GET** /v2/crp/stats/campaigns | Get stats by campaign.
+*SellersV2StatsApi* | [**sellerCampaigns**](docs/SellersV2StatsApi.md#sellerCampaigns) | **GET** /v2/crp/stats/seller-campaigns | Get stats by seller-campaign.
+*SellersV2StatsApi* | [**sellers**](docs/SellersV2StatsApi.md#sellers) | **GET** /v2/crp/stats/sellers | Get stats by seller.
 *StatisticsApi* | [**getStats**](docs/StatisticsApi.md#getStats) | **POST** /v1/statistics | Generates a statistics report
 
 

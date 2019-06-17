@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 Get a collection of budgets for this seller.
 
-Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
 
 ### Example
 ```java
@@ -108,7 +108,7 @@ String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bear
 String status = "status_example"; // String | Return only budgets with the given status.
 Boolean withBalance = true; // Boolean | Return only budgets with the given status.
 Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.
+OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended.
 OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
 Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
 String type = "type_example"; // String | Return only budgets with the given budget type.
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
  **status** | **String**| Return only budgets with the given status. | [optional] [enum: Archived, Current, Scheduled]
  **withBalance** | **Boolean**| Return only budgets with the given status. | [optional]
  **withSpend** | **Boolean**| Return budgets with any positive spend. | [optional]
- **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date. | [optional]
+ **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
  **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
  **type** | **String**| Return only budgets with the given budget type. | [optional]
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 Get a collection of budgets for this seller campaign.
 
-Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
 
 ### Example
 ```java
@@ -179,7 +179,7 @@ String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bear
 String status = "status_example"; // String | Return only budgets with the given status.
 Boolean withBalance = true; // Boolean | Return only budgets with a positive balance.
 Boolean withSpend = true; // Boolean | Return budgets with a positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.
+OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
 OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
 String type = "type_example"; // String | Return only budgets with the given budget type.
 try {
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
  **status** | **String**| Return only budgets with the given status. | [optional] [enum: Archived, Current, Scheduled]
  **withBalance** | **Boolean**| Return only budgets with a positive balance. | [optional]
  **withSpend** | **Boolean**| Return budgets with a positive spend. | [optional]
- **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date. | [optional]
+ **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
  **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
  **type** | **String**| Return only budgets with the given budget type. | [optional]
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 Get a collection of budgets.
 
-Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
 
 ### Example
 ```java
@@ -361,7 +361,7 @@ String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bear
 String status = "status_example"; // String | Return only budgets with the given status.
 Boolean withBalance = true; // Boolean | Return only budgets with the given status.
 Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.
+OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
 OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
 Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
 String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
  **status** | **String**| Return only budgets with the given status. | [optional] [enum: Archived, Current, Scheduled]
  **withBalance** | **Boolean**| Return only budgets with the given status. | [optional]
  **withSpend** | **Boolean**| Return budgets with any positive spend. | [optional]
- **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date. | [optional]
+ **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
  **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
  **sellerId** | **String**| Return only budgets belonging to the given seller. | [optional]
@@ -650,7 +650,7 @@ Name | Type | Description  | Notes
 
 <a name="updateSellerBudget"></a>
 # **updateSellerBudget**
-> List&lt;SellerBudgetMessage&gt; updateSellerBudget(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds)
+> List&lt;SellerBudgetMessage&gt; updateSellerBudget(budgetId, authorization, message)
 
 Modify a single budget.
 
@@ -674,15 +674,11 @@ Authorization.setApiKey("YOUR API KEY");
 //Authorization.setApiKeyPrefix("Token");
 
 SellersV2Api apiInstance = new SellersV2Api();
-Long budgetId = 56L; // Long | Id of the budget being modified.
-OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Future start date for this budget.
-Boolean suspended = true; // Boolean | Indicates if a budget should be suspended or not.
-String amount = "amount_example"; // String | Limit for this budget (type must not be Uncapped).
-String endDate = "endDate_example"; // String | Future end date for this budget.
+String budgetId = "budgetId_example"; // String | 
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-List<Integer> campaignIds = Arrays.asList(); // List<Integer> | Campaigns funded by this budget.
+UpdateSellerBudgetMessage message = new UpdateSellerBudgetMessage(); // UpdateSellerBudgetMessage | 
 try {
-    List<SellerBudgetMessage> result = apiInstance.updateSellerBudget(budgetId, startDate, suspended, amount, endDate, authorization, campaignIds);
+    List<SellerBudgetMessage> result = apiInstance.updateSellerBudget(budgetId, authorization, message);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SellersV2Api#updateSellerBudget");
@@ -694,13 +690,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budgetId** | **Long**| Id of the budget being modified. |
- **startDate** | **OffsetDateTime**| Future start date for this budget. |
- **suspended** | **Boolean**| Indicates if a budget should be suspended or not. |
- **amount** | **String**| Limit for this budget (type must not be Uncapped). |
- **endDate** | **String**| Future end date for this budget. |
+ **budgetId** | **String**|  |
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
- **campaignIds** | [**List&lt;Integer&gt;**](List.md)| Campaigns funded by this budget. |
+ **message** | [**UpdateSellerBudgetMessage**](UpdateSellerBudgetMessage.md)|  |
 
 ### Return type
 
@@ -712,7 +704,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
+ - **Content-Type**: application/json, text/json, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
 <a name="updateSellerBudgets"></a>
@@ -721,7 +713,7 @@ Name | Type | Description  | Notes
 
 Modify a collection of budgets.
 
-Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
 
 ### Example
 ```java

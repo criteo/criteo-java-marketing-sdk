@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **endDate** | **String** |  |  [optional]
 **campaignIds** | **List&lt;Integer&gt;** |  |  [optional]
-**suspended** | **Boolean** |  |  [optional]
+**isSuspended** | **Boolean** |  |  [optional]
 
 
 
