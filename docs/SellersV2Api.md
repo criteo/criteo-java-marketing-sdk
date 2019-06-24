@@ -650,11 +650,11 @@ Name | Type | Description  | Notes
 
 <a name="updateSellerBudget"></a>
 # **updateSellerBudget**
-> List&lt;SellerBudgetMessage&gt; updateSellerBudget(budgetId, authorization, message)
+> SellerBudgetMessage updateSellerBudget(budgetId, authorization, message)
 
 Modify a single budget.
 
-Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
 
 ### Example
 ```java
@@ -674,11 +674,11 @@ Authorization.setApiKey("YOUR API KEY");
 //Authorization.setApiKeyPrefix("Token");
 
 SellersV2Api apiInstance = new SellersV2Api();
-String budgetId = "budgetId_example"; // String | 
+Long budgetId = 56L; // Long | 
 String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-UpdateSellerBudgetMessage message = new UpdateSellerBudgetMessage(); // UpdateSellerBudgetMessage | 
+UpdateSellerBudgetMessageBase message = new UpdateSellerBudgetMessageBase(); // UpdateSellerBudgetMessageBase | 
 try {
-    List<SellerBudgetMessage> result = apiInstance.updateSellerBudget(budgetId, authorization, message);
+    SellerBudgetMessage result = apiInstance.updateSellerBudget(budgetId, authorization, message);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SellersV2Api#updateSellerBudget");
@@ -690,13 +690,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budgetId** | **String**|  |
+ **budgetId** | **Long**|  |
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
- **message** | [**UpdateSellerBudgetMessage**](UpdateSellerBudgetMessage.md)|  |
+ **message** | [**UpdateSellerBudgetMessageBase**](UpdateSellerBudgetMessageBase.md)|  |
 
 ### Return type
 
-[**List&lt;SellerBudgetMessage&gt;**](SellerBudgetMessage.md)
+[**SellerBudgetMessage**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -705,7 +705,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/x-www-form-urlencoded, text/html
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+ - **Accept**: application/json, text/json, text/html
 
 <a name="updateSellerBudgets"></a>
 # **updateSellerBudgets**

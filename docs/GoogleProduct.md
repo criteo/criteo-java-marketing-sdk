@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **adult** | **Boolean** |  |  [optional]
 **adwordRedirect** | **String** |  |  [optional]
 **ageGroup** | **String** |  |  [optional]
-**availability** | [**AvailabilityEnum**](#AvailabilityEnum) |  |  [optional]
+**availability** | **String** |  |  [optional]
 **availabilityDate** | **String** |  |  [optional]
 **brand** | **String** |  |  [optional]
 **color** | **String** |  |  [optional]
@@ -69,15 +69,6 @@ Name | Type | Description | Notes
 **title** | **String** |  |  [optional]
 **unitPricingBaseMeasure** | [**UnitMeasure**](UnitMeasure.md) |  |  [optional]
 **unitPricingMeasure** | [**UnitMeasure**](UnitMeasure.md) |  |  [optional]
-
-
-<a name="AvailabilityEnum"></a>
-## Enum: AvailabilityEnum
-Name | Value
----- | -----
-PREORDER | &quot;Preorder&quot;
-INSTOCK | &quot;InStock&quot;
-OUTOFSTOCK | &quot;OutOfStock&quot;
 
 
 

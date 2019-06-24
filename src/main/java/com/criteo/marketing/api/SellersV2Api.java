@@ -35,6 +35,7 @@ import com.criteo.marketing.model.SellerBudgetMessage;
 import com.criteo.marketing.model.SellerCampaignMessage;
 import com.criteo.marketing.model.SellerCampaignUpdate;
 import com.criteo.marketing.model.UpdateSellerBudgetMessage;
+import com.criteo.marketing.model.UpdateSellerBudgetMessageBase;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1646,7 +1647,7 @@ public class SellersV2Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call updateSellerBudgetCall(String budgetId, String authorization, UpdateSellerBudgetMessage message, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call updateSellerBudgetCall(Long budgetId, String authorization, UpdateSellerBudgetMessageBase message, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = message;
 
         // create path and map variables
@@ -1662,7 +1663,7 @@ public class SellersV2Api {
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+            "application/json", "text/json", "text/html"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1692,7 +1693,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSellerBudgetValidateBeforeCall(String budgetId, String authorization, UpdateSellerBudgetMessage message, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call updateSellerBudgetValidateBeforeCall(Long budgetId, String authorization, UpdateSellerBudgetMessageBase message, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'budgetId' is set
         if (budgetId == null) {
@@ -1717,36 +1718,36 @@ public class SellersV2Api {
 
     /**
      * Modify a single budget.
-     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param message  (required)
-     * @return List&lt;SellerBudgetMessage&gt;
+     * @return SellerBudgetMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SellerBudgetMessage> updateSellerBudget(String budgetId, String authorization, UpdateSellerBudgetMessage message) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> resp = updateSellerBudgetWithHttpInfo(budgetId, authorization, message);
+    public SellerBudgetMessage updateSellerBudget(Long budgetId, String authorization, UpdateSellerBudgetMessageBase message) throws ApiException {
+        ApiResponse<SellerBudgetMessage> resp = updateSellerBudgetWithHttpInfo(budgetId, authorization, message);
         return resp.getData();
     }
 
     /**
      * Modify a single budget.
-     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param message  (required)
-     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
+     * @return ApiResponse&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SellerBudgetMessage>> updateSellerBudgetWithHttpInfo(String budgetId, String authorization, UpdateSellerBudgetMessage message) throws ApiException {
+    public ApiResponse<SellerBudgetMessage> updateSellerBudgetWithHttpInfo(Long budgetId, String authorization, UpdateSellerBudgetMessageBase message) throws ApiException {
         okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, authorization, message, null, null);
-        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Modify a single budget. (asynchronously)
-     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param message  (required)
@@ -1754,7 +1755,7 @@ public class SellersV2Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call updateSellerBudgetAsync(String budgetId, String authorization, UpdateSellerBudgetMessage message, final ApiCallback<List<SellerBudgetMessage>> callback) throws ApiException {
+    public okhttp3.Call updateSellerBudgetAsync(Long budgetId, String authorization, UpdateSellerBudgetMessageBase message, final ApiCallback<SellerBudgetMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1776,7 +1777,7 @@ public class SellersV2Api {
         }
 
         okhttp3.Call call = updateSellerBudgetValidateBeforeCall(budgetId, authorization, message, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

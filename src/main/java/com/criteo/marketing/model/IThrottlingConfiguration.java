@@ -24,15 +24,17 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * IThrottlingConfiguration
  */
 
 public class IThrottlingConfiguration {
-  public static final String SERIALIZED_NAME_DEFAULT_THROTTLE_POLICY = "defaultThrottlePolicy";
-  @SerializedName(SERIALIZED_NAME_DEFAULT_THROTTLE_POLICY)
-  private ThrottlePolicy defaultThrottlePolicy = null;
+  public static final String SERIALIZED_NAME_DEFAULT_THROTTLE_POLICIES = "defaultThrottlePolicies";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_THROTTLE_POLICIES)
+  private List<ThrottlePolicy> defaultThrottlePolicies = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ASSEMBLY = "assembly";
   @SerializedName(SERIALIZED_NAME_ASSEMBLY)
@@ -42,22 +44,13 @@ public class IThrottlingConfiguration {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
-  public IThrottlingConfiguration defaultThrottlePolicy(ThrottlePolicy defaultThrottlePolicy) {
-    this.defaultThrottlePolicy = defaultThrottlePolicy;
-    return this;
-  }
-
    /**
-   * Get defaultThrottlePolicy
-   * @return defaultThrottlePolicy
+   * Get defaultThrottlePolicies
+   * @return defaultThrottlePolicies
   **/
   @ApiModelProperty(value = "")
-  public ThrottlePolicy getDefaultThrottlePolicy() {
-    return defaultThrottlePolicy;
-  }
-
-  public void setDefaultThrottlePolicy(ThrottlePolicy defaultThrottlePolicy) {
-    this.defaultThrottlePolicy = defaultThrottlePolicy;
+  public List<ThrottlePolicy> getDefaultThrottlePolicies() {
+    return defaultThrottlePolicies;
   }
 
    /**
@@ -88,14 +81,14 @@ public class IThrottlingConfiguration {
       return false;
     }
     IThrottlingConfiguration ithrottlingConfiguration = (IThrottlingConfiguration) o;
-    return Objects.equals(this.defaultThrottlePolicy, ithrottlingConfiguration.defaultThrottlePolicy) &&
+    return Objects.equals(this.defaultThrottlePolicies, ithrottlingConfiguration.defaultThrottlePolicies) &&
         Objects.equals(this.assembly, ithrottlingConfiguration.assembly) &&
         Objects.equals(this.enabled, ithrottlingConfiguration.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultThrottlePolicy, assembly, enabled);
+    return Objects.hash(defaultThrottlePolicies, assembly, enabled);
   }
 
 
@@ -103,7 +96,7 @@ public class IThrottlingConfiguration {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IThrottlingConfiguration {\n");
-    sb.append("    defaultThrottlePolicy: ").append(toIndentedString(defaultThrottlePolicy)).append("\n");
+    sb.append("    defaultThrottlePolicies: ").append(toIndentedString(defaultThrottlePolicies)).append("\n");
     sb.append("    assembly: ").append(toIndentedString(assembly)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");

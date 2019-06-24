@@ -58,58 +58,9 @@ public class GoogleProduct {
   @SerializedName(SERIALIZED_NAME_AGE_GROUP)
   private String ageGroup;
 
-  /**
-   * Gets or Sets availability
-   */
-  @JsonAdapter(AvailabilityEnum.Adapter.class)
-  public enum AvailabilityEnum {
-    PREORDER("Preorder"),
-    
-    INSTOCK("InStock"),
-    
-    OUTOFSTOCK("OutOfStock");
-
-    private String value;
-
-    AvailabilityEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AvailabilityEnum fromValue(String text) {
-      for (AvailabilityEnum b : AvailabilityEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AvailabilityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AvailabilityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AvailabilityEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return AvailabilityEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY)
-  private AvailabilityEnum availability;
+  private String availability;
 
   public static final String SERIALIZED_NAME_AVAILABILITY_DATE = "availabilityDate";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_DATE)
@@ -437,7 +388,7 @@ public class GoogleProduct {
     this.ageGroup = ageGroup;
   }
 
-  public GoogleProduct availability(AvailabilityEnum availability) {
+  public GoogleProduct availability(String availability) {
     this.availability = availability;
     return this;
   }
@@ -447,11 +398,11 @@ public class GoogleProduct {
    * @return availability
   **/
   @ApiModelProperty(value = "")
-  public AvailabilityEnum getAvailability() {
+  public String getAvailability() {
     return availability;
   }
 
-  public void setAvailability(AvailabilityEnum availability) {
+  public void setAvailability(String availability) {
     this.availability = availability;
   }
 

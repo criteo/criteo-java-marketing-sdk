@@ -5,7 +5,7 @@
     <artifactId>marketing.java-client</artifactId>
     <packaging>jar</packaging>
     <name>marketing.java-client</name>
-    <version>1.0.12</version>
+    <version>1.0.13</version>
     <url>https://github.com/criteo/criteo-java-marketing-sdk</url>
     <description>Criteo Marketing SDK for Java</description>
     <scm>

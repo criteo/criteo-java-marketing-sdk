@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**defaultThrottlePolicy** | [**ThrottlePolicy**](ThrottlePolicy.md) |  |  [optional]
+**defaultThrottlePolicies** | [**List&lt;ThrottlePolicy&gt;**](ThrottlePolicy.md) |  |  [optional]
 **assembly** | [**Object**](.md) |  |  [optional]
 **enabled** | **Boolean** |  |  [optional]
 
