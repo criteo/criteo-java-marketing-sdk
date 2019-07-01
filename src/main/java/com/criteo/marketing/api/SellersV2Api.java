@@ -203,8 +203,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @param progressListener Progress listener
@@ -312,8 +312,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
@@ -332,8 +332,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
@@ -353,8 +353,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -394,8 +394,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -498,8 +498,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -517,8 +517,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -537,8 +537,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with a positive balance. (optional)
      * @param withSpend Return budgets with a positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param type Return only budgets with the given budget type. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -846,8 +846,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -953,8 +953,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -973,8 +973,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -994,8 +994,8 @@ public class SellersV2Api {
      * @param status Return only budgets with the given status. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @param endAfterDate Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-     * @param startBeforeDate Return budgets that start on or before the given date. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
@@ -1718,7 +1718,7 @@ public class SellersV2Api {
 
     /**
      * Modify a single budget.
-     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param message  (required)
@@ -1732,7 +1732,7 @@ public class SellersV2Api {
 
     /**
      * Modify a single budget.
-     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param message  (required)
@@ -1747,7 +1747,7 @@ public class SellersV2Api {
 
     /**
      * Modify a single budget. (asynchronously)
-     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId  (required)
      * @param authorization JWT Bearer Token (required)
      * @param message  (required)

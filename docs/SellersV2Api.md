@@ -108,8 +108,8 @@ String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bear
 String status = "status_example"; // String | Return only budgets with the given status.
 Boolean withBalance = true; // Boolean | Return only budgets with the given status.
 Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended.
-OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
+OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.              If param is not provided, default behavior is to only return budgets that have not yet ended.
+OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
 Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
 String type = "type_example"; // String | Return only budgets with the given budget type.
 try {
@@ -130,8 +130,8 @@ Name | Type | Description  | Notes
  **status** | **String**| Return only budgets with the given status. | [optional] [enum: Archived, Current, Scheduled]
  **withBalance** | **Boolean**| Return only budgets with the given status. | [optional]
  **withSpend** | **Boolean**| Return budgets with any positive spend. | [optional]
- **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
- **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
+ **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
+ **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. | [optional]
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
  **type** | **String**| Return only budgets with the given budget type. | [optional]
 
@@ -179,8 +179,8 @@ String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bear
 String status = "status_example"; // String | Return only budgets with the given status.
 Boolean withBalance = true; // Boolean | Return only budgets with a positive balance.
 Boolean withSpend = true; // Boolean | Return budgets with a positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
+OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
 String type = "type_example"; // String | Return only budgets with the given budget type.
 try {
     List<SellerBudgetMessage> result = apiInstance.getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type);
@@ -200,8 +200,8 @@ Name | Type | Description  | Notes
  **status** | **String**| Return only budgets with the given status. | [optional] [enum: Archived, Current, Scheduled]
  **withBalance** | **Boolean**| Return only budgets with a positive balance. | [optional]
  **withSpend** | **Boolean**| Return budgets with a positive spend. | [optional]
- **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
- **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
+ **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
+ **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. | [optional]
  **type** | **String**| Return only budgets with the given budget type. | [optional]
 
 ### Return type
@@ -361,8 +361,8 @@ String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bear
 String status = "status_example"; // String | Return only budgets with the given status.
 Boolean withBalance = true; // Boolean | Return only budgets with the given status.
 Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date.
+OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
 Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
 String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
 String type = "type_example"; // String | Return only budgets with the given budget type.
@@ -383,8 +383,8 @@ Name | Type | Description  | Notes
  **status** | **String**| Return only budgets with the given status. | [optional] [enum: Archived, Current, Scheduled]
  **withBalance** | **Boolean**| Return only budgets with the given status. | [optional]
  **withSpend** | **Boolean**| Return budgets with any positive spend. | [optional]
- **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
- **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date. | [optional]
+ **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional]
+ **startBeforeDate** | **OffsetDateTime**| Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. | [optional]
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
  **sellerId** | **String**| Return only budgets belonging to the given seller. | [optional]
  **type** | **String**| Return only budgets with the given budget type. | [optional]
@@ -654,7 +654,7 @@ Name | Type | Description  | Notes
 
 Modify a single budget.
 
-Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
+Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
 
 ### Example
 ```java
