@@ -66,7 +66,9 @@ public class CategoryUpdateError {
     
     BIDNOTINRANGE("BidNotInRange"),
     
-    FOURDECIMALSNOTALLOWED("FourDecimalsNotAllowed");
+    FOURDECIMALSNOTALLOWED("FourDecimalsNotAllowed"),
+    
+    BIDDINGONTARGETBUDGETCAMPAIGNNOTALLOWED("BiddingOnTargetBudgetCampaignNotAllowed");
 
     private String value;
 

@@ -93,6 +93,10 @@ public class CatalogProduct {
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
   private String productId;
 
+  public static final String SERIALIZED_NAME_ITEM_GROUP_ID = "itemGroupId";
+  @SerializedName(SERIALIZED_NAME_ITEM_GROUP_ID)
+  private String itemGroupId;
+
   public static final String SERIALIZED_NAME_PRODUCT = "product";
   @SerializedName(SERIALIZED_NAME_PRODUCT)
   private GoogleProduct product = null;
@@ -169,6 +173,24 @@ public class CatalogProduct {
     this.productId = productId;
   }
 
+  public CatalogProduct itemGroupId(String itemGroupId) {
+    this.itemGroupId = itemGroupId;
+    return this;
+  }
+
+   /**
+   * Mandatory if the method is delete and the product is a variant. This id is the grouping key (parent id) for variants
+   * @return itemGroupId
+  **/
+  @ApiModelProperty(value = "Mandatory if the method is delete and the product is a variant. This id is the grouping key (parent id) for variants")
+  public String getItemGroupId() {
+    return itemGroupId;
+  }
+
+  public void setItemGroupId(String itemGroupId) {
+    this.itemGroupId = itemGroupId;
+  }
+
   public CatalogProduct product(GoogleProduct product) {
     this.product = product;
     return this;
@@ -201,12 +223,13 @@ public class CatalogProduct {
         Objects.equals(this.catalogId, catalogProduct.catalogId) &&
         Objects.equals(this.method, catalogProduct.method) &&
         Objects.equals(this.productId, catalogProduct.productId) &&
+        Objects.equals(this.itemGroupId, catalogProduct.itemGroupId) &&
         Objects.equals(this.product, catalogProduct.product);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, catalogId, method, productId, product);
+    return Objects.hash(batchId, catalogId, method, productId, itemGroupId, product);
   }
 
 
@@ -218,6 +241,7 @@ public class CatalogProduct {
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("}");
     return sb.toString();

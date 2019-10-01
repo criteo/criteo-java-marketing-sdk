@@ -29,6 +29,7 @@ DUPLICATECAMPAIGNENTRY | &quot;DuplicateCampaignEntry&quot;
 BIDDINGONTHISCAMPAIGNNOTALLOWED | &quot;BiddingOnThisCampaignNotAllowed&quot;
 BIDNOTINRANGE | &quot;BidNotInRange&quot;
 FOURDECIMALSNOTALLOWED | &quot;FourDecimalsNotAllowed&quot;
+BIDDINGONTARGETBUDGETCAMPAIGNNOTALLOWED | &quot;BiddingOnTargetBudgetCampaignNotAllowed&quot;
 
 
 

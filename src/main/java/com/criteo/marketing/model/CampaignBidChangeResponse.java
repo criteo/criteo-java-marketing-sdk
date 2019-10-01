@@ -69,7 +69,9 @@ public class CampaignBidChangeResponse {
     
     BIDNOTINRANGE("BidNotInRange"),
     
-    FOURDECIMALSNOTALLOWED("FourDecimalsNotAllowed");
+    FOURDECIMALSNOTALLOWED("FourDecimalsNotAllowed"),
+    
+    BIDDINGONTARGETBUDGETCAMPAIGNNOTALLOWED("BiddingOnTargetBudgetCampaignNotAllowed");
 
     private String value;
 

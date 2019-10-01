@@ -32,66 +32,154 @@ import java.util.Map;
  */
 
 public class ErrorSource {
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private Map<String, String> source = new HashMap<>();
-
   public static final String SERIALIZED_NAME_DETAIL = "detail";
   @SerializedName(SERIALIZED_NAME_DETAIL)
   private String detail;
 
-  public ErrorSource status(String status) {
-    this.status = status;
-    return this;
-  }
+  /**
+   * Gets or Sets status
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    CONTINUE("Continue"),
+    
+    SWITCHINGPROTOCOLS("SwitchingProtocols"),
+    
+    OK("OK"),
+    
+    CREATED("Created"),
+    
+    ACCEPTED("Accepted"),
+    
+    NONAUTHORITATIVEINFORMATION("NonAuthoritativeInformation"),
+    
+    NOCONTENT("NoContent"),
+    
+    RESETCONTENT("ResetContent"),
+    
+    PARTIALCONTENT("PartialContent"),
+    
+    MULTIPLECHOICES("MultipleChoices"),
+    
+    AMBIGUOUS("Ambiguous"),
+    
+    MOVEDPERMANENTLY("MovedPermanently"),
+    
+    MOVED("Moved"),
+    
+    FOUND("Found"),
+    
+    REDIRECT("Redirect"),
+    
+    SEEOTHER("SeeOther"),
+    
+    REDIRECTMETHOD("RedirectMethod"),
+    
+    NOTMODIFIED("NotModified"),
+    
+    USEPROXY("UseProxy"),
+    
+    UNUSED("Unused"),
+    
+    TEMPORARYREDIRECT("TemporaryRedirect"),
+    
+    REDIRECTKEEPVERB("RedirectKeepVerb"),
+    
+    BADREQUEST("BadRequest"),
+    
+    UNAUTHORIZED("Unauthorized"),
+    
+    PAYMENTREQUIRED("PaymentRequired"),
+    
+    FORBIDDEN("Forbidden"),
+    
+    NOTFOUND("NotFound"),
+    
+    METHODNOTALLOWED("MethodNotAllowed"),
+    
+    NOTACCEPTABLE("NotAcceptable"),
+    
+    PROXYAUTHENTICATIONREQUIRED("ProxyAuthenticationRequired"),
+    
+    REQUESTTIMEOUT("RequestTimeout"),
+    
+    CONFLICT("Conflict"),
+    
+    GONE("Gone"),
+    
+    LENGTHREQUIRED("LengthRequired"),
+    
+    PRECONDITIONFAILED("PreconditionFailed"),
+    
+    REQUESTENTITYTOOLARGE("RequestEntityTooLarge"),
+    
+    REQUESTURITOOLONG("RequestUriTooLong"),
+    
+    UNSUPPORTEDMEDIATYPE("UnsupportedMediaType"),
+    
+    REQUESTEDRANGENOTSATISFIABLE("RequestedRangeNotSatisfiable"),
+    
+    EXPECTATIONFAILED("ExpectationFailed"),
+    
+    UPGRADEREQUIRED("UpgradeRequired"),
+    
+    INTERNALSERVERERROR("InternalServerError"),
+    
+    NOTIMPLEMENTED("NotImplemented"),
+    
+    BADGATEWAY("BadGateway"),
+    
+    SERVICEUNAVAILABLE("ServiceUnavailable"),
+    
+    GATEWAYTIMEOUT("GatewayTimeout"),
+    
+    HTTPVERSIONNOTSUPPORTED("HttpVersionNotSupported");
 
-   /**
-   * Get status
-   * @return status
-  **/
-  @ApiModelProperty(value = "")
-  public String getStatus() {
-    return status;
-  }
+    private String value;
 
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  public ErrorSource source(Map<String, String> source) {
-    this.source = source;
-    return this;
-  }
-
-  public ErrorSource putSourceItem(String key, String sourceItem) {
-    if (this.source == null) {
-      this.source = new HashMap<>();
+    StatusEnum(String value) {
+      this.value = value;
     }
-    this.source.put(key, sourceItem);
-    return this;
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return StatusEnum.fromValue(String.valueOf(value));
+      }
+    }
   }
 
-   /**
-   * Get source
-   * @return source
-  **/
-  @ApiModelProperty(value = "")
-  public Map<String, String> getSource() {
-    return source;
-  }
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
 
-  public void setSource(Map<String, String> source) {
-    this.source = source;
-  }
-
-  public ErrorSource detail(String detail) {
-    this.detail = detail;
-    return this;
-  }
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private Map<String, String> source = new HashMap<>();
 
    /**
    * Get detail
@@ -102,8 +190,22 @@ public class ErrorSource {
     return detail;
   }
 
-  public void setDetail(String detail) {
-    this.detail = detail;
+   /**
+   * Get status
+   * @return status
+  **/
+  @ApiModelProperty(value = "")
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+   /**
+   * Get source
+   * @return source
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getSource() {
+    return source;
   }
 
 
@@ -116,14 +218,14 @@ public class ErrorSource {
       return false;
     }
     ErrorSource errorSource = (ErrorSource) o;
-    return Objects.equals(this.status, errorSource.status) &&
-        Objects.equals(this.source, errorSource.source) &&
-        Objects.equals(this.detail, errorSource.detail);
+    return Objects.equals(this.detail, errorSource.detail) &&
+        Objects.equals(this.status, errorSource.status) &&
+        Objects.equals(this.source, errorSource.source);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, source, detail);
+    return Objects.hash(detail, status, source);
   }
 
 
@@ -131,9 +233,9 @@ public class ErrorSource {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorSource {\n");
+    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
     sb.append("}");
     return sb.toString();
   }
