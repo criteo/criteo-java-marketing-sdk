@@ -1,7 +1,9 @@
 
+
 # AudiencePatchResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **operation** | **String** | The Operation recorded. |  [optional]

@@ -1,7 +1,9 @@
 
+
 # CampaignMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) |  |  [optional]
@@ -15,8 +17,9 @@ Name | Type | Description | Notes
 **campaignBid** | [**BidMessage**](BidMessage.md) |  |  [optional]
 
 
-<a name="CampaignTypeEnum"></a>
+
 ## Enum: CampaignTypeEnum
+
 Name | Value
 ---- | -----
 MIDFUNNEL | &quot;MidFunnel&quot;
@@ -24,8 +27,9 @@ LOWERFUNNEL | &quot;LowerFunnel&quot;
 AUDIENCESELLING | &quot;AudienceSelling&quot;
 
 
-<a name="CampaignStatusEnum"></a>
+
 ## Enum: CampaignStatusEnum
+
 Name | Value
 ---- | -----
 RUNNING | &quot;Running&quot;

@@ -1,7 +1,9 @@
 
+
 # CategoryBidMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categoryHashcode** | **Integer** |  |  [optional]

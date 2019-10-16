@@ -1,7 +1,9 @@
 
+
 # CampaignBidChangeResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaignId** | **Integer** |  |  [optional]
@@ -10,8 +12,9 @@ Name | Type | Description | Notes
 **categories** | [**List&lt;CategoryUpdateError&gt;**](CategoryUpdateError.md) |  |  [optional]
 
 
-<a name="ErrorCodeEnum"></a>
+
 ## Enum: ErrorCodeEnum
+
 Name | Value
 ---- | -----
 OK | &quot;OK&quot;

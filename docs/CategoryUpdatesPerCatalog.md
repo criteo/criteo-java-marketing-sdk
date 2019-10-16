@@ -1,7 +1,9 @@
 
+
 # CategoryUpdatesPerCatalog
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogId** | **Integer** |  |  [optional]

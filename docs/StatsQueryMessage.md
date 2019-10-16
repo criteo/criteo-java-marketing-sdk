@@ -1,7 +1,9 @@
 
+
 # StatsQueryMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **advertiserIds** | **String** |  |  [optional]
@@ -14,8 +16,9 @@ Name | Type | Description | Notes
 **timezone** | [**TimezoneEnum**](#TimezoneEnum) |  |  [optional]
 
 
-<a name="List<DimensionsEnum>"></a>
+
 ## Enum: List&lt;DimensionsEnum&gt;
+
 Name | Value
 ---- | -----
 CAMPAIGNID | &quot;CampaignId&quot;
@@ -29,8 +32,9 @@ MONTH | &quot;Month&quot;
 YEAR | &quot;Year&quot;
 
 
-<a name="FormatEnum"></a>
+
 ## Enum: FormatEnum
+
 Name | Value
 ---- | -----
 CSV | &quot;Csv&quot;
@@ -39,8 +43,9 @@ XML | &quot;Xml&quot;
 JSON | &quot;Json&quot;
 
 
-<a name="TimezoneEnum"></a>
+
 ## Enum: TimezoneEnum
+
 Name | Value
 ---- | -----
 GMT | &quot;GMT&quot;

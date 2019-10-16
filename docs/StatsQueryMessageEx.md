@@ -1,7 +1,9 @@
 
+
 # StatsQueryMessageEx
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportType** | [**ReportTypeEnum**](#ReportTypeEnum) |  |  [optional]
@@ -16,8 +18,9 @@ Name | Type | Description | Notes
 **timezone** | [**TimezoneEnum**](#TimezoneEnum) |  |  [optional]
 
 
-<a name="ReportTypeEnum"></a>
+
 ## Enum: ReportTypeEnum
+
 Name | Value
 ---- | -----
 CAMPAIGNPERFORMANCE | &quot;CampaignPerformance&quot;
@@ -25,8 +28,9 @@ FACEBOOKDPA | &quot;FacebookDPA&quot;
 TRANSACTIONID | &quot;TransactionID&quot;
 
 
-<a name="List<DimensionsEnum>"></a>
+
 ## Enum: List&lt;DimensionsEnum&gt;
+
 Name | Value
 ---- | -----
 CAMPAIGNID | &quot;CampaignId&quot;
@@ -40,8 +44,9 @@ MONTH | &quot;Month&quot;
 YEAR | &quot;Year&quot;
 
 
-<a name="FormatEnum"></a>
+
 ## Enum: FormatEnum
+
 Name | Value
 ---- | -----
 CSV | &quot;Csv&quot;
@@ -50,8 +55,9 @@ XML | &quot;Xml&quot;
 JSON | &quot;Json&quot;
 
 
-<a name="TimezoneEnum"></a>
+
 ## Enum: TimezoneEnum
+
 Name | Value
 ---- | -----
 GMT | &quot;GMT&quot;

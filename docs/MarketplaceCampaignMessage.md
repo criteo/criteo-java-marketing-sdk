@@ -1,7 +1,9 @@
 
+
 # MarketplaceCampaignMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaignId** | **Integer** |  |  [optional]
@@ -11,8 +13,9 @@ Name | Type | Description | Notes
 **campaignBid** | [**BidMessage**](BidMessage.md) |  |  [optional]
 
 
-<a name="CampaignStatusEnum"></a>
+
 ## Enum: CampaignStatusEnum
+
 Name | Value
 ---- | -----
 RUNNING | &quot;Running&quot;

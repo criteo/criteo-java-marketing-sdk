@@ -1,7 +1,9 @@
 
+
 # ErrorSource
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **detail** | **String** |  |  [optional]
@@ -9,8 +11,9 @@ Name | Type | Description | Notes
 **source** | **Map&lt;String, String&gt;** |  |  [optional]
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
+
 Name | Value
 ---- | -----
 CONTINUE | &quot;Continue&quot;

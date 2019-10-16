@@ -20,34 +20,43 @@ Get stats by campaign.
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2StatsApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2StatsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2StatsApi apiInstance = new SellersV2StatsApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String intervalSize = "intervalSize_example"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
-String clickAttributionPolicy = "clickAttributionPolicy_example"; // String | Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS
-OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
-OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur after date (default is today’s date)
-String campaignId = "campaignId_example"; // String | Show only metrics for this campaign (default all campaigns)
-Integer count = 56; // Integer | Return up to the first count rows of data (default is all rows)
-try {
-    byte[] result = apiInstance.campaigns(authorization, intervalSize, clickAttributionPolicy, startDate, endDate, campaignId, count);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2StatsApi#campaigns");
-    e.printStackTrace();
+    SellersV2StatsApi apiInstance = new SellersV2StatsApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String intervalSize = "intervalSize_example"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
+    String clickAttributionPolicy = "clickAttributionPolicy_example"; // String | Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS
+    OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur after date (default is today’s date)
+    String campaignId = "campaignId_example"; // String | Show only metrics for this campaign (default all campaigns)
+    Integer count = 56; // Integer | Return up to the first count rows of data (default is all rows)
+    try {
+      byte[] result = apiInstance.campaigns(authorization, intervalSize, clickAttributionPolicy, startDate, endDate, campaignId, count);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2StatsApi#campaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -75,6 +84,16 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | BadRequest |  -  |
+**401** | Authentication failed. |  -  |
+**403** | Forbidden |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 <a name="sellerCampaigns"></a>
 # **sellerCampaigns**
@@ -87,35 +106,44 @@ Get stats by seller-campaign.
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2StatsApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2StatsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2StatsApi apiInstance = new SellersV2StatsApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String intervalSize = "intervalSize_example"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
-String clickAttributionPolicy = "clickAttributionPolicy_example"; // String | Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS
-OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
-OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur after date (default is today’s date)
-String sellerId = "sellerId_example"; // String | Show only metrics for this seller (default all sellers)
-String campaignId = "campaignId_example"; // String | Show only metrics for this campaign (default all campaigns)
-Integer count = 56; // Integer | Return up to the first count rows of data (default is all rows)
-try {
-    byte[] result = apiInstance.sellerCampaigns(authorization, intervalSize, clickAttributionPolicy, startDate, endDate, sellerId, campaignId, count);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2StatsApi#sellerCampaigns");
-    e.printStackTrace();
+    SellersV2StatsApi apiInstance = new SellersV2StatsApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String intervalSize = "intervalSize_example"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
+    String clickAttributionPolicy = "clickAttributionPolicy_example"; // String | Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS
+    OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur after date (default is today’s date)
+    String sellerId = "sellerId_example"; // String | Show only metrics for this seller (default all sellers)
+    String campaignId = "campaignId_example"; // String | Show only metrics for this campaign (default all campaigns)
+    Integer count = 56; // Integer | Return up to the first count rows of data (default is all rows)
+    try {
+      byte[] result = apiInstance.sellerCampaigns(authorization, intervalSize, clickAttributionPolicy, startDate, endDate, sellerId, campaignId, count);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2StatsApi#sellerCampaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -145,6 +173,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | BadRequest |  -  |
+**401** | Authentication failed. |  -  |
+**403** | Forbidden |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="sellers"></a>
 # **sellers**
 > byte[] sellers(authorization, intervalSize, clickAttributionPolicy, startDate, endDate, sellerId, count)
@@ -156,34 +194,43 @@ Get stats by seller.
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2StatsApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2StatsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2StatsApi apiInstance = new SellersV2StatsApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String intervalSize = "intervalSize_example"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
-String clickAttributionPolicy = "clickAttributionPolicy_example"; // String | Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS
-OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
-OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur after date (default is today’s date)
-String sellerId = "sellerId_example"; // String | Show only metrics for this seller (default all sellers)
-Integer count = 56; // Integer | Return up to the first count rows of data (default is all rows)
-try {
-    byte[] result = apiInstance.sellers(authorization, intervalSize, clickAttributionPolicy, startDate, endDate, sellerId, count);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2StatsApi#sellers");
-    e.printStackTrace();
+    SellersV2StatsApi apiInstance = new SellersV2StatsApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String intervalSize = "intervalSize_example"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
+    String clickAttributionPolicy = "clickAttributionPolicy_example"; // String | Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS
+    OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Filter out all events that occur after date (default is today’s date)
+    String sellerId = "sellerId_example"; // String | Show only metrics for this seller (default all sellers)
+    Integer count = 56; // Integer | Return up to the first count rows of data (default is all rows)
+    try {
+      byte[] result = apiInstance.sellers(authorization, intervalSize, clickAttributionPolicy, startDate, endDate, sellerId, count);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2StatsApi#sellers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -211,4 +258,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | BadRequest |  -  |
+**401** | Authentication failed. |  -  |
+**403** | Forbidden |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 

@@ -1,7 +1,9 @@
 
+
 # AudienceCreateRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **advertiserId** | **Integer** | Mandatory. The AdvertiserId this Audience will belong to. |  [optional]

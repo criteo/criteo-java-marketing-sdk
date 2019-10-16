@@ -1,7 +1,9 @@
 
+
 # CatalogProduct
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **batchId** | **Long** | Mandatory. batch Id, set by the partner. Use to future deduplication |  [optional]
@@ -12,8 +14,9 @@ Name | Type | Description | Notes
 **product** | [**GoogleProduct**](GoogleProduct.md) |  |  [optional]
 
 
-<a name="MethodEnum"></a>
+
 ## Enum: MethodEnum
+
 Name | Value
 ---- | -----
 INSERT | &quot;Insert&quot;

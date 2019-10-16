@@ -1,7 +1,9 @@
 
+
 # SellerBudgetMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
@@ -16,8 +18,9 @@ Name | Type | Description | Notes
 **isSuspended** | **Boolean** |  |  [optional]
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
+
 Name | Value
 ---- | -----
 ARCHIVED | &quot;Archived&quot;

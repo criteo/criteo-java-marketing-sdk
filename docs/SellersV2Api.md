@@ -31,29 +31,38 @@ Create one or more new budgets to enable spending with the given limitations.  A
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-List<CreateSellerBudgetMapiMessage> createSellerBudgets = Arrays.asList(null); // List<CreateSellerBudgetMapiMessage> | 
-try {
-    List<SellerBudgetMessage> result = apiInstance.createSellerBudgets(authorization, createSellerBudgets);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#createSellerBudgets");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    List<CreateSellerBudgetMapiMessage> createSellerBudgets = Arrays.asList(); // List<CreateSellerBudgetMapiMessage> | 
+    try {
+      List<SellerBudgetMessage> result = apiInstance.createSellerBudgets(authorization, createSellerBudgets);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#createSellerBudgets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -62,7 +71,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
- **createSellerBudgets** | [**List&lt;CreateSellerBudgetMapiMessage&gt;**](List.md)|  |
+ **createSellerBudgets** | [**List&lt;CreateSellerBudgetMapiMessage&gt;**](CreateSellerBudgetMapiMessage.md)|  |
 
 ### Return type
 
@@ -77,6 +86,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getBudgetsBySeller"></a>
 # **getBudgetsBySeller**
 > List&lt;SellerBudgetMessage&gt; getBudgetsBySeller(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type)
@@ -88,36 +106,45 @@ Return a collection of budgets for this seller filtered by optional filter param
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String status = "status_example"; // String | Return only budgets with the given status.
-Boolean withBalance = true; // Boolean | Return only budgets with the given status.
-Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.              If param is not provided, default behavior is to only return budgets that have not yet ended.
-OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
-Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
-String type = "type_example"; // String | Return only budgets with the given budget type.
-try {
-    List<SellerBudgetMessage> result = apiInstance.getBudgetsBySeller(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getBudgetsBySeller");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String status = "status_example"; // String | Return only budgets with the given status.
+    Boolean withBalance = true; // Boolean | Return only budgets with the given status.
+    Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
+    OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.              If param is not provided, default behavior is to only return budgets that have not yet ended.
+    OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
+    Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
+    String type = "type_example"; // String | Return only budgets with the given budget type.
+    try {
+      List<SellerBudgetMessage> result = apiInstance.getBudgetsBySeller(sellerId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getBudgetsBySeller");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -148,6 +175,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getBudgetsBySellerCampaignId"></a>
 # **getBudgetsBySellerCampaignId**
 > List&lt;SellerBudgetMessage&gt; getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type)
@@ -159,35 +196,44 @@ Return a collection of budgets for this seller campaign filtered by optional fil
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String sellerCampaignId = "sellerCampaignId_example"; // String | Return only budgets belonging to the given seller campaign.
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String status = "status_example"; // String | Return only budgets with the given status.
-Boolean withBalance = true; // Boolean | Return only budgets with a positive balance.
-Boolean withSpend = true; // Boolean | Return budgets with a positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
-String type = "type_example"; // String | Return only budgets with the given budget type.
-try {
-    List<SellerBudgetMessage> result = apiInstance.getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getBudgetsBySellerCampaignId");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerCampaignId = "sellerCampaignId_example"; // String | Return only budgets belonging to the given seller campaign.
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String status = "status_example"; // String | Return only budgets with the given status.
+    Boolean withBalance = true; // Boolean | Return only budgets with a positive balance.
+    Boolean withSpend = true; // Boolean | Return budgets with a positive spend.
+    OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+    OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
+    String type = "type_example"; // String | Return only budgets with the given budget type.
+    try {
+      List<SellerBudgetMessage> result = apiInstance.getBudgetsBySellerCampaignId(sellerCampaignId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getBudgetsBySellerCampaignId");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -217,6 +263,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getSeller"></a>
 # **getSeller**
 > SellerBase getSeller(sellerId, authorization)
@@ -228,29 +284,38 @@ Returns details for the selected seller.  For example                    {      
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String sellerId = "sellerId_example"; // String | Id of the seller.
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-try {
-    SellerBase result = apiInstance.getSeller(sellerId, authorization);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getSeller");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerId = "sellerId_example"; // String | Id of the seller.
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    try {
+      SellerBase result = apiInstance.getSeller(sellerId, authorization);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSeller");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -274,6 +339,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getSellerBudget"></a>
 # **getSellerBudget**
 > SellerBudgetMessage getSellerBudget(budgetId, authorization)
@@ -285,29 +360,38 @@ Return a budget. For example:                    {          \&quot;id\&quot;: \&
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-Long budgetId = 56L; // Long | 
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-try {
-    SellerBudgetMessage result = apiInstance.getSellerBudget(budgetId, authorization);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getSellerBudget");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    Long budgetId = 56L; // Long | 
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    try {
+      SellerBudgetMessage result = apiInstance.getSellerBudget(budgetId, authorization);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellerBudget");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -331,6 +415,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getSellerBudgets"></a>
 # **getSellerBudgets**
 > List&lt;SellerBudgetMessage&gt; getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type)
@@ -342,36 +436,45 @@ Return a collection of budgets filtered by optional filter parameters.  If all p
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String status = "status_example"; // String | Return only budgets with the given status.
-Boolean withBalance = true; // Boolean | Return only budgets with the given status.
-Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
-OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
-Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
-String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
-String type = "type_example"; // String | Return only budgets with the given budget type.
-try {
-    List<SellerBudgetMessage> result = apiInstance.getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getSellerBudgets");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String status = "status_example"; // String | Return only budgets with the given status.
+    Boolean withBalance = true; // Boolean | Return only budgets with the given status.
+    Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
+    OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+    OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
+    Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
+    String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
+    String type = "type_example"; // String | Return only budgets with the given budget type.
+    try {
+      List<SellerBudgetMessage> result = apiInstance.getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellerBudgets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -402,6 +505,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getSellerCampaign"></a>
 # **getSellerCampaign**
 > SellerCampaignMessage getSellerCampaign(sellerCampaignId, authorization)
@@ -413,29 +526,38 @@ Return details for a seller campaign.  For example,                    {        
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String sellerCampaignId = "sellerCampaignId_example"; // String | Id of the seller campaign.
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-try {
-    SellerCampaignMessage result = apiInstance.getSellerCampaign(sellerCampaignId, authorization);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getSellerCampaign");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerCampaignId = "sellerCampaignId_example"; // String | Id of the seller campaign.
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    try {
+      SellerCampaignMessage result = apiInstance.getSellerCampaign(sellerCampaignId, authorization);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellerCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -459,6 +581,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getSellerCampaigns"></a>
 # **getSellerCampaigns**
 > List&lt;SellerCampaignMessage&gt; getSellerCampaigns(authorization, sellerStatus, sellerId, campaignId, budgetStatus)
@@ -470,32 +602,41 @@ Return a collection of seller campaigns filtered by optional filter parameters. 
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
-String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
-Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
-String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
-try {
-    List<SellerCampaignMessage> result = apiInstance.getSellerCampaigns(authorization, sellerStatus, sellerId, campaignId, budgetStatus);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getSellerCampaigns");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
+    String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
+    Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
+    String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
+    try {
+      List<SellerCampaignMessage> result = apiInstance.getSellerCampaigns(authorization, sellerStatus, sellerId, campaignId, budgetStatus);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellerCampaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -522,6 +663,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getSellerCampaignsBySeller"></a>
 # **getSellerCampaignsBySeller**
 > List&lt;SellerCampaignMessage&gt; getSellerCampaignsBySeller(sellerId, authorization, sellerStatus, campaignId, budgetStatus)
@@ -533,32 +684,41 @@ Return a collection of seller campaigns for this seller filtered by optional fil
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
-Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
-String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
-try {
-    List<SellerCampaignMessage> result = apiInstance.getSellerCampaignsBySeller(sellerId, authorization, sellerStatus, campaignId, budgetStatus);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getSellerCampaignsBySeller");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
+    Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
+    String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
+    try {
+      List<SellerCampaignMessage> result = apiInstance.getSellerCampaignsBySeller(sellerId, authorization, sellerStatus, campaignId, budgetStatus);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellerCampaignsBySeller");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -585,6 +745,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getSellers"></a>
 # **getSellers**
 > List&lt;SellerBase&gt; getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName)
@@ -596,32 +766,41 @@ Return a collection of sellers filtered by optional filter parameters.  If all p
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String sellerStatus = "sellerStatus_example"; // String | Return only sellers with specific status.
-Boolean withProducts = true; // Boolean | Return only sellers with or without products in catalog.
-String withBudgetStatus = "withBudgetStatus_example"; // String | Return only sellers with specific budget status.
-String sellerName = "sellerName_example"; // String | Return only sellers with the matching name.
-try {
-    List<SellerBase> result = apiInstance.getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#getSellers");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String sellerStatus = "sellerStatus_example"; // String | Return only sellers with specific status.
+    Boolean withProducts = true; // Boolean | Return only sellers with or without products in catalog.
+    String withBudgetStatus = "withBudgetStatus_example"; // String | Return only sellers with specific budget status.
+    String sellerName = "sellerName_example"; // String | Return only sellers with the matching name.
+    try {
+      List<SellerBase> result = apiInstance.getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -648,6 +827,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="updateSellerBudget"></a>
 # **updateSellerBudget**
 > SellerBudgetMessage updateSellerBudget(budgetId, authorization, message)
@@ -659,30 +848,39 @@ Modify an existing active budget to change its limitations or status.  All three
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-Long budgetId = 56L; // Long | 
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-UpdateSellerBudgetMessageBase message = new UpdateSellerBudgetMessageBase(); // UpdateSellerBudgetMessageBase | 
-try {
-    SellerBudgetMessage result = apiInstance.updateSellerBudget(budgetId, authorization, message);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#updateSellerBudget");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    Long budgetId = 56L; // Long | 
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    UpdateSellerBudgetMessageBase message = new UpdateSellerBudgetMessageBase(); // UpdateSellerBudgetMessageBase | 
+    try {
+      SellerBudgetMessage result = apiInstance.updateSellerBudget(budgetId, authorization, message);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#updateSellerBudget");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -707,6 +905,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="updateSellerBudgets"></a>
 # **updateSellerBudgets**
 > List&lt;SellerBudgetMessage&gt; updateSellerBudgets(authorization, updateSellerBudgets)
@@ -718,29 +925,38 @@ Modify one or more existing active budgets to change their limitations or status
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-List<UpdateSellerBudgetMessage> updateSellerBudgets = Arrays.asList(null); // List<UpdateSellerBudgetMessage> | 
-try {
-    List<SellerBudgetMessage> result = apiInstance.updateSellerBudgets(authorization, updateSellerBudgets);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#updateSellerBudgets");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    List<UpdateSellerBudgetMessage> updateSellerBudgets = Arrays.asList(); // List<UpdateSellerBudgetMessage> | 
+    try {
+      List<SellerBudgetMessage> result = apiInstance.updateSellerBudgets(authorization, updateSellerBudgets);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#updateSellerBudgets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -749,7 +965,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
- **updateSellerBudgets** | [**List&lt;UpdateSellerBudgetMessage&gt;**](List.md)|  |
+ **updateSellerBudgets** | [**List&lt;UpdateSellerBudgetMessage&gt;**](UpdateSellerBudgetMessage.md)|  |
 
 ### Return type
 
@@ -764,6 +980,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="updateSellerCampaign"></a>
 # **updateSellerCampaign**
 > SellerCampaignMessage updateSellerCampaign(sellerCampaignId, bid, authorization)
@@ -775,30 +1000,39 @@ Patching a seller campaign allows the bid to be modified. The bid must be a non-
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String sellerCampaignId = "sellerCampaignId_example"; // String | Id of the existing seller campaign to update
-Double bid = 3.4D; // Double | The new bid for the seller campaign.
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-try {
-    SellerCampaignMessage result = apiInstance.updateSellerCampaign(sellerCampaignId, bid, authorization);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#updateSellerCampaign");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerCampaignId = "sellerCampaignId_example"; // String | Id of the existing seller campaign to update
+    Double bid = 3.4D; // Double | The new bid for the seller campaign.
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    try {
+      SellerCampaignMessage result = apiInstance.updateSellerCampaign(sellerCampaignId, bid, authorization);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#updateSellerCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -823,6 +1057,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="updateSellerCampaigns"></a>
 # **updateSellerCampaigns**
 > List&lt;SellerCampaignMessage&gt; updateSellerCampaigns(authorization, campaignMessages)
@@ -834,29 +1078,38 @@ Patching a collection of seller campaigns allows their bids to be modified.  Eac
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersV2Api;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersV2Api apiInstance = new SellersV2Api();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-List<SellerCampaignUpdate> campaignMessages = Arrays.asList(null); // List<SellerCampaignUpdate> | 
-try {
-    List<SellerCampaignMessage> result = apiInstance.updateSellerCampaigns(authorization, campaignMessages);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersV2Api#updateSellerCampaigns");
-    e.printStackTrace();
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    List<SellerCampaignUpdate> campaignMessages = Arrays.asList(); // List<SellerCampaignUpdate> | 
+    try {
+      List<SellerCampaignMessage> result = apiInstance.updateSellerCampaigns(authorization, campaignMessages);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#updateSellerCampaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -865,7 +1118,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
- **campaignMessages** | [**List&lt;SellerCampaignUpdate&gt;**](List.md)|  |
+ **campaignMessages** | [**List&lt;SellerCampaignUpdate&gt;**](SellerCampaignUpdate.md)|  |
 
 ### Return type
 
@@ -879,4 +1132,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 

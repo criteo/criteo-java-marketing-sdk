@@ -1,7 +1,9 @@
 
+
 # AudiencePatchRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **operation** | **String** | Mandatory. The Operation of this request. Can be either &#39;add&#39; or &#39;remove&#39;. |  [optional]

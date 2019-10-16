@@ -1,7 +1,9 @@
 
+
 # BidMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bidValue** | **Double** |  |  [optional]
@@ -10,8 +12,9 @@ Name | Type | Description | Notes
 **bidIsPending** | **Boolean** |  |  [optional]
 
 
-<a name="BidTypeEnum"></a>
+
 ## Enum: BidTypeEnum
+
 Name | Value
 ---- | -----
 UNKNOWN | &quot;Unknown&quot;

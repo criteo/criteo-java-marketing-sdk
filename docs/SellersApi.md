@@ -23,29 +23,38 @@ Creates a budget for a seller/list of sellers.
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersApi apiInstance = new SellersApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-SellerBudgetsCreateMessage sellerBudgets = new SellerBudgetsCreateMessage(); // SellerBudgetsCreateMessage | 
-try {
-    SellerBudgetsMessage result = apiInstance.createBudgets(authorization, sellerBudgets);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersApi#createBudgets");
-    e.printStackTrace();
+    SellersApi apiInstance = new SellersApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    SellerBudgetsCreateMessage sellerBudgets = new SellerBudgetsCreateMessage(); // SellerBudgetsCreateMessage | 
+    try {
+      SellerBudgetsMessage result = apiInstance.createBudgets(authorization, sellerBudgets);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersApi#createBudgets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -69,6 +78,18 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Seller budgets created successfully. |  -  |
+**400** | Bad request, invalid syntax or validation error (the whole batch will be dropped, no budget will be created). Response message will be different based on error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**404** | One of the requested sellers is unknown. The whole batch will be dropped, no budget will be created. |  -  |
+**405** | Requested campaign isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="get"></a>
 # **get**
 > List&lt;SellerMessage&gt; get(authorization, campaignIds, onlyActiveSellers, onlySellersWithProductsInCatalog, onlyActiveBudgets)
@@ -80,32 +101,41 @@ Returns a list of sellers with all their details.&lt;br /&gt;  By default, this 
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersApi apiInstance = new SellersApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String campaignIds = "campaignIds_example"; // String | Optional. One or more campaign ids, E.g., 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail.
-Boolean onlyActiveSellers = true; // Boolean | Optional. Filters by seller status, allowing to only display active sellers or not. Default value is false.
-Boolean onlySellersWithProductsInCatalog = true; // Boolean | Optional. Only return sellers that have currently products in the catalog. Default value is false.
-Boolean onlyActiveBudgets = true; // Boolean | Optional. Will return only active budget for each seller. Default value is false
-try {
-    List<SellerMessage> result = apiInstance.get(authorization, campaignIds, onlyActiveSellers, onlySellersWithProductsInCatalog, onlyActiveBudgets);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersApi#get");
-    e.printStackTrace();
+    SellersApi apiInstance = new SellersApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String campaignIds = "campaignIds_example"; // String | Optional. One or more campaign ids, E.g., 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail.
+    Boolean onlyActiveSellers = true; // Boolean | Optional. Filters by seller status, allowing to only display active sellers or not. Default value is false.
+    Boolean onlySellersWithProductsInCatalog = true; // Boolean | Optional. Only return sellers that have currently products in the catalog. Default value is false.
+    Boolean onlyActiveBudgets = true; // Boolean | Optional. Will return only active budget for each seller. Default value is false
+    try {
+      List<SellerMessage> result = apiInstance.get(authorization, campaignIds, onlyActiveSellers, onlySellersWithProductsInCatalog, onlyActiveBudgets);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersApi#get");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -132,6 +162,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of sellers successfully fetched. |  -  |
+**400** | Bad request, invalid syntax. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**405** | One of the requested campaigns isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getCampaigns"></a>
 # **getCampaigns**
 > List&lt;MarketplaceCampaignMessage&gt; getCampaigns(authorization, campaignIds, advertiserIds, status)
@@ -143,31 +184,40 @@ Get the list of campaigns with the specified filters.  If a campaign is requeste
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersApi apiInstance = new SellersApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-String campaignIds = "campaignIds_example"; // String | Optional. One or more campaign ids, E.g. 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail.
-String advertiserIds = "advertiserIds_example"; // String | Optional. One or more advertiser ids, E.g. 78, 12932, 45236. If the requested advertiser ids are not part of the user's portfolio, the call will fail.
-String status = "status_example"; // String | Optional. Status of the campaign. By default, all campaigns are returned, regardless of their status.
-try {
-    List<MarketplaceCampaignMessage> result = apiInstance.getCampaigns(authorization, campaignIds, advertiserIds, status);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersApi#getCampaigns");
-    e.printStackTrace();
+    SellersApi apiInstance = new SellersApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String campaignIds = "campaignIds_example"; // String | Optional. One or more campaign ids, E.g. 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail.
+    String advertiserIds = "advertiserIds_example"; // String | Optional. One or more advertiser ids, E.g. 78, 12932, 45236. If the requested advertiser ids are not part of the user's portfolio, the call will fail.
+    String status = "status_example"; // String | Optional. Status of the campaign. By default, all campaigns are returned, regardless of their status.
+    try {
+      List<MarketplaceCampaignMessage> result = apiInstance.getCampaigns(authorization, campaignIds, advertiserIds, status);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersApi#getCampaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -193,6 +243,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sellers campaigns returned OK. |  -  |
+**400** | API user&#39;s portfolio is empty and no campaignId/advertiserId is provided. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**405** | One of the requested campaigns isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="getStats"></a>
 # **getStats**
 > getStats(authorization, statsQuery)
@@ -204,28 +265,37 @@ Generates a statistics report
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersApi apiInstance = new SellersApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-StatsQueryMessage statsQuery = new StatsQueryMessage(); // StatsQueryMessage | The report query details
-try {
-    apiInstance.getStats(authorization, statsQuery);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersApi#getStats");
-    e.printStackTrace();
+    SellersApi apiInstance = new SellersApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    StatsQueryMessage statsQuery = new StatsQueryMessage(); // StatsQueryMessage | The report query details
+    try {
+      apiInstance.getStats(authorization, statsQuery);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersApi#getStats");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -249,6 +319,15 @@ null (empty response body)
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Statistics report generated OK. |  -  |
+**400** | Bad request, invalid syntax or validation error. |  -  |
+**401** | Authentication failed. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="updateBids"></a>
 # **updateBids**
 > SellerBidsMessage updateBids(authorization, sellerBids)
@@ -260,29 +339,38 @@ Set or update a bid for a seller/list of sellers.
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersApi apiInstance = new SellersApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-SellerBidsMessage sellerBids = new SellerBidsMessage(); // SellerBidsMessage | 
-try {
-    SellerBidsMessage result = apiInstance.updateBids(authorization, sellerBids);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersApi#updateBids");
-    e.printStackTrace();
+    SellersApi apiInstance = new SellersApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    SellerBidsMessage sellerBids = new SellerBidsMessage(); // SellerBidsMessage | 
+    try {
+      SellerBidsMessage result = apiInstance.updateBids(authorization, sellerBids);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersApi#updateBids");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -306,6 +394,18 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sellers bids successfully updated. |  -  |
+**400** | Bad request, invalid syntax or validation error (the whole batch will be dropped, no bid will be updated). Response message will be different based on error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested campaign doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**404** | One of the requested sellers is unknown which prevents from updating bids. To get the list of sellers and their IDs you can use the /sellers endpoint. |  -  |
+**405** | Requested campaign isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 <a name="updateBudgets"></a>
 # **updateBudgets**
 > SellerBudgetsMessage updateBudgets(authorization, sellerBudgets)
@@ -317,29 +417,38 @@ Updates a budget for a seller/list of sellers.
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.SellersApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-SellersApi apiInstance = new SellersApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-SellerBudgetsUpdateMessage sellerBudgets = new SellerBudgetsUpdateMessage(); // SellerBudgetsUpdateMessage | 
-try {
-    SellerBudgetsMessage result = apiInstance.updateBudgets(authorization, sellerBudgets);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SellersApi#updateBudgets");
-    e.printStackTrace();
+    SellersApi apiInstance = new SellersApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    SellerBudgetsUpdateMessage sellerBudgets = new SellerBudgetsUpdateMessage(); // SellerBudgetsUpdateMessage | 
+    try {
+      SellerBudgetsMessage result = apiInstance.updateBudgets(authorization, sellerBudgets);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersApi#updateBudgets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -362,4 +471,16 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sellers budgets successfully updated. |  -  |
+**400** | Bad request, invalid syntax or validation error (the whole batch will be dropped, no budget will be updated). Response message will be different based on error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested campaign doesn&#39;t belong to the API user&#39;s portfolio which prevents from updating budgets. |  -  |
+**404** | One of the requested budgets is unknown. The whole batch will be dropped, no budget will be updated. |  -  |
+**405** | Requested campaign isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 

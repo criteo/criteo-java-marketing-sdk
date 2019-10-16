@@ -1,7 +1,9 @@
 
+
 # CategoryMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categoryHashCode** | **Integer** |  |  [optional]

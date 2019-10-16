@@ -1,7 +1,9 @@
 
+
 # CategoryUpdateError
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **categoryHashCode** | **Integer** |  |  [optional]
@@ -9,8 +11,9 @@ Name | Type | Description | Notes
 **errorMessage** | **String** |  |  [optional]
 
 
-<a name="ErrorCodeEnum"></a>
+
 ## Enum: ErrorCodeEnum
+
 Name | Value
 ---- | -----
 OK | &quot;OK&quot;

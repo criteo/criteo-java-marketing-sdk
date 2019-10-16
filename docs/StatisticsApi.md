@@ -18,29 +18,38 @@ Generates a statistics report
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiClient;
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.Configuration;
-//import com.criteo.marketing.auth.*;
-//import com.criteo.marketing.api.StatisticsApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.StatisticsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
 
-// Configure API key authorization: Authorization
-ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-Authorization.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.setApiKeyPrefix("Token");
-
-StatisticsApi apiInstance = new StatisticsApi();
-String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-StatsQueryMessageEx statsQuery = new StatsQueryMessageEx(); // StatsQueryMessageEx | The report query details
-try {
-    byte[] result = apiInstance.getStats(authorization, statsQuery);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StatisticsApi#getStats");
-    e.printStackTrace();
+    StatisticsApi apiInstance = new StatisticsApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    StatsQueryMessageEx statsQuery = new StatsQueryMessageEx(); // StatsQueryMessageEx | The report query details
+    try {
+      byte[] result = apiInstance.getStats(authorization, statsQuery);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StatisticsApi#getStats");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -63,4 +72,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Statistics report generated OK. |  -  |
+**400** | Bad request, invalid syntax or validation error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | No campaigns found. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 

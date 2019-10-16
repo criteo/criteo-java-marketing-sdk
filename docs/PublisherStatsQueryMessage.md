@@ -1,7 +1,9 @@
 
+
 # PublisherStatsQueryMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **advertiserIds** | **String** |  |  [optional]

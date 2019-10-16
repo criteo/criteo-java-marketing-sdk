@@ -18,20 +18,32 @@ Get the token necessary to perform any action through our API. You can create yo
 ### Example
 ```java
 // Import classes:
-//import com.criteo.marketing.ApiException;
-//import com.criteo.marketing.api.AuthenticationApi;
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.AuthenticationApi;
 
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
 
-AuthenticationApi apiInstance = new AuthenticationApi();
-String clientId = "clientId_example"; // String | API Client-Id or Username
-String clientSecret = "clientSecret_example"; // String | API Client secret or password
-String grantType = "\"client_credentials\""; // String | Other grant types are not available
-try {
-    InlineResponse200 result = apiInstance.oAuth2TokenPost(clientId, clientSecret, grantType);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AuthenticationApi#oAuth2TokenPost");
-    e.printStackTrace();
+    AuthenticationApi apiInstance = new AuthenticationApi(defaultClient);
+    String clientId = "clientId_example"; // String | API Client-Id or Username
+    String clientSecret = "clientSecret_example"; // String | API Client secret or password
+    String grantType = "\"client_credentials\""; // String | Other grant types are not available
+    try {
+      InlineResponse200 result = apiInstance.oAuth2TokenPost(clientId, clientSecret, grantType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AuthenticationApi#oAuth2TokenPost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -55,4 +67,13 @@ No authorization required
 
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad request, invalid syntax |  -  |
+**403** | Forbidden |  -  |
+**429** | Rate limit reached |  -  |
+**500** | Unknown Error |  -  |
 

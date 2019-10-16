@@ -18,32 +18,33 @@ plugins {
 }
 
 group = 'com.criteo'
-version = '1.0.16'
+version = '1.0.17'
 
 repositories {
     jcenter()
 }
-
 sourceSets {
     main.java.srcDirs = ['src/main/java']
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
 
-install {
-    repositories.mavenInstaller {
-        pom.artifactId = 'marketing.java-client'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    install {
+        repositories.mavenInstaller {
+            pom.artifactId = 'marketing.java-client'
+        }
     }
-}
 
 dependencies {
-    compile 'io.swagger:swagger-annotations:1.5.21'
-    compile 'com.squareup.okhttp3:okhttp:3.13.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.13.1'
+    compile 'io.swagger:swagger-annotations:1.5.22'
+    compile "com.google.code.findbugs:jsr305:3.0.2"
+    compile 'com.squareup.okhttp3:okhttp:3.14.2'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.14.2'
     compile 'com.google.code.gson:gson:2.8.5'
     compile 'io.gsonfire:gson-fire:1.8.3'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mock-server:mockserver-netty:5.5.1'
 }
@@ -55,6 +56,7 @@ task sourcesJar(type: Jar) {
 
 javadoc {
     options.encoding = 'UTF-8'
+    options.tags = [ "http.response.details:a:Http Response Details" ]
 }
 
 task javadocJar(type: Jar) {
@@ -67,7 +69,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.criteo'
             artifactId 'marketing.java-client'
-            version '1.0.16'
+            version '1.0.17'
             from components.java
             artifact sourcesJar
             artifact javadocJar

@@ -1,7 +1,9 @@
 
+
 # UpdateSellerBudgetMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **budgetId** | **Long** |  |  [optional]
