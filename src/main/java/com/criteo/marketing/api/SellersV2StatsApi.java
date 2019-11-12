@@ -72,9 +72,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call campaignsCall(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String campaignId, Integer count, final ApiCallback _callback) throws ApiException {
@@ -165,9 +165,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public byte[] campaigns(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String campaignId, Integer count) throws ApiException {
@@ -193,9 +193,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<byte[]> campaignsWithHttpInfo(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String campaignId, Integer count) throws ApiException {
@@ -223,9 +223,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call campaignsAsync(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String campaignId, Integer count, final ApiCallback<byte[]> _callback) throws ApiException {
@@ -254,9 +254,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call sellerCampaignsCall(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, String campaignId, Integer count, final ApiCallback _callback) throws ApiException {
@@ -352,9 +352,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public byte[] sellerCampaigns(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, String campaignId, Integer count) throws ApiException {
@@ -381,9 +381,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<byte[]> sellerCampaignsWithHttpInfo(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, String campaignId, Integer count) throws ApiException {
@@ -412,9 +412,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call sellerCampaignsAsync(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, String campaignId, Integer count, final ApiCallback<byte[]> _callback) throws ApiException {
@@ -442,9 +442,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call sellersCall(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, Integer count, final ApiCallback _callback) throws ApiException {
@@ -535,9 +535,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public byte[] sellers(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, Integer count) throws ApiException {
@@ -563,9 +563,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<byte[]> sellersWithHttpInfo(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, Integer count) throws ApiException {
@@ -593,9 +593,9 @@ public class SellersV2StatsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> BadRequest </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> InternalServerError </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call sellersAsync(String authorization, String intervalSize, String clickAttributionPolicy, OffsetDateTime startDate, OffsetDateTime endDate, String sellerId, Integer count, final ApiCallback<byte[]> _callback) throws ApiException {

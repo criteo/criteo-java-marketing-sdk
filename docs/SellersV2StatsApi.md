@@ -91,9 +91,9 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **400** | BadRequest |  -  |
 **401** | Authentication failed. |  -  |
-**403** | Forbidden |  -  |
+**403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**500** | InternalServerError |  -  |
 
 <a name="sellerCampaigns"></a>
 # **sellerCampaigns**
@@ -179,9 +179,9 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **400** | BadRequest |  -  |
 **401** | Authentication failed. |  -  |
-**403** | Forbidden |  -  |
+**403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**500** | InternalServerError |  -  |
 
 <a name="sellers"></a>
 # **sellers**
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **400** | BadRequest |  -  |
 **401** | Authentication failed. |  -  |
-**403** | Forbidden |  -  |
+**403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**500** | InternalServerError |  -  |
 

@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.17</version>
+  <version>1.0.18</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.17"
+compile "com.criteo:marketing.java-client:1.0.18"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/marketing.java-client-1.0.17.jar`
+* `target/marketing.java-client-1.0.18.jar`
 * `target/lib/*.jar`
 
 ## Example
@@ -108,6 +108,8 @@ Class | Method | HTTP request | Description
 *SellersApi* | [**updateBids**](docs/SellersApi.md#updateBids) | **PUT** /v1/sellers/bids | Set or update a bid for a seller/list of sellers.
 *SellersApi* | [**updateBudgets**](docs/SellersApi.md#updateBudgets) | **PUT** /v1/sellers/budgets | Updates a budget for a seller/list of sellers.
 *SellersV2Api* | [**createSellerBudgets**](docs/SellersV2Api.md#createSellerBudgets) | **POST** /v2/crp/budgets | Create a collection of budgets.
+*SellersV2Api* | [**getAdvertiserCampaigns**](docs/SellersV2Api.md#getAdvertiserCampaigns) | **GET** /v2/crp/advertisers/{advertiserId} | Get the collection of CRP campaigns associated with the advertiserId.
+*SellersV2Api* | [**getAdvertisers**](docs/SellersV2Api.md#getAdvertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 *SellersV2Api* | [**getBudgetsBySeller**](docs/SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 *SellersV2Api* | [**getBudgetsBySellerCampaignId**](docs/SellersV2Api.md#getBudgetsBySellerCampaignId) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 *SellersV2Api* | [**getSeller**](docs/SellersV2Api.md#getSeller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
@@ -129,6 +131,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AdvertiserCampaignMessage](docs/AdvertiserCampaignMessage.md)
+ - [AdvertiserInfoMessage](docs/AdvertiserInfoMessage.md)
  - [AudienceCreateRequest](docs/AudienceCreateRequest.md)
  - [AudienceCreateResponse](docs/AudienceCreateResponse.md)
  - [AudiencePatchRequest](docs/AudiencePatchRequest.md)
