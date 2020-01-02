@@ -1005,7 +1005,7 @@ public class SellersV2Api {
     }
     /**
      * Build call for getSellerBudget
-     * @param budgetId  (required)
+     * @param budgetId Id of the budget. (required)
      * @param authorization JWT Bearer Token (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1076,7 +1076,7 @@ public class SellersV2Api {
     /**
      * Get details for a budget.
      * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
-     * @param budgetId  (required)
+     * @param budgetId Id of the budget. (required)
      * @param authorization JWT Bearer Token (required)
      * @return SellerBudgetMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1099,7 +1099,7 @@ public class SellersV2Api {
     /**
      * Get details for a budget.
      * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
-     * @param budgetId  (required)
+     * @param budgetId Id of the budget. (required)
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1123,7 +1123,7 @@ public class SellersV2Api {
     /**
      * Get details for a budget. (asynchronously)
      * Return a budget. For example:                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
-     * @param budgetId  (required)
+     * @param budgetId Id of the budget. (required)
      * @param authorization JWT Bearer Token (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1647,173 +1647,6 @@ public class SellersV2Api {
     public okhttp3.Call getSellerCampaignsAsync(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, _callback);
-        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getSellerCampaignsBySeller
-     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
-     * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
-     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
-     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getSellerCampaignsBySellerCall(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v2/crp/sellers/{sellerId}/seller-campaigns"
-            .replaceAll("\\{" + "sellerId" + "\\}", localVarApiClient.escapeString(sellerId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (sellerStatus != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerStatus", sellerStatus));
-        }
-
-        if (campaignId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
-        }
-
-        if (budgetStatus != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("budgetStatus", budgetStatus));
-        }
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        if (authorization != null) {
-            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
-        }
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "Authorization" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerCampaignsBySellerValidateBeforeCall(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'sellerId' is set
-        if (sellerId == null) {
-            throw new ApiException("Missing the required parameter 'sellerId' when calling getSellerCampaignsBySeller(Async)");
-        }
-        
-        // verify the required parameter 'authorization' is set
-        if (authorization == null) {
-            throw new ApiException("Missing the required parameter 'authorization' when calling getSellerCampaignsBySeller(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = getSellerCampaignsBySellerCall(sellerId, authorization, sellerStatus, campaignId, budgetStatus, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Get a collection of seller campaigns for this seller.
-     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
-     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
-     * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
-     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
-     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
-     * @return List&lt;SellerCampaignMessage&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<SellerCampaignMessage> getSellerCampaignsBySeller(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
-        ApiResponse<List<SellerCampaignMessage>> localVarResp = getSellerCampaignsBySellerWithHttpInfo(sellerId, authorization, sellerStatus, campaignId, budgetStatus);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get a collection of seller campaigns for this seller.
-     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
-     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
-     * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
-     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
-     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
-     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsBySellerWithHttpInfo(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
-        okhttp3.Call localVarCall = getSellerCampaignsBySellerValidateBeforeCall(sellerId, authorization, sellerStatus, campaignId, budgetStatus, null);
-        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get a collection of seller campaigns for this seller. (asynchronously)
-     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
-     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
-     * @param authorization JWT Bearer Token (required)
-     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
-     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
-     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getSellerCampaignsBySellerAsync(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getSellerCampaignsBySellerValidateBeforeCall(sellerId, authorization, sellerStatus, campaignId, budgetStatus, _callback);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

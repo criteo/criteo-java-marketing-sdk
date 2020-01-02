@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**getSellerBudgets**](SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**getSellerCampaign**](SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
 [**getSellerCampaigns**](SellersV2Api.md#getSellerCampaigns) | **GET** /v2/crp/seller-campaigns | Get a collection of seller campaigns.
-[**getSellerCampaignsBySeller**](SellersV2Api.md#getSellerCampaignsBySeller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | Get a collection of seller campaigns for this seller.
 [**getSellers**](SellersV2Api.md#getSellers) | **GET** /v2/crp/sellers | Get a collection of sellers.
 [**updateSellerBudget**](SellersV2Api.md#updateSellerBudget) | **PATCH** /v2/crp/budgets/{budgetId} | Modify a single budget.
 [**updateSellerBudgets**](SellersV2Api.md#updateSellerBudgets) | **PATCH** /v2/crp/budgets | Modify a collection of budgets.
@@ -525,7 +524,7 @@ public class Example {
     //Authorization.setApiKeyPrefix("Token");
 
     SellersV2Api apiInstance = new SellersV2Api(defaultClient);
-    Long budgetId = 56L; // Long | 
+    Long budgetId = 56L; // Long | Id of the budget.
     String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
     try {
       SellerBudgetMessage result = apiInstance.getSellerBudget(budgetId, authorization);
@@ -545,7 +544,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budgetId** | **Long**|  |
+ **budgetId** | **Long**| Id of the budget. |
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
 
 ### Return type
@@ -793,88 +792,6 @@ Name | Type | Description  | Notes
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
  **sellerStatus** | **String**| Return only seller campaigns for sellers with the given status. | [optional] [enum: Inactive, Active]
  **sellerId** | **String**| Return only seller campaigns belonging to the given seller. | [optional]
- **campaignId** | **Integer**| Return only seller campaigns associated with the given campaign. | [optional]
- **budgetStatus** | **String**| Return only seller campaigns whose budget has the given status. | [optional] [enum: Archived, Current, Scheduled]
-
-### Return type
-
-[**List&lt;SellerCampaignMessage&gt;**](SellerCampaignMessage.md)
-
-### Authorization
-
-[Authorization](../README.md#Authorization)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | List of errors encountered |  -  |
-**401** | Authentication failed. |  -  |
-**403** | You do not have access to the requested records |  -  |
-**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
-
-<a name="getSellerCampaignsBySeller"></a>
-# **getSellerCampaignsBySeller**
-> List&lt;SellerCampaignMessage&gt; getSellerCampaignsBySeller(sellerId, authorization, sellerStatus, campaignId, budgetStatus)
-
-Get a collection of seller campaigns for this seller.
-
-Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
-
-### Example
-```java
-// Import classes:
-import com.criteo.marketing.ApiClient;
-import com.criteo.marketing.ApiException;
-import com.criteo.marketing.Configuration;
-import com.criteo.marketing.auth.*;
-import com.criteo.marketing.models.*;
-import com.criteo.marketing.api.SellersV2Api;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.criteo.com/marketing");
-    
-    // Configure API key authorization: Authorization
-    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //Authorization.setApiKeyPrefix("Token");
-
-    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
-    String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
-    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
-    String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
-    Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
-    String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
-    try {
-      List<SellerCampaignMessage> result = apiInstance.getSellerCampaignsBySeller(sellerId, authorization, sellerStatus, campaignId, budgetStatus);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling SellersV2Api#getSellerCampaignsBySeller");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sellerId** | **String**| Return only seller campaigns belonging to the given seller. |
- **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
- **sellerStatus** | **String**| Return only seller campaigns for sellers with the given status. | [optional] [enum: Inactive, Active]
  **campaignId** | **Integer**| Return only seller campaigns associated with the given campaign. | [optional]
  **budgetStatus** | **String**| Return only seller campaigns whose budget has the given status. | [optional] [enum: Archived, Current, Scheduled]
 

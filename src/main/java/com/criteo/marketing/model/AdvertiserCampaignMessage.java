@@ -37,6 +37,63 @@ public class AdvertiserCampaignMessage {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
   private String campaignName;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_STATUS = "campaignStatus";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_STATUS)
+  private String campaignStatus;
+
+  /**
+   * Gets or Sets status
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    RUNNING("Running"),
+    
+    ARCHIVED("Archived"),
+    
+    NOTRUNNING("NotRunning");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
 
   public AdvertiserCampaignMessage id(Integer id) {
     
@@ -86,6 +143,44 @@ public class AdvertiserCampaignMessage {
   }
 
 
+   /**
+   * Get campaignStatus
+   * @return campaignStatus
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCampaignStatus() {
+    return campaignStatus;
+  }
+
+
+
+
+  public AdvertiserCampaignMessage status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -96,12 +191,14 @@ public class AdvertiserCampaignMessage {
     }
     AdvertiserCampaignMessage advertiserCampaignMessage = (AdvertiserCampaignMessage) o;
     return Objects.equals(this.id, advertiserCampaignMessage.id) &&
-        Objects.equals(this.campaignName, advertiserCampaignMessage.campaignName);
+        Objects.equals(this.campaignName, advertiserCampaignMessage.campaignName) &&
+        Objects.equals(this.campaignStatus, advertiserCampaignMessage.campaignStatus) &&
+        Objects.equals(this.status, advertiserCampaignMessage.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, campaignName);
+    return Objects.hash(id, campaignName, campaignStatus, status);
   }
 
 
@@ -111,6 +208,8 @@ public class AdvertiserCampaignMessage {
     sb.append("class AdvertiserCampaignMessage {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    campaignName: ").append(toIndentedString(campaignName)).append("\n");
+    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

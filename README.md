@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.18</version>
+  <version>1.0.19</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.18"
+compile "com.criteo:marketing.java-client:1.0.19"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/marketing.java-client-1.0.18.jar`
+* `target/marketing.java-client-1.0.19.jar`
 * `target/lib/*.jar`
 
 ## Example
@@ -117,7 +117,6 @@ Class | Method | HTTP request | Description
 *SellersV2Api* | [**getSellerBudgets**](docs/SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 *SellersV2Api* | [**getSellerCampaign**](docs/SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
 *SellersV2Api* | [**getSellerCampaigns**](docs/SellersV2Api.md#getSellerCampaigns) | **GET** /v2/crp/seller-campaigns | Get a collection of seller campaigns.
-*SellersV2Api* | [**getSellerCampaignsBySeller**](docs/SellersV2Api.md#getSellerCampaignsBySeller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | Get a collection of seller campaigns for this seller.
 *SellersV2Api* | [**getSellers**](docs/SellersV2Api.md#getSellers) | **GET** /v2/crp/sellers | Get a collection of sellers.
 *SellersV2Api* | [**updateSellerBudget**](docs/SellersV2Api.md#updateSellerBudget) | **PATCH** /v2/crp/budgets/{budgetId} | Modify a single budget.
 *SellersV2Api* | [**updateSellerBudgets**](docs/SellersV2Api.md#updateSellerBudgets) | **PATCH** /v2/crp/budgets | Modify a collection of budgets.
@@ -158,6 +157,7 @@ Class | Method | HTTP request | Description
  - [ClientRegistrationRequestMessage](docs/ClientRegistrationRequestMessage.md)
  - [ClientRegistrationResponseMessage](docs/ClientRegistrationResponseMessage.md)
  - [CreateSellerBudgetMapiMessage](docs/CreateSellerBudgetMapiMessage.md)
+ - [CreateSellerCampaignMessageMapi](docs/CreateSellerCampaignMessageMapi.md)
  - [ErrorSource](docs/ErrorSource.md)
  - [GoogleProduct](docs/GoogleProduct.md)
  - [IThrottlingConfiguration](docs/IThrottlingConfiguration.md)
