@@ -30,6 +30,7 @@ import java.io.IOException;
 import com.criteo.marketing.model.AdvertiserCampaignMessage;
 import com.criteo.marketing.model.AdvertiserInfoMessage;
 import com.criteo.marketing.model.CreateSellerBudgetMapiMessage;
+import com.criteo.marketing.model.CreateSellerCampaignMessageMapi;
 import com.criteo.marketing.model.ErrorSource;
 import java.time.OffsetDateTime;
 import com.criteo.marketing.model.SellerBase;
@@ -199,6 +200,310 @@ public class SellersV2Api {
 
         okhttp3.Call localVarCall = createSellerBudgetsValidateBeforeCall(authorization, createSellerBudgets, _callback);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSellerCampaignsBySeller
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerCampaign Supply the campaign Id and bid to create the mapping (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellerCampaignsBySellerCall(String sellerId, String authorization, CreateSellerCampaignMessageMapi sellerCampaign, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = sellerCampaign;
+
+        // create path and map variables
+        String localVarPath = "/v2/crp/sellers/{sellerId}/seller-campaigns"
+            .replaceAll("\\{" + "sellerId" + "\\}", localVarApiClient.escapeString(sellerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json", "text/json", "text/html"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded", "text/html"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Authorization" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSellerCampaignsBySellerValidateBeforeCall(String sellerId, String authorization, CreateSellerCampaignMessageMapi sellerCampaign, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'sellerId' is set
+        if (sellerId == null) {
+            throw new ApiException("Missing the required parameter 'sellerId' when calling createSellerCampaignsBySeller(Async)");
+        }
+        
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling createSellerCampaignsBySeller(Async)");
+        }
+        
+        // verify the required parameter 'sellerCampaign' is set
+        if (sellerCampaign == null) {
+            throw new ApiException("Missing the required parameter 'sellerCampaign' when calling createSellerCampaignsBySeller(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createSellerCampaignsBySellerCall(sellerId, authorization, sellerCampaign, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create a SellerCampaign
+     * Associate an existing Seller with an existing Campaign allowing for budget creation
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerCampaign Supply the campaign Id and bid to create the mapping (required)
+     * @return SellerCampaignMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public SellerCampaignMessage createSellerCampaignsBySeller(String sellerId, String authorization, CreateSellerCampaignMessageMapi sellerCampaign) throws ApiException {
+        ApiResponse<SellerCampaignMessage> localVarResp = createSellerCampaignsBySellerWithHttpInfo(sellerId, authorization, sellerCampaign);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a SellerCampaign
+     * Associate an existing Seller with an existing Campaign allowing for budget creation
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerCampaign Supply the campaign Id and bid to create the mapping (required)
+     * @return ApiResponse&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SellerCampaignMessage> createSellerCampaignsBySellerWithHttpInfo(String sellerId, String authorization, CreateSellerCampaignMessageMapi sellerCampaign) throws ApiException {
+        okhttp3.Call localVarCall = createSellerCampaignsBySellerValidateBeforeCall(sellerId, authorization, sellerCampaign, null);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a SellerCampaign (asynchronously)
+     * Associate an existing Seller with an existing Campaign allowing for budget creation
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerCampaign Supply the campaign Id and bid to create the mapping (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellerCampaignsBySellerAsync(String sellerId, String authorization, CreateSellerCampaignMessageMapi sellerCampaign, final ApiCallback<SellerCampaignMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSellerCampaignsBySellerValidateBeforeCall(sellerId, authorization, sellerCampaign, _callback);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSellers
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerNames  (required)
+     * @param partnerId  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellersCall(Integer advertiserId, String authorization, List<String> sellerNames, Integer partnerId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = sellerNames;
+
+        // create path and map variables
+        String localVarPath = "/v2/crp/advertisers/{advertiserId}/sellers"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (partnerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("partnerId", partnerId));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded", "text/html"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Authorization" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSellersValidateBeforeCall(Integer advertiserId, String authorization, List<String> sellerNames, Integer partnerId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling createSellers(Async)");
+        }
+        
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling createSellers(Async)");
+        }
+        
+        // verify the required parameter 'sellerNames' is set
+        if (sellerNames == null) {
+            throw new ApiException("Missing the required parameter 'sellerNames' when calling createSellers(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createSellersCall(advertiserId, authorization, sellerNames, partnerId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create new sellers for an advertiser
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerNames  (required)
+     * @param partnerId  (optional)
+     * @return List&lt;SellerBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerBase> createSellers(Integer advertiserId, String authorization, List<String> sellerNames, Integer partnerId) throws ApiException {
+        ApiResponse<List<SellerBase>> localVarResp = createSellersWithHttpInfo(advertiserId, authorization, sellerNames, partnerId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create new sellers for an advertiser
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerNames  (required)
+     * @param partnerId  (optional)
+     * @return ApiResponse&lt;List&lt;SellerBase&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerBase>> createSellersWithHttpInfo(Integer advertiserId, String authorization, List<String> sellerNames, Integer partnerId) throws ApiException {
+        okhttp3.Call localVarCall = createSellersValidateBeforeCall(advertiserId, authorization, sellerNames, partnerId, null);
+        Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create new sellers for an advertiser (asynchronously)
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerNames  (required)
+     * @param partnerId  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellersAsync(Integer advertiserId, String authorization, List<String> sellerNames, Integer partnerId, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSellersValidateBeforeCall(advertiserId, authorization, sellerNames, partnerId, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1647,6 +1952,173 @@ public class SellersV2Api {
     public okhttp3.Call getSellerCampaignsAsync(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerCampaignsBySeller
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsBySellerCall(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/crp/sellers/{sellerId}/seller-campaigns"
+            .replaceAll("\\{" + "sellerId" + "\\}", localVarApiClient.escapeString(sellerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (sellerStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerStatus", sellerStatus));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (budgetStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("budgetStatus", budgetStatus));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Authorization" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerCampaignsBySellerValidateBeforeCall(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'sellerId' is set
+        if (sellerId == null) {
+            throw new ApiException("Missing the required parameter 'sellerId' when calling getSellerCampaignsBySeller(Async)");
+        }
+        
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling getSellerCampaignsBySeller(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getSellerCampaignsBySellerCall(sellerId, authorization, sellerStatus, campaignId, budgetStatus, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get a collection of seller campaigns for this seller.
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @return List&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerCampaignMessage> getSellerCampaignsBySeller(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = getSellerCampaignsBySellerWithHttpInfo(sellerId, authorization, sellerStatus, campaignId, budgetStatus);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get a collection of seller campaigns for this seller.
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsBySellerWithHttpInfo(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus) throws ApiException {
+        okhttp3.Call localVarCall = getSellerCampaignsBySellerValidateBeforeCall(sellerId, authorization, sellerStatus, campaignId, budgetStatus, null);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get a collection of seller campaigns for this seller. (asynchronously)
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> List of errors encountered </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsBySellerAsync(String sellerId, String authorization, String sellerStatus, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerCampaignsBySellerValidateBeforeCall(sellerId, authorization, sellerStatus, campaignId, budgetStatus, _callback);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

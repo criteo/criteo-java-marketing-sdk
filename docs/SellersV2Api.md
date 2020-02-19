@@ -5,6 +5,8 @@ All URIs are relative to *https://api.criteo.com/marketing*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createSellerBudgets**](SellersV2Api.md#createSellerBudgets) | **POST** /v2/crp/budgets | Create a collection of budgets.
+[**createSellerCampaignsBySeller**](SellersV2Api.md#createSellerCampaignsBySeller) | **POST** /v2/crp/sellers/{sellerId}/seller-campaigns | Create a SellerCampaign
+[**createSellers**](SellersV2Api.md#createSellers) | **POST** /v2/crp/advertisers/{advertiserId}/sellers | Create new sellers for an advertiser
 [**getAdvertiserCampaigns**](SellersV2Api.md#getAdvertiserCampaigns) | **GET** /v2/crp/advertisers/{advertiserId} | Get the collection of CRP campaigns associated with the advertiserId.
 [**getAdvertisers**](SellersV2Api.md#getAdvertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 [**getBudgetsBySeller**](SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
@@ -14,6 +16,7 @@ Method | HTTP request | Description
 [**getSellerBudgets**](SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**getSellerCampaign**](SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
 [**getSellerCampaigns**](SellersV2Api.md#getSellerCampaigns) | **GET** /v2/crp/seller-campaigns | Get a collection of seller campaigns.
+[**getSellerCampaignsBySeller**](SellersV2Api.md#getSellerCampaignsBySeller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | Get a collection of seller campaigns for this seller.
 [**getSellers**](SellersV2Api.md#getSellers) | **GET** /v2/crp/sellers | Get a collection of sellers.
 [**updateSellerBudget**](SellersV2Api.md#updateSellerBudget) | **PATCH** /v2/crp/budgets/{budgetId} | Modify a single budget.
 [**updateSellerBudgets**](SellersV2Api.md#updateSellerBudgets) | **PATCH** /v2/crp/budgets | Modify a collection of budgets.
@@ -77,6 +80,160 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List&lt;SellerBudgetMessage&gt;**](SellerBudgetMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+<a name="createSellerCampaignsBySeller"></a>
+# **createSellerCampaignsBySeller**
+> SellerCampaignMessage createSellerCampaignsBySeller(sellerId, authorization, sellerCampaign)
+
+Create a SellerCampaign
+
+Associate an existing Seller with an existing Campaign allowing for budget creation
+
+### Example
+```java
+// Import classes:
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
+
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerId = "sellerId_example"; // String | Supply a generated Id of an existing Seller
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    CreateSellerCampaignMessageMapi sellerCampaign = new CreateSellerCampaignMessageMapi(); // CreateSellerCampaignMessageMapi | Supply the campaign Id and bid to create the mapping
+    try {
+      SellerCampaignMessage result = apiInstance.createSellerCampaignsBySeller(sellerId, authorization, sellerCampaign);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#createSellerCampaignsBySeller");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerId** | **String**| Supply a generated Id of an existing Seller |
+ **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
+ **sellerCampaign** | [**CreateSellerCampaignMessageMapi**](CreateSellerCampaignMessageMapi.md)| Supply the campaign Id and bid to create the mapping |
+
+### Return type
+
+[**SellerCampaignMessage**](SellerCampaignMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
+ - **Accept**: application/json, text/json, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+<a name="createSellers"></a>
+# **createSellers**
+> List&lt;SellerBase&gt; createSellers(advertiserId, authorization, sellerNames, partnerId)
+
+Create new sellers for an advertiser
+
+### Example
+```java
+// Import classes:
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
+
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    Integer advertiserId = 56; // Integer | 
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    List<String> sellerNames = Arrays.asList(); // List<String> | 
+    Integer partnerId = 56; // Integer | 
+    try {
+      List<SellerBase> result = apiInstance.createSellers(advertiserId, authorization, sellerNames, partnerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#createSellers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**|  |
+ **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
+ **sellerNames** | [**List&lt;String&gt;**](String.md)|  |
+ **partnerId** | **Integer**|  | [optional]
+
+### Return type
+
+[**List&lt;SellerBase&gt;**](SellerBase.md)
 
 ### Authorization
 
@@ -792,6 +949,88 @@ Name | Type | Description  | Notes
  **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
  **sellerStatus** | **String**| Return only seller campaigns for sellers with the given status. | [optional] [enum: Inactive, Active]
  **sellerId** | **String**| Return only seller campaigns belonging to the given seller. | [optional]
+ **campaignId** | **Integer**| Return only seller campaigns associated with the given campaign. | [optional]
+ **budgetStatus** | **String**| Return only seller campaigns whose budget has the given status. | [optional] [enum: Archived, Current, Scheduled]
+
+### Return type
+
+[**List&lt;SellerCampaignMessage&gt;**](SellerCampaignMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+<a name="getSellerCampaignsBySeller"></a>
+# **getSellerCampaignsBySeller**
+> List&lt;SellerCampaignMessage&gt; getSellerCampaignsBySeller(sellerId, authorization, sellerStatus, campaignId, budgetStatus)
+
+Get a collection of seller campaigns for this seller.
+
+Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+
+### Example
+```java
+// Import classes:
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
+
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String sellerStatus = "sellerStatus_example"; // String | Return only seller campaigns for sellers with the given status.
+    Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
+    String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
+    try {
+      List<SellerCampaignMessage> result = apiInstance.getSellerCampaignsBySeller(sellerId, authorization, sellerStatus, campaignId, budgetStatus);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellerCampaignsBySeller");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerId** | **String**| Return only seller campaigns belonging to the given seller. |
+ **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
+ **sellerStatus** | **String**| Return only seller campaigns for sellers with the given status. | [optional] [enum: Inactive, Active]
  **campaignId** | **Integer**| Return only seller campaigns associated with the given campaign. | [optional]
  **budgetStatus** | **String**| Return only seller campaigns whose budget has the given status. | [optional] [enum: Archived, Current, Scheduled]
 
