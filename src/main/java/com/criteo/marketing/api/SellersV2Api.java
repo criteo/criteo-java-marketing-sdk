@@ -508,6 +508,145 @@ public class SellersV2Api {
         return localVarCall;
     }
     /**
+     * Build call for getAdvertiser
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserCall(Integer advertiserId, String authorization, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/crp/advertisers/{advertiserId}"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json", "text/json", "text/html"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Authorization" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertiserValidateBeforeCall(Integer advertiserId, String authorization, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiser(Async)");
+        }
+        
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling getAdvertiser(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAdvertiserCall(advertiserId, authorization, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get an advertiser.
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @return AdvertiserInfoMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdvertiserInfoMessage getAdvertiser(Integer advertiserId, String authorization) throws ApiException {
+        ApiResponse<AdvertiserInfoMessage> localVarResp = getAdvertiserWithHttpInfo(advertiserId, authorization);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get an advertiser.
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @return ApiResponse&lt;AdvertiserInfoMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdvertiserInfoMessage> getAdvertiserWithHttpInfo(Integer advertiserId, String authorization) throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserValidateBeforeCall(advertiserId, authorization, null);
+        Type localVarReturnType = new TypeToken<AdvertiserInfoMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get an advertiser. (asynchronously)
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserAsync(Integer advertiserId, String authorization, final ApiCallback<AdvertiserInfoMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertiserValidateBeforeCall(advertiserId, authorization, _callback);
+        Type localVarReturnType = new TypeToken<AdvertiserInfoMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAdvertiserCampaigns
      * @param advertiserId  (required)
      * @param authorization JWT Bearer Token (required)
@@ -528,7 +667,7 @@ public class SellersV2Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/crp/advertisers/{advertiserId}"
+        String localVarPath = "/v2/crp/advertisers/{advertiserId}/campaigns"
             .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

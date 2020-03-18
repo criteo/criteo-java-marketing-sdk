@@ -18,7 +18,7 @@ plugins {
 }
 
 group = 'com.criteo'
-version = '1.0.20'
+version = '1.0.21'
 
 repositories {
     jcenter()
@@ -69,7 +69,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.criteo'
             artifactId 'marketing.java-client'
-            version '1.0.20'
+            version '1.0.21'
             from components.java
             artifact sourcesJar
             artifact javadocJar
