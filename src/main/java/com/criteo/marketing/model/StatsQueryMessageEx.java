@@ -108,7 +108,13 @@ public class StatsQueryMessageEx {
   public enum DimensionsEnum {
     CAMPAIGNID("CampaignId"),
     
+    CAMPAIGN("Campaign"),
+    
     ADVERTISERID("AdvertiserId"),
+    
+    ADVERTISER("Advertiser"),
+    
+    CATEGORYID("CategoryId"),
     
     CATEGORY("Category"),
     

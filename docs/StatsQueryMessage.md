@@ -22,7 +22,10 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 CAMPAIGNID | &quot;CampaignId&quot;
+CAMPAIGN | &quot;Campaign&quot;
 ADVERTISERID | &quot;AdvertiserId&quot;
+ADVERTISER | &quot;Advertiser&quot;
+CATEGORYID | &quot;CategoryId&quot;
 CATEGORY | &quot;Category&quot;
 SELLER | &quot;Seller&quot;
 HOUR | &quot;Hour&quot;
