@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getAdvertiser**](SellersV2Api.md#getAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 [**getAdvertiserCampaigns**](SellersV2Api.md#getAdvertiserCampaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
 [**getAdvertisers**](SellersV2Api.md#getAdvertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
+[**getBudgetsByAdvertiser**](SellersV2Api.md#getBudgetsByAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 [**getBudgetsBySeller**](SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 [**getBudgetsBySellerCampaignId**](SellersV2Api.md#getBudgetsBySellerCampaignId) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 [**getSeller**](SellersV2Api.md#getSeller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
@@ -17,6 +18,7 @@ Method | HTTP request | Description
 [**getSellerBudgets**](SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**getSellerCampaign**](SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
 [**getSellerCampaigns**](SellersV2Api.md#getSellerCampaigns) | **GET** /v2/crp/seller-campaigns | Get a collection of seller campaigns.
+[**getSellerCampaignsByAdvertiser**](SellersV2Api.md#getSellerCampaignsByAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId}/seller-campaigns | Get CRP seller-campaigns for a specific advertiser
 [**getSellerCampaignsBySeller**](SellersV2Api.md#getSellerCampaignsBySeller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | Get a collection of seller campaigns for this seller.
 [**getSellers**](SellersV2Api.md#getSellers) | **GET** /v2/crp/sellers | Get a collection of sellers.
 [**updateSellerBudget**](SellersV2Api.md#updateSellerBudget) | **PATCH** /v2/crp/budgets/{budgetId} | Modify a single budget.
@@ -452,6 +454,95 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List&lt;AdvertiserInfoMessage&gt;**](AdvertiserInfoMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+<a name="getBudgetsByAdvertiser"></a>
+# **getBudgetsByAdvertiser**
+> List&lt;SellerBudgetMessage&gt; getBudgetsByAdvertiser(advertiserId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, budgetId, sellerId, type)
+
+Get CRP budgets for a specific advertiser
+
+### Example
+```java
+// Import classes:
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
+
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    Integer advertiserId = 56; // Integer | 
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    String status = "status_example"; // String | 
+    Boolean withBalance = true; // Boolean | 
+    Boolean withSpend = true; // Boolean | 
+    OffsetDateTime endAfterDate = new OffsetDateTime(); // OffsetDateTime | 
+    OffsetDateTime startBeforeDate = new OffsetDateTime(); // OffsetDateTime | 
+    Long budgetId = 56L; // Long | 
+    Long sellerId = 56L; // Long | 
+    String type = "type_example"; // String | 
+    try {
+      List<SellerBudgetMessage> result = apiInstance.getBudgetsByAdvertiser(advertiserId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, budgetId, sellerId, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getBudgetsByAdvertiser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**|  |
+ **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
+ **status** | **String**|  | [optional] [enum: Archived, Current, Scheduled]
+ **withBalance** | **Boolean**|  | [optional]
+ **withSpend** | **Boolean**|  | [optional]
+ **endAfterDate** | **OffsetDateTime**|  | [optional]
+ **startBeforeDate** | **OffsetDateTime**|  | [optional]
+ **budgetId** | **Long**|  | [optional]
+ **sellerId** | **Long**|  | [optional]
+ **type** | **String**|  | [optional]
+
+### Return type
+
+[**List&lt;SellerBudgetMessage&gt;**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -1044,6 +1135,79 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+<a name="getSellerCampaignsByAdvertiser"></a>
+# **getSellerCampaignsByAdvertiser**
+> List&lt;SellerCampaignMessage&gt; getSellerCampaignsByAdvertiser(advertiserId, authorization)
+
+Get CRP seller-campaigns for a specific advertiser
+
+### Example
+```java
+// Import classes:
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.SellersV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
+
+    SellersV2Api apiInstance = new SellersV2Api(defaultClient);
+    Integer advertiserId = 56; // Integer | 
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    try {
+      List<SellerCampaignMessage> result = apiInstance.getSellerCampaignsByAdvertiser(advertiserId, authorization);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SellersV2Api#getSellerCampaignsByAdvertiser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**|  |
+ **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
+
+### Return type
+
+[**List&lt;SellerCampaignMessage&gt;**](SellerCampaignMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **401** | Authentication failed. |  -  |
 **403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |

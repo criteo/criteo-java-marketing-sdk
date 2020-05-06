@@ -915,6 +915,209 @@ public class SellersV2Api {
         return localVarCall;
     }
     /**
+     * Build call for getBudgetsByAdvertiser
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param status  (optional)
+     * @param withBalance  (optional)
+     * @param withSpend  (optional)
+     * @param endAfterDate  (optional)
+     * @param startBeforeDate  (optional)
+     * @param budgetId  (optional)
+     * @param sellerId  (optional)
+     * @param type  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsByAdvertiserCall(Integer advertiserId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Long budgetId, Long sellerId, String type, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/crp/advertisers/{advertiserId}/budgets"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (withBalance != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withBalance", withBalance));
+        }
+
+        if (withSpend != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withSpend", withSpend));
+        }
+
+        if (endAfterDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endAfterDate", endAfterDate));
+        }
+
+        if (startBeforeDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startBeforeDate", startBeforeDate));
+        }
+
+        if (budgetId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("budgetId", budgetId));
+        }
+
+        if (sellerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Authorization" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBudgetsByAdvertiserValidateBeforeCall(Integer advertiserId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Long budgetId, Long sellerId, String type, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getBudgetsByAdvertiser(Async)");
+        }
+        
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling getBudgetsByAdvertiser(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getBudgetsByAdvertiserCall(advertiserId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, budgetId, sellerId, type, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get CRP budgets for a specific advertiser
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param status  (optional)
+     * @param withBalance  (optional)
+     * @param withSpend  (optional)
+     * @param endAfterDate  (optional)
+     * @param startBeforeDate  (optional)
+     * @param budgetId  (optional)
+     * @param sellerId  (optional)
+     * @param type  (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerBudgetMessage> getBudgetsByAdvertiser(Integer advertiserId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Long budgetId, Long sellerId, String type) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = getBudgetsByAdvertiserWithHttpInfo(advertiserId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, budgetId, sellerId, type);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get CRP budgets for a specific advertiser
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param status  (optional)
+     * @param withBalance  (optional)
+     * @param withSpend  (optional)
+     * @param endAfterDate  (optional)
+     * @param startBeforeDate  (optional)
+     * @param budgetId  (optional)
+     * @param sellerId  (optional)
+     * @param type  (optional)
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerBudgetMessage>> getBudgetsByAdvertiserWithHttpInfo(Integer advertiserId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Long budgetId, Long sellerId, String type) throws ApiException {
+        okhttp3.Call localVarCall = getBudgetsByAdvertiserValidateBeforeCall(advertiserId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, budgetId, sellerId, type, null);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get CRP budgets for a specific advertiser (asynchronously)
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param status  (optional)
+     * @param withBalance  (optional)
+     * @param withSpend  (optional)
+     * @param endAfterDate  (optional)
+     * @param startBeforeDate  (optional)
+     * @param budgetId  (optional)
+     * @param sellerId  (optional)
+     * @param type  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsByAdvertiserAsync(Integer advertiserId, String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Long budgetId, Long sellerId, String type, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBudgetsByAdvertiserValidateBeforeCall(advertiserId, authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, budgetId, sellerId, type, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getBudgetsBySeller
      * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param authorization JWT Bearer Token (required)
@@ -2091,6 +2294,145 @@ public class SellersV2Api {
     public okhttp3.Call getSellerCampaignsAsync(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerCampaignsByAdvertiser
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsByAdvertiserCall(Integer advertiserId, String authorization, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/crp/advertisers/{advertiserId}/seller-campaigns"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Authorization" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerCampaignsByAdvertiserValidateBeforeCall(Integer advertiserId, String authorization, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getSellerCampaignsByAdvertiser(Async)");
+        }
+        
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling getSellerCampaignsByAdvertiser(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getSellerCampaignsByAdvertiserCall(advertiserId, authorization, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get CRP seller-campaigns for a specific advertiser
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @return List&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerCampaignMessage> getSellerCampaignsByAdvertiser(Integer advertiserId, String authorization) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = getSellerCampaignsByAdvertiserWithHttpInfo(advertiserId, authorization);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get CRP seller-campaigns for a specific advertiser
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsByAdvertiserWithHttpInfo(Integer advertiserId, String authorization) throws ApiException {
+        okhttp3.Call localVarCall = getSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, authorization, null);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get CRP seller-campaigns for a specific advertiser (asynchronously)
+     * 
+     * @param advertiserId  (required)
+     * @param authorization JWT Bearer Token (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsByAdvertiserAsync(Integer advertiserId, String authorization, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, authorization, _callback);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

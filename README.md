@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.22</version>
+  <version>1.0.23</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.22"
+compile "com.criteo:marketing.java-client:1.0.23"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/marketing.java-client-1.0.22.jar`
+* `target/marketing.java-client-1.0.23.jar`
 * `target/lib/*.jar`
 
 ## Example
@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *SellersV2Api* | [**getAdvertiser**](docs/SellersV2Api.md#getAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 *SellersV2Api* | [**getAdvertiserCampaigns**](docs/SellersV2Api.md#getAdvertiserCampaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
 *SellersV2Api* | [**getAdvertisers**](docs/SellersV2Api.md#getAdvertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
+*SellersV2Api* | [**getBudgetsByAdvertiser**](docs/SellersV2Api.md#getBudgetsByAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 *SellersV2Api* | [**getBudgetsBySeller**](docs/SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 *SellersV2Api* | [**getBudgetsBySellerCampaignId**](docs/SellersV2Api.md#getBudgetsBySellerCampaignId) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 *SellersV2Api* | [**getSeller**](docs/SellersV2Api.md#getSeller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
@@ -120,6 +121,7 @@ Class | Method | HTTP request | Description
 *SellersV2Api* | [**getSellerBudgets**](docs/SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 *SellersV2Api* | [**getSellerCampaign**](docs/SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
 *SellersV2Api* | [**getSellerCampaigns**](docs/SellersV2Api.md#getSellerCampaigns) | **GET** /v2/crp/seller-campaigns | Get a collection of seller campaigns.
+*SellersV2Api* | [**getSellerCampaignsByAdvertiser**](docs/SellersV2Api.md#getSellerCampaignsByAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId}/seller-campaigns | Get CRP seller-campaigns for a specific advertiser
 *SellersV2Api* | [**getSellerCampaignsBySeller**](docs/SellersV2Api.md#getSellerCampaignsBySeller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | Get a collection of seller campaigns for this seller.
 *SellersV2Api* | [**getSellers**](docs/SellersV2Api.md#getSellers) | **GET** /v2/crp/sellers | Get a collection of sellers.
 *SellersV2Api* | [**updateSellerBudget**](docs/SellersV2Api.md#updateSellerBudget) | **PATCH** /v2/crp/budgets/{budgetId} | Modify a single budget.
