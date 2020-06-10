@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.23</version>
+  <version>1.0.24</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.23"
+compile "com.criteo:marketing.java-client:1.0.24"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/marketing.java-client-1.0.23.jar`
+* `target/marketing.java-client-1.0.24.jar`
 * `target/lib/*.jar`
 
 ## Example
@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
  - [CampaignBidMessage](docs/CampaignBidMessage.md)
  - [CampaignMessage](docs/CampaignMessage.md)
  - [CatalogProduct](docs/CatalogProduct.md)
+ - [CatalogProductV3](docs/CatalogProductV3.md)
  - [CategoryBidChangeRequest](docs/CategoryBidChangeRequest.md)
  - [CategoryBidMessage](docs/CategoryBidMessage.md)
  - [CategoryMessage](docs/CategoryMessage.md)
@@ -164,12 +165,16 @@ Class | Method | HTTP request | Description
  - [ClientRegistrationResponseMessage](docs/ClientRegistrationResponseMessage.md)
  - [CreateSellerBudgetMapiMessage](docs/CreateSellerBudgetMapiMessage.md)
  - [CreateSellerCampaignMessageMapi](docs/CreateSellerCampaignMessageMapi.md)
+ - [CustomAttributeV3](docs/CustomAttributeV3.md)
  - [ErrorSource](docs/ErrorSource.md)
  - [GoogleProduct](docs/GoogleProduct.md)
+ - [GoogleProductV3](docs/GoogleProductV3.md)
  - [IThrottlingConfiguration](docs/IThrottlingConfiguration.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [Installment](docs/Installment.md)
  - [InstallmentAmount](docs/InstallmentAmount.md)
+ - [InstallmentV3](docs/InstallmentV3.md)
+ - [LoyaltyPointsV3](docs/LoyaltyPointsV3.md)
  - [LoyatyPoints](docs/LoyatyPoints.md)
  - [MapiUserMessage](docs/MapiUserMessage.md)
  - [MarketplaceCampaignMessage](docs/MarketplaceCampaignMessage.md)
@@ -178,7 +183,13 @@ Class | Method | HTTP request | Description
  - [PolicyRouteInfo](docs/PolicyRouteInfo.md)
  - [PortfolioMessage](docs/PortfolioMessage.md)
  - [Price](docs/Price.md)
+ - [ProductImporterBatch](docs/ProductImporterBatch.md)
  - [ProductImporterMessage](docs/ProductImporterMessage.md)
+ - [ProductShippingDimensionV3](docs/ProductShippingDimensionV3.md)
+ - [ProductShippingV3](docs/ProductShippingV3.md)
+ - [ProductShippingWeightV3](docs/ProductShippingWeightV3.md)
+ - [ProductTaxV3](docs/ProductTaxV3.md)
+ - [ProductUnitPricingBaseMeasureV3](docs/ProductUnitPricingBaseMeasureV3.md)
  - [PublisherFileStatsMessage](docs/PublisherFileStatsMessage.md)
  - [PublisherStatsMessage](docs/PublisherStatsMessage.md)
  - [PublisherStatsQueryMessage](docs/PublisherStatsQueryMessage.md)
