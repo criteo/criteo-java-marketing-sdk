@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import com.criteo.marketing.model.AdvertiserCampaignMessage;
 import com.criteo.marketing.model.AdvertiserInfoMessage;
+import com.criteo.marketing.model.AdvertiserQuotaMessage;
 import com.criteo.marketing.model.CreateSellerBudgetMapiMessage;
 import com.criteo.marketing.model.CreateSellerCampaignMessageMapi;
 import com.criteo.marketing.model.ErrorSource;
@@ -782,6 +783,135 @@ public class SellersV2Api {
 
         okhttp3.Call localVarCall = getAdvertiserCampaignsValidateBeforeCall(advertiserId, authorization, _callback);
         Type localVarReturnType = new TypeToken<List<AdvertiserCampaignMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdvertiserPreviewLimits
+     * @param authorization JWT Bearer Token (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserPreviewLimitsCall(String authorization, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/crp/advertisers/preview-limit";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Authorization" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertiserPreviewLimitsValidateBeforeCall(String authorization, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling getAdvertiserPreviewLimits(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAdvertiserPreviewLimitsCall(authorization, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get the collection of advertisers preview limits associated with the user.
+     * 
+     * @param authorization JWT Bearer Token (required)
+     * @return List&lt;AdvertiserQuotaMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<AdvertiserQuotaMessage> getAdvertiserPreviewLimits(String authorization) throws ApiException {
+        ApiResponse<List<AdvertiserQuotaMessage>> localVarResp = getAdvertiserPreviewLimitsWithHttpInfo(authorization);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get the collection of advertisers preview limits associated with the user.
+     * 
+     * @param authorization JWT Bearer Token (required)
+     * @return ApiResponse&lt;List&lt;AdvertiserQuotaMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<AdvertiserQuotaMessage>> getAdvertiserPreviewLimitsWithHttpInfo(String authorization) throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserPreviewLimitsValidateBeforeCall(authorization, null);
+        Type localVarReturnType = new TypeToken<List<AdvertiserQuotaMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get the collection of advertisers preview limits associated with the user. (asynchronously)
+     * 
+     * @param authorization JWT Bearer Token (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have access to the requested records </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserPreviewLimitsAsync(String authorization, final ApiCallback<List<AdvertiserQuotaMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertiserPreviewLimitsValidateBeforeCall(authorization, _callback);
+        Type localVarReturnType = new TypeToken<List<AdvertiserQuotaMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

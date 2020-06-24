@@ -4,8 +4,84 @@ All URIs are relative to *https://api.criteo.com/marketing*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getCampaignReport**](StatisticsApi.md#getCampaignReport) | **POST** /v1/statistics/report | Generates a statistics report
 [**getStats**](StatisticsApi.md#getStats) | **POST** /v1/statistics | Generates a statistics report
 
+
+<a name="getCampaignReport"></a>
+# **getCampaignReport**
+> byte[] getCampaignReport(authorization, reportQuery)
+
+Generates a statistics report
+
+###Statistics v2 is currently in beta and subject to change. Reach out to your Criteo contact if you’re interesting in participating in the beta.###  **AdvertiserIds**:(mandatory) The list of advertiser ids, comma-separated. Advertisers not in your portfolio   will be skipped. If no id is present, all the advertisers in the portfolio will be used.&lt;br /&gt;  **StartDate, EndDate**: (mandatory) Start date (beginning of day) and end date (beginning of day) to be used for  the report generation. Format to use: yyyy-mm-dd (e.g. 2017-10-30).&lt;br /&gt;  **Dimensions**: (mandatory) The dimensions to be used in the report. Possible values: CampaignId, Campaign,  AdvertiserId, Advertiser, CategoryId, Category, Hour, Day, Week, Month, Year.&lt;br /&gt;  **Metrics**:(mandatory) The metrics to be used in the report. For a list of possible values, please see  &lt;a href&#x3D;\&quot;https://support.criteo.com/s/article?article&#x3D;Criteo-Marketing-API-Intro\&quot;&gt;the full documentation&lt;/a&gt;.&lt;br /&gt;  **Format**: (mandatory)The file format of the generated report. Possible values: Csv, Excel, Xml, Json&lt;br /&gt;  **Currency**: (optional) The currency to be used in the report. Three-letter capitals. For a list of   possible values, please see &lt;a href&#x3D;\&quot;https://support.criteo.com/s/article?article&#x3D;Criteo-Marketing-API-Intro\&quot;&gt;the full documentation&lt;/a&gt;.  If not set, the user&#39;s preference setting will be used.&lt;br /&gt;  **Timezone**: (optional) Timezone to be used in the report. Possible format&lt;br /&gt;  - TZ format (e.g. Europe/London)  - UTC format (e.g. UTC+1:00)  - Timezone abbreviation (e.g. PST)                If not set, GMT is used.&lt;br /&gt;  #### Functional cases ####  Statistic export in a file might be corrupted through Swagger. It&#39;s recommended to access this file through   a CURL request or other programmatic methods.  #### Validation rules ####  StartDate and EndDate are mandatory.&lt;br /&gt;  StartDate should come before, or be equal to EndDate.&lt;br /&gt;  The requested dimensions must be in a supported combination.&lt;br /&gt;  At least one metric must be provided.&lt;br /&gt;  All metrics must be supported.&lt;br /&gt;  No duplicated metric in the list.&lt;br /&gt;  The selected advertisers must have at least one campaign.&lt;br /&gt;
+
+### Example
+```java
+// Import classes:
+import com.criteo.marketing.ApiClient;
+import com.criteo.marketing.ApiException;
+import com.criteo.marketing.Configuration;
+import com.criteo.marketing.auth.*;
+import com.criteo.marketing.models.*;
+import com.criteo.marketing.api.StatisticsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com/marketing");
+    
+    // Configure API key authorization: Authorization
+    ApiKeyAuth Authorization = (ApiKeyAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Authorization.setApiKeyPrefix("Token");
+
+    StatisticsApi apiInstance = new StatisticsApi(defaultClient);
+    String authorization = "\"Bearer VALID_JWT_TOKEN_BASE64\""; // String | JWT Bearer Token
+    CampaignReportQueryMessage reportQuery = new CampaignReportQueryMessage(); // CampaignReportQueryMessage | 
+    try {
+      byte[] result = apiInstance.getCampaignReport(authorization, reportQuery);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StatisticsApi#getCampaignReport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| JWT Bearer Token | [default to &quot;Bearer VALID_JWT_TOKEN_BASE64&quot;]
+ **reportQuery** | [**CampaignReportQueryMessage**](CampaignReportQueryMessage.md)|  |
+
+### Return type
+
+**byte[]**
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Report generated OK. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | Access denied (Endpoint in beta) |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 <a name="getStats"></a>
 # **getStats**

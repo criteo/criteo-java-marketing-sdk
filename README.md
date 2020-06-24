@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.24</version>
+  <version>1.0.25</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.24"
+compile "com.criteo:marketing.java-client:1.0.25"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/marketing.java-client-1.0.24.jar`
+* `target/marketing.java-client-1.0.25.jar`
 * `target/lib/*.jar`
 
 ## Example
@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *SellersV2Api* | [**createSellers**](docs/SellersV2Api.md#createSellers) | **POST** /v2/crp/advertisers/{advertiserId}/sellers | Create new sellers for an advertiser
 *SellersV2Api* | [**getAdvertiser**](docs/SellersV2Api.md#getAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 *SellersV2Api* | [**getAdvertiserCampaigns**](docs/SellersV2Api.md#getAdvertiserCampaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
+*SellersV2Api* | [**getAdvertiserPreviewLimits**](docs/SellersV2Api.md#getAdvertiserPreviewLimits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the user.
 *SellersV2Api* | [**getAdvertisers**](docs/SellersV2Api.md#getAdvertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 *SellersV2Api* | [**getBudgetsByAdvertiser**](docs/SellersV2Api.md#getBudgetsByAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 *SellersV2Api* | [**getBudgetsBySeller**](docs/SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
@@ -131,6 +132,7 @@ Class | Method | HTTP request | Description
 *SellersV2StatsApi* | [**campaigns**](docs/SellersV2StatsApi.md#campaigns) | **GET** /v2/crp/stats/campaigns | Get stats by campaign.
 *SellersV2StatsApi* | [**sellerCampaigns**](docs/SellersV2StatsApi.md#sellerCampaigns) | **GET** /v2/crp/stats/seller-campaigns | Get stats by seller-campaign.
 *SellersV2StatsApi* | [**sellers**](docs/SellersV2StatsApi.md#sellers) | **GET** /v2/crp/stats/sellers | Get stats by seller.
+*StatisticsApi* | [**getCampaignReport**](docs/StatisticsApi.md#getCampaignReport) | **POST** /v1/statistics/report | Generates a statistics report
 *StatisticsApi* | [**getStats**](docs/StatisticsApi.md#getStats) | **POST** /v1/statistics | Generates a statistics report
 
 
@@ -138,6 +140,7 @@ Class | Method | HTTP request | Description
 
  - [AdvertiserCampaignMessage](docs/AdvertiserCampaignMessage.md)
  - [AdvertiserInfoMessage](docs/AdvertiserInfoMessage.md)
+ - [AdvertiserQuotaMessage](docs/AdvertiserQuotaMessage.md)
  - [AudienceCreateRequest](docs/AudienceCreateRequest.md)
  - [AudienceCreateResponse](docs/AudienceCreateResponse.md)
  - [AudiencePatchRequest](docs/AudiencePatchRequest.md)
@@ -151,6 +154,7 @@ Class | Method | HTTP request | Description
  - [CampaignBidChangeResponse](docs/CampaignBidChangeResponse.md)
  - [CampaignBidMessage](docs/CampaignBidMessage.md)
  - [CampaignMessage](docs/CampaignMessage.md)
+ - [CampaignReportQueryMessage](docs/CampaignReportQueryMessage.md)
  - [CatalogProduct](docs/CatalogProduct.md)
  - [CatalogProductV3](docs/CatalogProductV3.md)
  - [CategoryBidChangeRequest](docs/CategoryBidChangeRequest.md)
