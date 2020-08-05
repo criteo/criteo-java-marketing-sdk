@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.criteo</groupId>
   <artifactId>marketing.java-client</artifactId>
-  <version>1.0.26</version>
+  <version>1.0.27</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:marketing.java-client:1.0.26"
+compile "com.criteo:marketing.java-client:1.0.27"
 ```
 
 ### Others
@@ -68,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/marketing.java-client-1.0.26.jar`
+* `target/marketing.java-client-1.0.27.jar`
 * `target/lib/*.jar`
 
 ## Example
@@ -112,13 +112,13 @@ Class | Method | HTTP request | Description
 *SellersV2Api* | [**createSellers**](docs/SellersV2Api.md#createSellers) | **POST** /v2/crp/advertisers/{advertiserId}/sellers | Create new sellers for an advertiser
 *SellersV2Api* | [**getAdvertiser**](docs/SellersV2Api.md#getAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 *SellersV2Api* | [**getAdvertiserCampaigns**](docs/SellersV2Api.md#getAdvertiserCampaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
-*SellersV2Api* | [**getAdvertiserPreviewLimits**](docs/SellersV2Api.md#getAdvertiserPreviewLimits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the user.
+*SellersV2Api* | [**getAdvertiserPreviewLimits**](docs/SellersV2Api.md#getAdvertiserPreviewLimits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the authorized user.
 *SellersV2Api* | [**getAdvertisers**](docs/SellersV2Api.md#getAdvertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 *SellersV2Api* | [**getBudgetsByAdvertiser**](docs/SellersV2Api.md#getBudgetsByAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 *SellersV2Api* | [**getBudgetsBySeller**](docs/SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 *SellersV2Api* | [**getBudgetsBySellerCampaignId**](docs/SellersV2Api.md#getBudgetsBySellerCampaignId) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 *SellersV2Api* | [**getSeller**](docs/SellersV2Api.md#getSeller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
-*SellersV2Api* | [**getSellerAdDemo**](docs/SellersV2Api.md#getSellerAdDemo) | **GET** /v2/crp/advertisers/{advertiserId}/ad-preview | Get a demo ad with products from the given seller
+*SellersV2Api* | [**getSellerAdDemo**](docs/SellersV2Api.md#getSellerAdDemo) | **GET** /v2/crp/advertisers/{advertiserId}/ad-preview | Get a preview of an HTML ad with products belonging to the provided seller
 *SellersV2Api* | [**getSellerBudget**](docs/SellersV2Api.md#getSellerBudget) | **GET** /v2/crp/budgets/{budgetId} | Get details for a budget.
 *SellersV2Api* | [**getSellerBudgets**](docs/SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 *SellersV2Api* | [**getSellerCampaign**](docs/SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.

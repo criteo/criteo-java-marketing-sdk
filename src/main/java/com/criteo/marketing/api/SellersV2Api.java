@@ -849,7 +849,7 @@ public class SellersV2Api {
     }
 
     /**
-     * Get the collection of advertisers preview limits associated with the user.
+     * Get the collection of advertisers preview limits associated with the authorized user.
      * 
      * @param authorization JWT Bearer Token (required)
      * @return List&lt;AdvertiserQuotaMessage&gt;
@@ -870,7 +870,7 @@ public class SellersV2Api {
     }
 
     /**
-     * Get the collection of advertisers preview limits associated with the user.
+     * Get the collection of advertisers preview limits associated with the authorized user.
      * 
      * @param authorization JWT Bearer Token (required)
      * @return ApiResponse&lt;List&lt;AdvertiserQuotaMessage&gt;&gt;
@@ -892,7 +892,7 @@ public class SellersV2Api {
     }
 
     /**
-     * Get the collection of advertisers preview limits associated with the user. (asynchronously)
+     * Get the collection of advertisers preview limits associated with the authorized user. (asynchronously)
      * 
      * @param authorization JWT Bearer Token (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1875,8 +1875,8 @@ public class SellersV2Api {
     }
 
     /**
-     * Get a demo ad with products from the given seller
-     * 
+     * Get a preview of an HTML ad with products belonging to the provided seller
+     * • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;campaignId&lt;/b&gt;: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
      * @param advertiserId  (required)
      * @param sellerId  (required)
      * @param authorization JWT Bearer Token (required)
@@ -1901,8 +1901,8 @@ public class SellersV2Api {
     }
 
     /**
-     * Get a demo ad with products from the given seller
-     * 
+     * Get a preview of an HTML ad with products belonging to the provided seller
+     * • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;campaignId&lt;/b&gt;: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
      * @param advertiserId  (required)
      * @param sellerId  (required)
      * @param authorization JWT Bearer Token (required)
@@ -1928,8 +1928,8 @@ public class SellersV2Api {
     }
 
     /**
-     * Get a demo ad with products from the given seller (asynchronously)
-     * 
+     * Get a preview of an HTML ad with products belonging to the provided seller (asynchronously)
+     * • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;campaignId&lt;/b&gt;: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
      * @param advertiserId  (required)
      * @param sellerId  (required)
      * @param authorization JWT Bearer Token (required)
@@ -2110,6 +2110,7 @@ public class SellersV2Api {
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2124,7 +2125,7 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSellerBudgetsCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSellerBudgetsCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, Integer advertiserId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2164,6 +2165,10 @@ public class SellersV2Api {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
         }
 
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (authorization != null) {
             localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
@@ -2189,7 +2194,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerBudgetsValidateBeforeCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSellerBudgetsValidateBeforeCall(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, Integer advertiserId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -2197,7 +2202,7 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call localVarCall = getSellerBudgetsCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, _callback);
+        okhttp3.Call localVarCall = getSellerBudgetsCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, advertiserId, _callback);
         return localVarCall;
 
     }
@@ -2214,6 +2219,7 @@ public class SellersV2Api {
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2227,8 +2233,8 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerBudgetMessage> getSellerBudgets(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> localVarResp = getSellerBudgetsWithHttpInfo(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
+    public List<SellerBudgetMessage> getSellerBudgets(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, Integer advertiserId) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = getSellerBudgetsWithHttpInfo(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, advertiserId);
         return localVarResp.getData();
     }
 
@@ -2244,6 +2250,7 @@ public class SellersV2Api {
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2257,8 +2264,8 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerBudgetMessage>> getSellerBudgetsWithHttpInfo(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type) throws ApiException {
-        okhttp3.Call localVarCall = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, null);
+    public ApiResponse<List<SellerBudgetMessage>> getSellerBudgetsWithHttpInfo(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, advertiserId, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2275,6 +2282,7 @@ public class SellersV2Api {
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param sellerId Return only budgets belonging to the given seller. (optional)
      * @param type Return only budgets with the given budget type. (optional)
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2289,9 +2297,9 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSellerBudgetsAsync(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+    public okhttp3.Call getSellerBudgetsAsync(String authorization, String status, Boolean withBalance, Boolean withSpend, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, Integer campaignId, String sellerId, String type, Integer advertiserId, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, _callback);
+        okhttp3.Call localVarCall = getSellerBudgetsValidateBeforeCall(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, advertiserId, _callback);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2446,6 +2454,7 @@ public class SellersV2Api {
      * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
      * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2460,7 +2469,7 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSellerCampaignsCall(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSellerCampaignsCall(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, Integer advertiserId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2482,6 +2491,10 @@ public class SellersV2Api {
 
         if (budgetStatus != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("budgetStatus", budgetStatus));
+        }
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -2509,7 +2522,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellerCampaignsValidateBeforeCall(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSellerCampaignsValidateBeforeCall(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, Integer advertiserId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -2517,7 +2530,7 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call localVarCall = getSellerCampaignsCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, _callback);
+        okhttp3.Call localVarCall = getSellerCampaignsCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, advertiserId, _callback);
         return localVarCall;
 
     }
@@ -2530,6 +2543,7 @@ public class SellersV2Api {
      * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
      * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
      * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2543,8 +2557,8 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerCampaignMessage> getSellerCampaigns(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus) throws ApiException {
-        ApiResponse<List<SellerCampaignMessage>> localVarResp = getSellerCampaignsWithHttpInfo(authorization, sellerStatus, sellerId, campaignId, budgetStatus);
+    public List<SellerCampaignMessage> getSellerCampaigns(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, Integer advertiserId) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = getSellerCampaignsWithHttpInfo(authorization, sellerStatus, sellerId, campaignId, budgetStatus, advertiserId);
         return localVarResp.getData();
     }
 
@@ -2556,6 +2570,7 @@ public class SellersV2Api {
      * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
      * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2569,8 +2584,8 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsWithHttpInfo(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus) throws ApiException {
-        okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, null);
+    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsWithHttpInfo(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, advertiserId, null);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2583,6 +2598,7 @@ public class SellersV2Api {
      * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
      * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2597,9 +2613,9 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSellerCampaignsAsync(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+    public okhttp3.Call getSellerCampaignsAsync(String authorization, String sellerStatus, String sellerId, Integer campaignId, String budgetStatus, Integer advertiserId, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, _callback);
+        okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(authorization, sellerStatus, sellerId, campaignId, budgetStatus, advertiserId, _callback);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2917,6 +2933,8 @@ public class SellersV2Api {
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param sellerName Return only sellers with the matching name. (optional)
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2931,7 +2949,7 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSellersCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSellersCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, Integer advertiserId, Integer campaignId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2953,6 +2971,14 @@ public class SellersV2Api {
 
         if (sellerName != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerName", sellerName));
+        }
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -2980,7 +3006,7 @@ public class SellersV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSellersValidateBeforeCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSellersValidateBeforeCall(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, Integer advertiserId, Integer campaignId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -2988,7 +3014,7 @@ public class SellersV2Api {
         }
         
 
-        okhttp3.Call localVarCall = getSellersCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, _callback);
+        okhttp3.Call localVarCall = getSellersCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, advertiserId, campaignId, _callback);
         return localVarCall;
 
     }
@@ -3001,6 +3027,8 @@ public class SellersV2Api {
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param sellerName Return only sellers with the matching name. (optional)
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
      * @return List&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3014,8 +3042,8 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerBase> getSellers(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName) throws ApiException {
-        ApiResponse<List<SellerBase>> localVarResp = getSellersWithHttpInfo(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName);
+    public List<SellerBase> getSellers(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, Integer advertiserId, Integer campaignId) throws ApiException {
+        ApiResponse<List<SellerBase>> localVarResp = getSellersWithHttpInfo(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, advertiserId, campaignId);
         return localVarResp.getData();
     }
 
@@ -3027,6 +3055,8 @@ public class SellersV2Api {
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param sellerName Return only sellers with the matching name. (optional)
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
      * @return ApiResponse&lt;List&lt;SellerBase&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3040,8 +3070,8 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerBase>> getSellersWithHttpInfo(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName) throws ApiException {
-        okhttp3.Call localVarCall = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, null);
+    public ApiResponse<List<SellerBase>> getSellersWithHttpInfo(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, Integer advertiserId, Integer campaignId) throws ApiException {
+        okhttp3.Call localVarCall = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, advertiserId, campaignId, null);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3054,6 +3084,8 @@ public class SellersV2Api {
      * @param withProducts Return only sellers with or without products in catalog. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param sellerName Return only sellers with the matching name. (optional)
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3068,9 +3100,9 @@ public class SellersV2Api {
         <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSellersAsync(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
+    public okhttp3.Call getSellersAsync(String authorization, String sellerStatus, Boolean withProducts, String withBudgetStatus, String sellerName, Integer advertiserId, Integer campaignId, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, _callback);
+        okhttp3.Call localVarCall = getSellersValidateBeforeCall(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, advertiserId, campaignId, _callback);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

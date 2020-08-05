@@ -9,13 +9,13 @@ Method | HTTP request | Description
 [**createSellers**](SellersV2Api.md#createSellers) | **POST** /v2/crp/advertisers/{advertiserId}/sellers | Create new sellers for an advertiser
 [**getAdvertiser**](SellersV2Api.md#getAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 [**getAdvertiserCampaigns**](SellersV2Api.md#getAdvertiserCampaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
-[**getAdvertiserPreviewLimits**](SellersV2Api.md#getAdvertiserPreviewLimits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the user.
+[**getAdvertiserPreviewLimits**](SellersV2Api.md#getAdvertiserPreviewLimits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the authorized user.
 [**getAdvertisers**](SellersV2Api.md#getAdvertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 [**getBudgetsByAdvertiser**](SellersV2Api.md#getBudgetsByAdvertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 [**getBudgetsBySeller**](SellersV2Api.md#getBudgetsBySeller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 [**getBudgetsBySellerCampaignId**](SellersV2Api.md#getBudgetsBySellerCampaignId) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 [**getSeller**](SellersV2Api.md#getSeller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
-[**getSellerAdDemo**](SellersV2Api.md#getSellerAdDemo) | **GET** /v2/crp/advertisers/{advertiserId}/ad-preview | Get a demo ad with products from the given seller
+[**getSellerAdDemo**](SellersV2Api.md#getSellerAdDemo) | **GET** /v2/crp/advertisers/{advertiserId}/ad-preview | Get a preview of an HTML ad with products belonging to the provided seller
 [**getSellerBudget**](SellersV2Api.md#getSellerBudget) | **GET** /v2/crp/budgets/{budgetId} | Get details for a budget.
 [**getSellerBudgets**](SellersV2Api.md#getSellerBudgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**getSellerCampaign**](SellersV2Api.md#getSellerCampaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 # **getAdvertiserPreviewLimits**
 > List&lt;AdvertiserQuotaMessage&gt; getAdvertiserPreviewLimits(authorization)
 
-Get the collection of advertisers preview limits associated with the user.
+Get the collection of advertisers preview limits associated with the authorized user.
 
 ### Example
 ```java
@@ -893,7 +893,9 @@ Name | Type | Description  | Notes
 # **getSellerAdDemo**
 > String getSellerAdDemo(advertiserId, sellerId, authorization, campaignId, height, width)
 
-Get a demo ad with products from the given seller
+Get a preview of an HTML ad with products belonging to the provided seller
+
+• &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;campaignId&lt;/b&gt;: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
 
 ### Example
 ```java
@@ -1048,7 +1050,7 @@ Name | Type | Description  | Notes
 
 <a name="getSellerBudgets"></a>
 # **getSellerBudgets**
-> List&lt;SellerBudgetMessage&gt; getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type)
+> List&lt;SellerBudgetMessage&gt; getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, advertiserId)
 
 Get a collection of budgets.
 
@@ -1085,8 +1087,9 @@ public class Example {
     Integer campaignId = 56; // Integer | Return only budgets that pay for a given campaign.
     String sellerId = "sellerId_example"; // String | Return only budgets belonging to the given seller.
     String type = "type_example"; // String | Return only budgets with the given budget type.
+    Integer advertiserId = 56; // Integer | Return only budgets belonging to the specified advertiser
     try {
-      List<SellerBudgetMessage> result = apiInstance.getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type);
+      List<SellerBudgetMessage> result = apiInstance.getSellerBudgets(authorization, status, withBalance, withSpend, endAfterDate, startBeforeDate, campaignId, sellerId, type, advertiserId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SellersV2Api#getSellerBudgets");
@@ -1112,6 +1115,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**| Return only budgets that pay for a given campaign. | [optional]
  **sellerId** | **String**| Return only budgets belonging to the given seller. | [optional]
  **type** | **String**| Return only budgets with the given budget type. | [optional]
+ **advertiserId** | **Integer**| Return only budgets belonging to the specified advertiser | [optional]
 
 ### Return type
 
@@ -1214,7 +1218,7 @@ Name | Type | Description  | Notes
 
 <a name="getSellerCampaigns"></a>
 # **getSellerCampaigns**
-> List&lt;SellerCampaignMessage&gt; getSellerCampaigns(authorization, sellerStatus, sellerId, campaignId, budgetStatus)
+> List&lt;SellerCampaignMessage&gt; getSellerCampaigns(authorization, sellerStatus, sellerId, campaignId, budgetStatus, advertiserId)
 
 Get a collection of seller campaigns.
 
@@ -1247,8 +1251,9 @@ public class Example {
     String sellerId = "sellerId_example"; // String | Return only seller campaigns belonging to the given seller.
     Integer campaignId = 56; // Integer | Return only seller campaigns associated with the given campaign.
     String budgetStatus = "budgetStatus_example"; // String | Return only seller campaigns whose budget has the given status.
+    Integer advertiserId = 56; // Integer | Return only seller belonging to the specified advertiser
     try {
-      List<SellerCampaignMessage> result = apiInstance.getSellerCampaigns(authorization, sellerStatus, sellerId, campaignId, budgetStatus);
+      List<SellerCampaignMessage> result = apiInstance.getSellerCampaigns(authorization, sellerStatus, sellerId, campaignId, budgetStatus, advertiserId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SellersV2Api#getSellerCampaigns");
@@ -1270,6 +1275,7 @@ Name | Type | Description  | Notes
  **sellerId** | **String**| Return only seller campaigns belonging to the given seller. | [optional]
  **campaignId** | **Integer**| Return only seller campaigns associated with the given campaign. | [optional]
  **budgetStatus** | **String**| Return only seller campaigns whose budget has the given status. | [optional] [enum: Archived, Current, Scheduled]
+ **advertiserId** | **Integer**| Return only seller belonging to the specified advertiser | [optional]
 
 ### Return type
 
@@ -1451,7 +1457,7 @@ Name | Type | Description  | Notes
 
 <a name="getSellers"></a>
 # **getSellers**
-> List&lt;SellerBase&gt; getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName)
+> List&lt;SellerBase&gt; getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, advertiserId, campaignId)
 
 Get a collection of sellers.
 
@@ -1484,8 +1490,10 @@ public class Example {
     Boolean withProducts = true; // Boolean | Return only sellers with or without products in catalog.
     String withBudgetStatus = "withBudgetStatus_example"; // String | Return only sellers with specific budget status.
     String sellerName = "sellerName_example"; // String | Return only sellers with the matching name.
+    Integer advertiserId = 56; // Integer | Return only sellers belonging to the specified advertiser
+    Integer campaignId = 56; // Integer | Return only sellers belonging to the specified campaign
     try {
-      List<SellerBase> result = apiInstance.getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName);
+      List<SellerBase> result = apiInstance.getSellers(authorization, sellerStatus, withProducts, withBudgetStatus, sellerName, advertiserId, campaignId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SellersV2Api#getSellers");
@@ -1507,6 +1515,8 @@ Name | Type | Description  | Notes
  **withProducts** | **Boolean**| Return only sellers with or without products in catalog. | [optional]
  **withBudgetStatus** | **String**| Return only sellers with specific budget status. | [optional] [enum: Archived, Current, Scheduled]
  **sellerName** | **String**| Return only sellers with the matching name. | [optional]
+ **advertiserId** | **Integer**| Return only sellers belonging to the specified advertiser | [optional]
+ **campaignId** | **Integer**| Return only sellers belonging to the specified campaign | [optional]
 
 ### Return type
 
